@@ -1,7 +1,7 @@
 {
     "name": "near-viewport",
     "title": "Near Viewport",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "A jQuery plugin to watch when elements scroll into view.",
     "keywords": [
         "jquery",
