@@ -120,9 +120,7 @@
     $.beacons = function (action) {
         if (action === 'destroy') {
             active = false;
-            $('.beacon')
-                .removeClass('beacon-on beacon')
-                .off('beacon/activate');
+            $('.beacon').beacon('destroy');
             $(context).off('scroll.beacon');
         } else if (action === 'enable') {
             $('.beacon').addClass('.beacon-on');
