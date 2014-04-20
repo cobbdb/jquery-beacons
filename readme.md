@@ -1,6 +1,6 @@
 # beacon [![Build Status](https://travis-ci.org/cobbdb/jquery-beacon.svg)](https://travis-ci.org/cobbdb/jquery-beacon)
 
-A jQuery plugin to watch when elements scroll into view.
+A jQuery plugin to react when elements scroll into view.
 
     $ bower install jquery-beacon
 

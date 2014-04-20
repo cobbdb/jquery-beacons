@@ -1,8 +1,8 @@
 {
     "name": "beacon",
     "title": "Beacon",
-    "version": "0.0.2",
-    "description": "A jQuery plugin to watch when elements scroll into view.",
+    "version": "0.1.0",
+    "description": "A jQuery plugin to react when elements scroll into view.",
     "keywords": [
         "jquery",
         "viewport",

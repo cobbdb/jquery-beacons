@@ -1,6 +1,6 @@
 {
   "name": "jquery-beacon",
-  "description": "A jQuery plugin to watch when elements scroll into view.",
+  "description": "A jQuery plugin to react when elements scroll into view.",
   "main": "dist/jquery-beacon.min.js",
   "scripts": {
     "test": "grunt jasmine:dist"
