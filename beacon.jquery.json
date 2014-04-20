@@ -4,12 +4,13 @@
     "version": "0.1.0",
     "description": "A jQuery plugin to react when elements scroll into view.",
     "keywords": [
-        "jquery",
+        "visible",
         "viewport",
-        "selector",
+        "monitor",
         "offset",
         "margin",
-        "infinite"
+        "infinite",
+        "scroll"
     ],
     "author": {
         "name": "Dan Cobb",
@@ -24,6 +25,7 @@
     "bugs": "https://github.com/cobbdb/jquery-beacon/issues",
     "homepage": "https://github.com/cobbdb/jquery-beacon",
     "dependencies": {
-        "jquery": "1.x"
+        "jquery": "1.x",
+        "jquery-near-viewport": "1.x"
     }
 }

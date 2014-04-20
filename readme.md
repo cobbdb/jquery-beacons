@@ -20,7 +20,6 @@ For more advanced use cases, there are options available to configure how beacon
         handler: function () {
             alert('A widget will soon appear!');
         },
-        offset: 150,
         runOnce: false
     });
 
@@ -29,13 +28,6 @@ For more advanced use cases, there are options available to configure how beacon
 * Type: ```Function```
 
 The callback to be run when a beacon is activated.
-
-#### options.offset
-* Default: ```0```
-* Type: ```Number```
-
-A viewport offset can be set which will increase the sensitive portion outside fo the viewport.
-For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.
 
 #### options.runOnce
 * Default: ```false```
@@ -64,12 +56,29 @@ Remove the beacon, but retain the original element.
 Here are some options to control all your beacons at once.
 
     $.beacons('destroy');
+    $.beacons({
+        range: 150
+    });
 
 #### enable / disable
 Turn all beacons on or off.
 
 #### destroy
 Remove all beacons. This does *not* alter the original page element.
+
+#### options.range
+* Default: ```0```
+* Type: ```Number|String```
+
+An offset in pixels to increase the range outside of the viewport.
+For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.
+
+#### options.context
+* Default: ```window```
+* Type: ```Object|selector```
+
+The container in which the scrolling will happen.
+This is typically ```window```, but can be to something else if you have a special case.
 
 ---------
 * See: http://plugins.jquery.com/beacon/
