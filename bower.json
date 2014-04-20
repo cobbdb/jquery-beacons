@@ -1,11 +1,11 @@
 {
-  "name": "jquery-beacon",
-  "homepage": "https://github.com/cobbdb/jquery-beacon",
+  "name": "jquery-beacons",
+  "homepage": "https://github.com/cobbdb/jquery-beacons",
   "authors": [
     "cobbdb <cobbdb@gmail.com>"
   ],
   "description": "A jQuery plugin to watch when elements scroll into view.",
-  "main": "dist/jquery-beacon.min.js",
+  "main": "dist/jquery-beacons.min.js",
   "keywords": [
     "jquery",
     "plugin",

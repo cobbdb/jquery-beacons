@@ -1,6 +1,6 @@
 {
-    "name": "beacon",
-    "title": "Beacon",
+    "name": "beacons",
+    "title": "Beacons",
     "version": "0.1.0",
     "description": "A jQuery plugin to react when elements scroll into view.",
     "keywords": [
@@ -22,8 +22,8 @@
             "url": "http://opensource.org/licenses/MIT"
         }
     ],
-    "bugs": "https://github.com/cobbdb/jquery-beacon/issues",
-    "homepage": "https://github.com/cobbdb/jquery-beacon",
+    "bugs": "https://github.com/cobbdb/jquery-beacons/issues",
+    "homepage": "https://github.com/cobbdb/jquery-beacons",
     "dependencies": {
         "jquery": "1.x",
         "jquery-near-viewport": "1.x"

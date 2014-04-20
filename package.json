@@ -1,13 +1,13 @@
 {
-  "name": "jquery-beacon",
+  "name": "jquery-beacons",
   "description": "A jQuery plugin to react when elements scroll into view.",
-  "main": "dist/jquery-beacon.min.js",
+  "main": "dist/jquery-beacons.min.js",
   "scripts": {
     "test": "grunt jasmine:dist"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/cobbdb/jquery-beacon.git"
+    "url": "git://github.com/cobbdb/jquery-beacons.git"
   },
   "keywords": [
     "jquery",
@@ -19,9 +19,9 @@
   "author": "Dan Cobb <cobbdb@gmail.com> (http://www.github.com/cobbdb)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cobbdb/jquery-beacon/issues"
+    "url": "https://github.com/cobbdb/jquery-beacons/issues"
   },
-  "homepage": "https://github.com/cobbdb/jquery-beacon",
+  "homepage": "https://github.com/cobbdb/jquery-beacons",
   "devDependencies": {
     "grunt-cli": "~0.1.13",
     "grunt": "~0.4.4",
@@ -30,6 +30,7 @@
     "grunt-contrib-jshint": "~0.10.0",
     "jquery": "~2.1.0",
     "grunt-contrib-yuidoc": "~0.5.2",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-jsdoc": "~0.5.4"
   }
 }

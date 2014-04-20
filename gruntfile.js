@@ -19,7 +19,7 @@ module.exports = function (grunt) {
         uglify: {
             default: {
                 src: 'src/*.js',
-                dest: 'dist/jquery-beacon.min.js'
+                dest: 'dist/jquery-beacons.min.js'
             }
         },
         jasmine: {
@@ -59,6 +59,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-jsdoc');
 
     grunt.registerTask('build', [
         'jshint',

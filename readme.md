@@ -1,8 +1,8 @@
-# beacon [![Build Status](https://travis-ci.org/cobbdb/jquery-beacon.svg)](https://travis-ci.org/cobbdb/jquery-beacon) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# beacons [![Build Status](https://travis-ci.org/cobbdb/jquery-beacons.svg)](https://travis-ci.org/cobbdb/jquery-beacons) [![Bower version](https://badge.fury.io/bo/jquery-beacons.svg)](http://badge.fury.io/bo/jquery-beacons) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 A jQuery plugin to react when elements scroll into view.
 
-    $ bower install jquery-beacon
+    $ bower install jquery-beacons
 
 -------------
 ## Creating a new beacon
@@ -81,6 +81,6 @@ The container in which the scrolling will happen.
 This is typically ```window```, but can be to something else if you have a special case.
 
 ---------
-* See: http://plugins.jquery.com/beacon/
-* See: http://github.com/cobbdb/jquery-beacon
+* See: http://plugins.jquery.com/beacons/
+* See: http://github.com/cobbdb/jquery-beacons
 * License: MIT
