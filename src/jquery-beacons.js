@@ -1,6 +1,7 @@
 /**
  * Beacons - A jQuery plugin to react when elements scroll into view.
- * @module jquery-beacons
+ * @author Dan Cobb
+ * @license MIT
  */
 (function ($) {
     // Interval hash used for performance throttling.
@@ -22,10 +23,6 @@
             $(context).on('scroll.beacon', function () {
                 if (!hash && active) {
                     var set = $('.beacon.beacon-on:near-viewport(' + range + ')');
-                    /**
-                     * Fired when a beacon should activate.
-                     * @event beacon/activate
-                     */
                     set.trigger('beacon/activate');
                     // Throttle the heartbeat for performance.
                     hash = window.setTimeout(function () {
@@ -39,28 +36,6 @@
     /**
      * Create a new beacon or issue commands to
      * an individual beacon.
-     * @class beacon
-     * @constructor
-     *
-     * @param option {Function|String|Object} Either
-     * a callback, command, or config.
-     * @param option.callback {Function} Create a
-     * new beacon with the provided callback.
-     * @param option.command {String} One of the
-     * following commands:
-     *  * enable
-     *  * disable
-     *  * destroy
-     * @param option.config {Object} Create a new
-     * beacon with the following configuration.
-     * @param {Function} option.config.handler Callback
-     * when this beacon is activated.
-     * @param {Boolean} [option.config.runOnce=false] True
-     * to destroy this beacon after it has been
-     * activated.
-     * @param {Boolean} [option.config.enabled=true] Whether
-     * or not the beacon is active after its creation.
-     * @returns jQuery object.
      */
     $.fn.beacon = function (action) {
         if ($.isFunction(action)) {
@@ -97,25 +72,6 @@
 
     /**
      * Commands that apply to all beacons.
-     * @method beacons
-     * @for jquery
-     *
-     * @param option {String|Object} Either
-     * a command or config.
-     * @param option.command {String} One of the
-     * following commands:
-     *  * destroy
-     *  * disable
-     *  * enable
-     * @param option.config {Object} Apply a
-     * setting for all beacons.
-     * @param {Number} [option.config.throttle] Set
-     * the speed of the system's heartbeat.
-     * @param {Number} [option.config.range] Offset in
-     * pixels from the viewport. This is used for
-     * offscreen elements.
-     * @param {Object} [option.config.context] The
-     * container to which the scroll event is bound.
      */
     $.beacons = function (action) {
         if (action === 'destroy') {
