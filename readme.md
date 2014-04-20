@@ -1,4 +1,4 @@
-# beacon [![Build Status](https://travis-ci.org/cobbdb/jquery-beacon.svg)](https://travis-ci.org/cobbdb/jquery-beacon)
+# beacon [![Build Status](https://travis-ci.org/cobbdb/jquery-beacon.svg)](https://travis-ci.org/cobbdb/jquery-beacon) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 A jQuery plugin to react when elements scroll into view.
 
