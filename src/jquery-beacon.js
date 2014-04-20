@@ -6,7 +6,7 @@
     var active = false;
 
     /**
-     *  Trigger the 
+     *  Main loop of the plugin.
      */
     var run = function () {
         if (!active) {
@@ -28,6 +28,9 @@
         }
     };
 
+    /**
+     *  Create a new beacon, or issue commands to an individual beacon.
+     */
     $.fn.beacon = function (action) {
         if ($.isFunction(action)) {
             // Shortcut - enable and listen.
@@ -47,6 +50,7 @@
             if (!action.handler) {
                 throw Error('Beacon Creation Error: All beacons require a handler.');
             }
+            this.addClass('beacon');
             var runOnce = action.runOnce || false;
             this.on('beacon/activate', function () {
                 action.handler();
@@ -56,14 +60,16 @@
             });
             var enabled = action.enabled || true;
             if (enabled) {
-                this.addClass('beacon beacon-on');
+                this.addClass('beacon-on');
                 run();
             }
         }
         beacons.push(this);
     };
 
-    // Global beacon commands.
+    /**
+     *  Global beacon commands.
+     */
     $.beacons = function (action, opts) {
         if (action === 'destroy') {
             active = false;
@@ -77,8 +83,9 @@
             active = false;
             $(context).off('scroll.beacon');
         } else {
-            range = action.range || 0;
-            context = action.context || window;
+            range = action.range || range;
+            context = action.context || context;
+            throttle = action.throttle || throttle;
         }
     };
 }(jQuery));
