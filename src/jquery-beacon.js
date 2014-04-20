@@ -65,9 +65,6 @@
     $.fn.beacon = function (action) {
         if ($.isFunction(action)) {
             // Shortcut - enable and listen.
-            if (!action) {
-                throw Error('Beacon Creation Error: All beacons require a handler.');
-            }
             this.addClass('beacon beacon-on');
             this.on('beacon/activate', action);
             run();
@@ -83,10 +80,9 @@
                 throw Error('Beacon Creation Error: All beacons require a handler.');
             }
             this.addClass('beacon');
-            var runOnce = action.runOnce || false;
             this.on('beacon/activate', function () {
                 action.handler();
-                if (runOnce) {
+                if (action.runOnce) {
                     this.beacon('destroy');
                 }
             });
