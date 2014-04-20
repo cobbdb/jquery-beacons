@@ -1,0 +1,33 @@
+{
+  "name": "jquery-beacon",
+  "description": "A jQuery plugin to watch when elements scroll into view.",
+  "main": "dist/jquery-beacon.min.js",
+  "scripts": {
+    "test": "grunt jasmine:dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cobbdb/jquery-beacon.git"
+  },
+  "keywords": [
+    "jquery",
+    "plugin",
+    "viewport",
+    "offset",
+    "infinite"
+  ],
+  "author": "Dan Cobb <cobbdb@gmail.com> (http://www.github.com/cobbdb)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cobbdb/jquery-beacon/issues"
+  },
+  "homepage": "https://github.com/cobbdb/jquery-beacon",
+  "devDependencies": {
+    "grunt-cli": "~0.1.13",
+    "grunt": "~0.4.4",
+    "grunt-contrib-jasmine": "~0.6.3",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "jquery": "~2.1.0"
+  }
+}

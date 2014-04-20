@@ -1,0 +1,29 @@
+{
+    "name": "near-viewport",
+    "title": "Near Viewport",
+    "version": "1.0.0",
+    "description": "A jQuery plugin to watch when elements scroll into view.",
+    "keywords": [
+        "jquery",
+        "viewport",
+        "selector",
+        "offset",
+        "margin",
+        "infinite"
+    ],
+    "author": {
+        "name": "Dan Cobb",
+        "url": "https://github.com/cobbdb"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "bugs": "https://github.com/cobbdb/jquery-beacon/issues",
+    "homepage": "https://github.com/cobbdb/jquery-beacon",
+    "dependencies": {
+        "jquery": "1.x"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "jquery-beacon",
+  "homepage": "https://github.com/cobbdb/jquery-beacon",
+  "authors": [
+    "cobbdb <cobbdb@gmail.com>"
+  ],
+  "description": "A jQuery plugin to watch when elements scroll into view.",
+  "main": "dist/jquery-beacon.min.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "viewport",
+    "offset",
+    "infinite"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "*.json",
+    "gruntfile.js"
+  ],
+  "dependencies": {
+    "jquery-near-viewport": "~1.0.0"
+  }
+}
