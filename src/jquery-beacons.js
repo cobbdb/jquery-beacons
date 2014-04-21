@@ -21,7 +21,6 @@
         activateBeacons();
         // Do nothing if already active.
         if (!active) {
-            //console.log('B> Initializing heartbeat.');
             active = true;
             $(context).on('scroll.beacon', function () {
                 if (!hash && active) {
@@ -48,7 +47,6 @@
             // Shortcut - enable and listen.
             this.addClass('beacon beacon-on');
             this.on('beacon/activate', action);
-            //console.log('B> Created beacon via shortcut.');
             run();
         } else if (action === 'enable') {
             this.filter('.beacon').addClass('beacon-on');
@@ -82,16 +80,15 @@
      * Commands that apply to all beacons.
      */
     $.beacons = function (action) {
-        var set = $('.beacon');
         if (action === 'destroy') {
             active = false;
-            set.beacon('destroy');
+            $('.beacon').beacon('destroy');
             $(context).off('scroll.beacon');
         } else if (action === 'enable') {
-            set.addClass('beacon-on');
+            $('.beacon').addClass('beacon-on');
             run();
         } else if (action === 'disable') {
-            set.removeClass('beacon-on');
+            $('.beacon').removeClass('beacon-on');
             active = false;
             $(context).off('scroll.beacon');
         } else if (action === 'settings') {
@@ -106,6 +103,6 @@
             context = action.context || context;
             throttle = action.throttle || throttle;
         }
-        return set;
+        return this;
     };
 }(jQuery));
