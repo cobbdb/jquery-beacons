@@ -4,6 +4,8 @@ A jQuery plugin to react when elements scroll into view.
 
     $ bower install jquery-beacons
 
+**Note:** This plugin depends on jquery-near-viewport which is listed as a bower dependency.
+
 -------------
 ## Creating a new beacon
 Beacons are page elements you want to act on when they scroll into view.
