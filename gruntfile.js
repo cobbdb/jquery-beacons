@@ -40,6 +40,13 @@ module.exports = function (grunt) {
             source: {
                 files: ['src/*.js'],
                 tasks: ['default']
+            },
+            tests: {
+                files: [
+                    'src/*.js',
+                    'tests/*.spec.js'
+                ],
+                tasks: ['default']
             }
         }
     });
