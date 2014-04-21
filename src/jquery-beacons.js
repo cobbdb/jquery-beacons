@@ -18,12 +18,12 @@
     // Main loop of the plugin.
     var run = function () {
         if (!active) {
-            hash = true;
+            //console.log('B> Initializing heartbeat.');
             active = true;
+            activateBeacons();
             $(context).on('scroll.beacon', function () {
                 if (!hash && active) {
-                    var set = $('.beacon.beacon-on:near-viewport(' + range + ')');
-                    set.trigger('beacon/activate');
+                    activateBeacons();
                     // Throttle the heartbeat for performance.
                     hash = window.setTimeout(function () {
                         hash = false;
@@ -32,16 +32,21 @@
             });
         }
     };
+    var activateBeacons = function () {
+        var set = $('.beacon.beacon-on:near-viewport(' + range + ')');
+        set.trigger('beacon/activate');
+    };
 
     /**
      * Create a new beacon or issue commands to
      * an individual beacon.
      */
     $.fn.beacon = function (action) {
-        if ($.isFunction(action)) {
+        if (typeof action === 'function') {
             // Shortcut - enable and listen.
             this.addClass('beacon beacon-on');
             this.on('beacon/activate', action);
+            //console.log('B> Created beacon via shortcut.');
             run();
         } else if (action === 'enable') {
             this.filter('.beacon').addClass('beacon-on');
@@ -50,18 +55,19 @@
         } else if (action === 'destroy') {
             this.removeClass('beacon beacon-on');
             this.off('beacon/activate');
-        } else {
+        } else if (typeof action === 'object') {
             if (!action.handler) {
                 throw Error('Beacon Creation Error: All beacons require a handler.');
             }
             this.addClass('beacon');
+            var $this = this;
             this.on('beacon/activate', function () {
                 action.handler();
                 if (action.runOnce) {
-                    this.beacon('destroy');
+                    $this.beacon('destroy');
                 }
             });
-            var enabled = action.enabled || true;
+            var enabled = (typeof action.enabled === 'undefined') ? true : action.enabled;
             if (enabled) {
                 this.addClass('beacon-on');
                 run();
@@ -74,21 +80,23 @@
      * Commands that apply to all beacons.
      */
     $.beacons = function (action) {
+        var set = $('.beacon');
         if (action === 'destroy') {
             active = false;
-            $('.beacon').beacon('destroy');
+            set.beacon('destroy');
             $(context).off('scroll.beacon');
         } else if (action === 'enable') {
-            $('.beacon').addClass('.beacon-on');
+            set.addClass('beacon-on');
             run();
         } else if (action === 'disable') {
-            $('.beacon').removeClass('.beacon-on');
+            set.removeClass('beacon-on');
             active = false;
             $(context).off('scroll.beacon');
-        } else {
+        } else if (typeof action === 'object') {
             range = action.range || range;
             context = action.context || context;
             throttle = action.throttle || throttle;
         }
+        return set;
     };
 }(jQuery));
