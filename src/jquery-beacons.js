@@ -17,10 +17,12 @@
 
     // Main loop of the plugin.
     var run = function () {
+        // Explicitly trip all beacons.
+        activateBeacons();
+        // Do nothing if already active.
         if (!active) {
             //console.log('B> Initializing heartbeat.');
             active = true;
-            activateBeacons();
             $(context).on('scroll.beacon', function () {
                 if (!hash && active) {
                     activateBeacons();
