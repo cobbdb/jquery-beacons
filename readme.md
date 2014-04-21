@@ -18,7 +18,7 @@ For more advanced use cases, there are options available to configure how beacon
 
     $('.widget').beacon({
         handler: function () {
-            alert('A widget will soon appear!');
+            alert('A widget has appeared!');
         },
         runOnce: false
     });
@@ -79,6 +79,12 @@ For example, an offset of 100 will trigger beacons 100px above the viewport and 
 
 The container in which the scrolling will happen.
 This is typically ```window```, but can be to something else if you have a special case.
+
+#### options.throttle
+* Default: ```80```
+* Type: ```Number```
+
+Limit the rate at which beacons are inspected. This value is in milliseconds.
 
 ---------
 * See: http://plugins.jquery.com/beacons/
