@@ -3,6 +3,7 @@
   "description": "A jQuery plugin to react when elements scroll into view.",
   "main": "src/jquery-beacons.js",
   "scripts": {
+    "postinstall": "bower install",
     "test": "grunt jasmine"
   },
   "repository": {
