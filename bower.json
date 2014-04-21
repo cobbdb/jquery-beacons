@@ -25,5 +25,8 @@
   ],
   "dependencies": {
     "jquery-near-viewport": "~1.0.0"
+  },
+  "devDependencies": {
+    "jquery": "1.x"
   }
 }

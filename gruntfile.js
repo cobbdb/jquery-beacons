@@ -31,7 +31,7 @@ module.exports = function (grunt) {
             options: {
                 specs: 'tests/*.spec.js',
                 vendor: [
-                    require.resolve('jquery'),
+                    resolve('jquery'),
                     resolve('jquery-near-viewport')
                 ]
             }
