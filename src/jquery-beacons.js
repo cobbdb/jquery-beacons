@@ -94,6 +94,13 @@
             set.removeClass('beacon-on');
             active = false;
             $(context).off('scroll.beacon');
+        } else if (action === 'settings') {
+            // Fetch current settings.
+            return {
+                range: range,
+                context: context,
+                throttle: throttle
+            };
         } else if (typeof action === 'object') {
             range = action.range || range;
             context = action.context || context;

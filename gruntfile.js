@@ -1,3 +1,5 @@
+var resolve = require('bower-path');
+
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -18,26 +20,26 @@ module.exports = function (grunt) {
         },
         uglify: {
             default: {
-                src: 'src/*.js',
+                src: 'src/jquery-beacons.js',
                 dest: 'dist/jquery-beacons.min.js'
             }
         },
         jasmine: {
-            dist: {
+            default: {
                 src: 'dist/**/*.js'
-            },
-            raw: {
-                src: 'src/**/*.js'
             },
             options: {
                 specs: 'tests/*.spec.js',
-                vendor: require.resolve('jquery')
+                vendor: [
+                    require.resolve('jquery'),
+                    resolve('jquery-near-viewport')
+                ]
             }
         },
         watch: {
             source: {
                 files: ['src/*.js'],
-                tasks: ['build']
+                tasks: ['default']
             }
         }
     });
@@ -54,6 +56,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'build',
-        'jasmine:dist'
+        'jasmine'
     ]);
 };
