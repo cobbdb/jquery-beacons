@@ -2,41 +2,6 @@
  * Spec for global beacon commands: $.beacons()
  */
 describe("$.beacons", function () {
-    var winHeight;
-    var switchboard = {};
-    var move = function (sel, top) {
-        $(sel).css({
-            position: 'absolute',
-            top: top + 'px'
-        });
-    };
-    var newBeacon = function (id, top, on, once) {
-        var sel = '#' + id;
-        $('body').append('<div id="' + id + '">test div</div>');
-        move(sel, top);
-        switchboard[id] = false;
-        $(sel).beacon({
-            handler: function () {
-                switchboard[id] = true;
-            },
-            enabled: on,
-            runOnce: once
-        });
-    };
-
-    beforeEach(function () {
-        newBeacon('TST01', 10);
-        newBeacon('TST02', 200);
-        newBeacon('TST03', 500);
-        winHeight = window.innerHeight;
-    });
-    afterEach(function () {
-        $('body *').remove();
-        $.beacons('destroy');
-        $(window).off('scroll');
-        switchboard = {};
-    });
-
     // Run the tests.
     it('can chain commands', function () {
         spyOn($, 'beacons').and.callThrough();
@@ -45,7 +10,7 @@ describe("$.beacons", function () {
         }).not.toThrowError();
         expect($.beacons.calls.count()).toEqual(2);
     });
-    describe('destroy option', function () {
+    xdescribe('destroy option', function () {
         it('destroys all beacons', function () {
             expect($('.beacon').length).toEqual(3);
             spyOn($.fn, 'beacon').and.callThrough();
@@ -54,6 +19,7 @@ describe("$.beacons", function () {
             expect($('.beacon').length).toEqual(0);
         });
         it('releases the scroll event', function () {
+            console.log(JSON.stringify($._data(window), null, 4));
             var set = $._data(window, 'events');
             expect(set).toBeDefined();
             expect(set.scroll).toBeDefined();
@@ -83,7 +49,7 @@ describe("$.beacons", function () {
             expect(switchboard.TST03).toBe(false);
         });
     });
-    describe('disable option', function () {
+    xdescribe('disable option', function () {
         it('removes the beacon-on class from all beacons', function () {
             var set = $('.beacon-on');
             expect(set.length).toEqual(3);
@@ -121,7 +87,7 @@ describe("$.beacons", function () {
             expect(switchboard.TST03).toBe(true);
         });
     });
-    describe('enable option', function () {
+    xdescribe('enable option', function () {
         beforeEach(function () {
             $.beacons('disable');
         });
@@ -157,7 +123,7 @@ describe("$.beacons", function () {
             expect(switchboard.MY01).toBe(true);
         });
     });
-    describe('settings option', function () {
+    xdescribe('settings option', function () {
         afterEach(function () {
             $.beacons({
                 context: false,

@@ -2,41 +2,6 @@
  * Spec for global beacon commands: $.beacons()
  */
 describe("$.fn.beacon", function () {
-    var winHeight;
-    var switchboard = {};
-    var move = function (sel, top) {
-        $(sel).css({
-            position: 'absolute',
-            top: top + 'px'
-        });
-    };
-    var newBeacon = function (id, top, on, once) {
-        var sel = '#' + id;
-        $('body').append('<div id="' + id + '">test div</div>');
-        move(sel, top);
-        switchboard[id] = false;
-        $(sel).beacon({
-            handler: function () {
-                switchboard[id] = true;
-            },
-            enabled: on,
-            runOnce: once
-        });
-    };
-
-    beforeEach(function () {
-        newBeacon('TST01', 10);
-        newBeacon('TST02', 200);
-        newBeacon('TST03', 500);
-        winHeight = window.innerHeight;
-    });
-    afterEach(function () {
-        $('body *').remove();
-        $.beacons('destroy');
-        $(window).off('scroll');
-        switchboard = {};
-    });
-
     // Run the tests.
     it('can chain commands', function () {
         spyOn($.fn, 'beacon').and.callThrough();
@@ -49,8 +14,8 @@ describe("$.fn.beacon", function () {
     });
     describe('constructor', function () {
         beforeEach(function () {
-            $('body').append('<div id="MY02">test div</div>');
-            switchboard.MY02 = false;
+            newBeacon('MY02', 10, false);
+            $.beacons('destroy');
         });
         it('requires a handler', function () {
             expect(function () {
@@ -77,7 +42,6 @@ describe("$.fn.beacon", function () {
             expect(switchboard.MY02).toBe(true);
         });
         it('activates the heartbeat', function () {
-            $.beacons('destroy');
             var set = $._data(window, 'events');
             expect(set).toBeUndefined();
             $('#MY02').beacon({
@@ -115,7 +79,8 @@ describe("$.fn.beacon", function () {
     });
     describe('constructor - shortcut', function () {
         beforeEach(function () {
-            $('body').append('<div id="MY02">test div</div>');
+            newBeacon('MY02', 10, false);
+            $.beacons('destroy');
         });
         it('adds beacon classes', function () {
             expect($('#MY02').is('.beacon')).toBe(false);

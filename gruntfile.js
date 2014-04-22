@@ -29,7 +29,8 @@ module.exports = function (grunt) {
                 src: 'dist/**/*.js'
             },
             options: {
-                specs: 'tests/*.spec.js',
+                specs: 'tests/beacon-cmds.spec.js',
+                helpers: 'tests/helpers.js',
                 vendor: [
                     resolve('jquery'),
                     resolve('jquery-near-viewport')
