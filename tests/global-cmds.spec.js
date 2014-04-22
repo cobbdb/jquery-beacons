@@ -10,7 +10,7 @@ describe("$.beacons", function () {
         }).not.toThrowError();
         expect($.beacons.calls.count()).toEqual(2);
     });
-    xdescribe('destroy option', function () {
+    describe('destroy option', function () {
         it('destroys all beacons', function () {
             expect($('.beacon').length).toEqual(3);
             spyOn($.fn, 'beacon').and.callThrough();
@@ -19,12 +19,13 @@ describe("$.beacons", function () {
             expect($('.beacon').length).toEqual(0);
         });
         it('releases the scroll event', function () {
-            console.log(JSON.stringify($._data(window), null, 4));
             var set = $._data(window, 'events');
             expect(set).toBeDefined();
             expect(set.scroll).toBeDefined();
             expect(set.scroll.length).toEqual(1);
             $.beacons('destroy');
+            expect($('.beacon').length).toEqual(0);
+            set = $._data(window, 'events');
             expect(set).toBeUndefined();
         });
         it('releases only the beacon scroll event', function () {
@@ -37,6 +38,7 @@ describe("$.beacons", function () {
             expect(set.scroll).toBeDefined();
             expect(set.scroll.length).toEqual(2);
             $.beacons('destroy');
+            set = $._data(window, 'events');
             expect(set.scroll.length).toEqual(1);
             $(window).trigger('scroll');
             expect(scrollTest).toBe(true);
@@ -49,37 +51,37 @@ describe("$.beacons", function () {
             expect(switchboard.TST03).toBe(false);
         });
     });
-    xdescribe('disable option', function () {
-        it('removes the beacon-on class from all beacons', function () {
-            var set = $('.beacon-on');
-            expect(set.length).toEqual(3);
+    describe('disable option', function () {
+        it('removes beacon-on class from all beacons', function () {
+            expect($('.beacon-on').length).toEqual(3);
             $.beacons('disable');
-            set = $('.beacon-on');
-            expect(set.length).toEqual(0);
+            expect($('.beacon-on').length).toEqual(0);
         });
-        it('releases the scroll event', function () {
-            var events = $._data(window, 'events');
-            expect(events).toBeDefined();
-            expect(events.scroll).toBeDefined();
-            expect(events.scroll.length).toEqual(1);
+        it('releases scroll event', function () {
+            var set = $._data(window, 'events');
+            expect(set).toBeDefined();
+            expect(set.scroll).toBeDefined();
+            expect(set.scroll.length).toEqual(1);
             $.beacons('disable');
-            expect(events.scroll).toBeUndefined();
+            set = $._data(window, 'events');
+            expect(set).toBeUndefined();
         });
         it('releases only the beacon scroll event', function () {
             var scrollTest = false;
             $(window).on('scroll', function () {
                 scrollTest = true;
             });
-            var events = $._data(window, 'events');
-            expect(events).toBeDefined();
-            expect(events.scroll).toBeDefined();
-            expect(events.scroll.length).toEqual(2);
+            var set = $._data(window, 'events');
+            expect(set).toBeDefined();
+            expect(set.scroll).toBeDefined();
+            expect(set.scroll.length).toEqual(2);
             $.beacons('disable');
-            expect(events.scroll.length).toEqual(1);
+            set = $._data(window, 'events');
+            expect(set.scroll.length).toEqual(1);
             $(window).trigger('scroll');
             expect(scrollTest).toBe(true);
         });
-        it('retains the beacon/activate event', function () {
+        it('retains beacon/activate event', function () {
             expect(switchboard.TST01).toBe(true);
             expect(switchboard.TST03).toBe(false);
             $.beacons('disable');
@@ -87,7 +89,7 @@ describe("$.beacons", function () {
             expect(switchboard.TST03).toBe(true);
         });
     });
-    xdescribe('enable option', function () {
+    describe('enable option', function () {
         beforeEach(function () {
             $.beacons('disable');
         });
@@ -99,23 +101,23 @@ describe("$.beacons", function () {
             set = $('.beacon-on');
             expect(set.length).toEqual(0);
         });
-        it('adds the beacon-on class to all beacons', function () {
+        it('adds beacon-on class to all beacons', function () {
             var set = $('.beacon-on');
             expect(set.length).toEqual(0);
             $.beacons('enable');
             set = $('.beacon-on');
             expect(set.length).toEqual(3);
         });
-        it('binds the scroll event', function () {
-            var events = $._data(window, 'events');
-            expect(events).toBeUndefined();
+        it('binds scroll event', function () {
+            var set = $._data(window, 'events');
+            expect(set).toBeUndefined();
             $.beacons('enable');
-            events = $._data(window, 'events');
-            expect(events).toBeDefined();
-            expect(events.scroll).toBeDefined();
-            expect(events.scroll.length).toEqual(1);
+            set = $._data(window, 'events');
+            expect(set).toBeDefined();
+            expect(set.scroll).toBeDefined();
+            expect(set.scroll.length).toEqual(1);
         });
-        it('binds the beacon/activate event', function () {
+        it('binds beacon/activate event', function () {
             $.beacons('destroy');
             newBeacon('MY01', 10, false);
             expect(switchboard.MY01).toBe(false);
@@ -123,19 +125,19 @@ describe("$.beacons", function () {
             expect(switchboard.MY01).toBe(true);
         });
     });
-    xdescribe('settings option', function () {
+    describe('settings option', function () {
         afterEach(function () {
             $.beacons({
-                context: false,
-                throttle: false,
-                range: false
+                context: window,
+                throttle: 80,
+                range: 0
             });
         });
         it('can fetch all current settings', function () {
             var defaults = $.beacons('settings');
             expect(defaults).toBeDefined();
         });
-        it('can set all new configurations', function () {
+        it('can set new configurations', function () {
             var test = {};
             $.beacons({
                 context: test,

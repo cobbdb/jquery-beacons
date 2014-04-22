@@ -29,7 +29,7 @@ module.exports = function (grunt) {
                 src: 'dist/**/*.js'
             },
             options: {
-                specs: 'tests/beacon-cmds.spec.js',
+                specs: 'tests/*.spec.js',
                 helpers: 'tests/helpers.js',
                 vendor: [
                     resolve('jquery'),

@@ -25,8 +25,8 @@ beforeEach(function () {
     newBeacon('TST03', 500);
 });
 afterEach(function () {
-    $('.test').remove();
     $.beacons('destroy');
+    $('.test').remove();
     $(window).off('scroll');
     switchboard = {};
 });

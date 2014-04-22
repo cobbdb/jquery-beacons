@@ -155,39 +155,4 @@ describe("$.fn.beacon", function () {
             expect($('.beacon-on').length).toEqual(0);
         });
     });
-    describe('settings option', function () {
-        afterEach(function () {
-            $.beacons({
-                context: false,
-                throttle: false,
-                range: false
-            });
-        });
-        it('can fetch all current settings', function () {
-            var defaults = $.beacons('settings');
-            expect(defaults).toBeDefined();
-        });
-        it('can set all new configurations', function () {
-            var test = {};
-            $.beacons({
-                context: test,
-                throttle: 183,
-                range: 52
-            });
-            var config = $.beacons('settings');
-            expect(config.context).toEqual(test);
-            expect(config.throttle).toEqual(183);
-            expect(config.range).toEqual(52);
-        });
-        it('can set a few new settings', function () {
-            var oldConf = $.beacons('settings');
-            $.beacons({
-                throttle: 98
-            });
-            var newConf = $.beacons('settings');
-            expect(newConf.context).toEqual(oldConf.context);
-            expect(newConf.throttle).toEqual(98);
-            expect(newConf.range).toEqual(oldConf.range);
-        });
-    });
 });
