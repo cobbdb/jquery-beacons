@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Beacons by cobbdb</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Beacons</h1>
+        <p>the jQuery plugin for viewport reactions</p>
+
+        <p class="view"><a href="https://github.com/cobbdb/jquery-beacons">View the Project on GitHub <small>cobbdb/jquery-beacons</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/cobbdb/jquery-beacons/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/cobbdb/jquery-beacons/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/cobbdb/jquery-beacons">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <pre><code>$ bower install jquery-beacons
+</code></pre>
+
+<hr><p><a href="https://travis-ci.org/cobbdb/jquery-beacons"><img src="https://travis-ci.org/cobbdb/jquery-beacons.svg" alt="Build Status"></a> <a href="http://badge.fury.io/bo/jquery-beacons"><img src="https://badge.fury.io/bo/jquery-beacons.svg" alt="Bower version"></a> <a href="http://gruntjs.com/"><img src="https://cdn.gruntjs.com/builtwith.png" alt="Built with Grunt"></a></p>
+
+<p><strong>Note:</strong> This plugin depends on jquery-near-viewport which is listed as a bower dependency.</p>
+
+<h2>
+<a name="creating-a-new-beacon" class="anchor" href="#creating-a-new-beacon"><span class="octicon octicon-link"></span></a>Creating a new beacon</h2>
+
+<p>Beacons are page elements you want to act on when they scroll into view.
+Just supply a callback function to run when the beacon is triggered.</p>
+
+<pre><code>$('.widget').beacon(function () {
+    alert('A widget is on screen!');
+});
+</code></pre>
+
+<h2>
+<a name="beacon-options" class="anchor" href="#beacon-options"><span class="octicon octicon-link"></span></a>Beacon options</h2>
+
+<p>For more advanced use cases, there are options available to configure how beacons are triggered.</p>
+
+<pre><code>$('.widget').beacon({
+    handler: function () {
+        alert('A widget has appeared!');
+    },
+    runOnce: true
+});
+</code></pre>
+
+<h4>
+<a name="optionshandler" class="anchor" href="#optionshandler"><span class="octicon octicon-link"></span></a>options.handler</h4>
+
+<ul>
+<li>Required</li>
+<li>Type: <code>function</code>
+</li>
+</ul><p>The callback to be run when a beacon is activated.</p>
+
+<h4>
+<a name="optionsrunonce" class="anchor" href="#optionsrunonce"><span class="octicon octicon-link"></span></a>options.runOnce</h4>
+
+<ul>
+<li>Default: <code>false</code>
+</li>
+<li>Type: <code>boolean</code>
+</li>
+</ul><p>Remove the beacon automatically after it has been triggered.</p>
+
+<h4>
+<a name="optionsenabled" class="anchor" href="#optionsenabled"><span class="octicon octicon-link"></span></a>options.enabled</h4>
+
+<ul>
+<li>Default: <code>true</code>
+</li>
+<li>Type: <code>boolean</code>
+</li>
+</ul><p>Whether or not the beacon is active after its creation. See the section on <a href="#con_enable">enabling/disabling beacons</a> for more information.</p>
+
+<h2>
+<a name="beacon-controls" class="anchor" href="#beacon-controls"><span class="octicon octicon-link"></span></a>Beacon controls</h2>
+
+<p>For more complicated scenarios, there are commands to control what your beacons are doing.</p>
+
+<pre><code>$('.widget').beacon('disable');
+</code></pre>
+
+<h4>
+<a name="enable--disable-" class="anchor" href="#enable--disable-"><span class="octicon octicon-link"></span></a>enable / disable <a name="con_enable"></a>
+</h4>
+
+<p>Turn an individual beacon on or off.</p>
+
+<h4>
+<a name="destroy" class="anchor" href="#destroy"><span class="octicon octicon-link"></span></a>destroy</h4>
+
+<p>Remove the beacon, but retain the original element.</p>
+
+<h2>
+<a name="global-controls" class="anchor" href="#global-controls"><span class="octicon octicon-link"></span></a>Global controls</h2>
+
+<p>Here are some options to control all your beacons at once.</p>
+
+<pre><code>$.beacons({
+    range: 150
+});
+$.beacons('enable');
+</code></pre>
+
+<h4>
+<a name="enable--disable" class="anchor" href="#enable--disable"><span class="octicon octicon-link"></span></a>enable / disable</h4>
+
+<p>Turn all beacons on or off.</p>
+
+<h4>
+<a name="destroy-1" class="anchor" href="#destroy-1"><span class="octicon octicon-link"></span></a>destroy</h4>
+
+<p>Remove all beacons. This does <em>not</em> alter the original page element.</p>
+
+<h4>
+<a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>settings</h4>
+
+<p>Fetch the current system settings.</p>
+
+<h4>
+<a name="optionsrange" class="anchor" href="#optionsrange"><span class="octicon octicon-link"></span></a>options.range</h4>
+
+<ul>
+<li>Default: <code>0</code>
+</li>
+<li>Type: <code>number|string</code>
+</li>
+</ul><p>An offset in pixels to increase the range outside of the viewport.
+For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.</p>
+
+<h4>
+<a name="optionscontext" class="anchor" href="#optionscontext"><span class="octicon octicon-link"></span></a>options.context</h4>
+
+<ul>
+<li>Default: <code>window</code>
+</li>
+<li>Type: <code>object|selector</code>
+</li>
+</ul><p>The container in which the scrolling will happen.
+This is typically <code>window</code>, but can be to something else if you have a special case.</p>
+
+<h4>
+<a name="optionsthrottle" class="anchor" href="#optionsthrottle"><span class="octicon octicon-link"></span></a>options.throttle</h4>
+
+<ul>
+<li>Default: <code>80</code>
+</li>
+<li>Type: <code>number</code>
+</li>
+</ul><p>Limit the rate at which beacons are inspected. This value is in milliseconds.</p>
+
+<hr><ul>
+<li>See: <a href="http://plugins.jquery.com/beacons/">http://plugins.jquery.com/beacons/</a>
+</li>
+<li>See: <a href="http://github.com/cobbdb/jquery-beacons">http://github.com/cobbdb/jquery-beacons</a>
+</li>
+<li>License: MIT</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/cobbdb">cobbdb</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-50240363-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
