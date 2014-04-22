@@ -4,25 +4,23 @@
 describe("$.beacons", function () {
     var winHeight;
     var switchboard = {};
-    var move = function (id) {
-        return {
-            to: function (top) {
-                $('#' + id).css({
-                    position: 'absolute',
-                    top: top + 'px'
-                });
-            }
-        };
+    var move = function (sel, top) {
+        $(sel).css({
+            position: 'absolute',
+            top: top + 'px'
+        });
     };
-    var newBeacon = function (id, top, on) {
+    var newBeacon = function (id, top, on, once) {
+        var sel = '#' + id;
         $('body').append('<div id="' + id + '">test div</div>');
-        move(id).to(top);
+        move(sel, top);
         switchboard[id] = false;
-        $('#' + id).beacon({
+        $(sel).beacon({
             handler: function () {
                 switchboard[id] = true;
             },
-            enabled: on
+            enabled: on,
+            runOnce: once
         });
     };
 
@@ -33,16 +31,18 @@ describe("$.beacons", function () {
         winHeight = window.innerHeight;
     });
     afterEach(function () {
-        $('#TST01, #TST02, #TST03, .beacon').remove();
+        $('body *').remove();
         $.beacons('destroy');
+        $(window).off('scroll');
+        switchboard = {};
     });
 
     // Run the tests.
     it('can chain commands', function () {
         spyOn($, 'beacons').and.callThrough();
-        $
-            .beacons('enable')
-            .beacons('disable');
+        expect(function () {
+            $.beacons('enable').beacons('disable');
+        }).not.toThrowError();
         expect($.beacons.calls.count()).toEqual(2);
     });
     describe('destroy option', function () {
@@ -50,17 +50,30 @@ describe("$.beacons", function () {
             expect($('.beacon').length).toEqual(3);
             spyOn($.fn, 'beacon').and.callThrough();
             $.beacons('destroy');
-
             expect($.fn.beacon).toHaveBeenCalledWith('destroy');
             expect($('.beacon').length).toEqual(0);
         });
         it('releases the scroll event', function () {
-            var events = $._data(window, 'events');
-            expect(events).toBeDefined();
-            expect(events.scroll).toBeDefined();
-            expect(events.scroll.length).toEqual(1);
+            var set = $._data(window, 'events');
+            expect(set).toBeDefined();
+            expect(set.scroll).toBeDefined();
+            expect(set.scroll.length).toEqual(1);
             $.beacons('destroy');
-            expect(events.scroll).toBeUndefined();
+            expect(set).toBeUndefined();
+        });
+        it('releases only the beacon scroll event', function () {
+            var scrollTest = false;
+            $(window).on('scroll', function () {
+                scrollTest = true;
+            });
+            var set = $._data(window, 'events');
+            expect(set).toBeDefined();
+            expect(set.scroll).toBeDefined();
+            expect(set.scroll.length).toEqual(2);
+            $.beacons('destroy');
+            expect(set.scroll.length).toEqual(1);
+            $(window).trigger('scroll');
+            expect(scrollTest).toBe(true);
         });
         it('unbinds the beacon/activate event', function () {
             expect(switchboard.TST01).toBe(true);
@@ -85,6 +98,20 @@ describe("$.beacons", function () {
             expect(events.scroll.length).toEqual(1);
             $.beacons('disable');
             expect(events.scroll).toBeUndefined();
+        });
+        it('releases only the beacon scroll event', function () {
+            var scrollTest = false;
+            $(window).on('scroll', function () {
+                scrollTest = true;
+            });
+            var events = $._data(window, 'events');
+            expect(events).toBeDefined();
+            expect(events.scroll).toBeDefined();
+            expect(events.scroll.length).toEqual(2);
+            $.beacons('disable');
+            expect(events.scroll.length).toEqual(1);
+            $(window).trigger('scroll');
+            expect(scrollTest).toBe(true);
         });
         it('retains the beacon/activate event', function () {
             expect(switchboard.TST01).toBe(true);
