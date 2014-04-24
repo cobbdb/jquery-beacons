@@ -63,6 +63,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('build', [
         'jshint',
@@ -72,5 +73,10 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'build',
         'jasmine'
+    ]);
+
+    grunt.registerTask('dev-test', [
+        'connect',
+        'watch'
     ]);
 };
