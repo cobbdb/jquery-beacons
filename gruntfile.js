@@ -34,22 +34,29 @@ module.exports = function (grunt) {
                 vendor: [
                     resolve('jquery'),
                     resolve('jquery-near-viewport')
-                ]
+                ],
+                outfile: 'tests/_SpecRunner.html',
+                keepRunner: true
             }
         },
         watch: {
-            source: {
-                files: ['src/*.js'],
-                tasks: ['default']
-            },
-            tests: {
+            default: {
                 files: [
                     'src/*.js',
                     'tests/*.spec.js'
                 ],
                 tasks: ['default']
             }
-        }
+        },
+        connect: {
+            server: {
+                options: {
+                    base: '',
+                    port: 9999
+                }
+            }
+        },
+        watch: {}
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
