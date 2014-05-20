@@ -25,15 +25,20 @@ module.exports = function (grunt) {
             }
         },
         jasmine: {
-            default: {
+            dist: {
                 src: 'dist/**/*.js'
+            },
+            raw: {
+                src: 'src/**/*.js'
             },
             options: {
                 specs: 'tests/*.spec.js',
-                helpers: 'tests/helpers.js',
+                helpers: [
+                    'bower_components/jasmine-jsreporter-real/jasmine-jsreporter.js',
+                    'tests/saucelabs.helper.js'
+                ],
                 vendor: [
-                    resolve('jquery'),
-                    resolve('jquery-near-viewport')
+                    resolve('jquery')
                 ],
                 outfile: 'tests/_SpecRunner.html',
                 keepRunner: true
