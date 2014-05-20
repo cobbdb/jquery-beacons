@@ -1,11 +1,17 @@
 language: node_js
 node_js:
-  - 0.10.x
+- '0.10'
 notifications:
   email: false
 before_install:
-  - npm install -g grunt-cli
-  - npm install -g bower
+- npm install -g grunt-cli
+- npm install -g bower
 install:
-  - npm install
-  - bower install
+- npm install
+- bower install
+script:
+- grunt sl-test
+env:
+  global:
+  - secure: WUPWe1/mx18ogVP3aTx3jjNG78w72CbmhsstYeZPmG0K/S9dFTrVzZGqIcu/H46XEAqULd9Wt+qCmji0iry1vjG60SrkIcOSvcbNemcW4hgny7gb2K3nMc/1ibcammH/HWgDsH2T9DT7JbWYEpip7OAfZYNsxCQ3KVaJquIewCE=
+  - secure: dQ+Y2cbwSPLoivschzea1BxnkP5zqkW+m2l9WJwkATQ2njUk58CBSb4xjZb7gjYiROquXFatqIEBM7jH12dgVkvGWjDkX4ifBAk4x/1yztSJv/xAE3yyOkOuRCAUpdi/xQzX/ROl2TudBEK+nGjfUYzK8FD/dDNmKG62pNnSmWI=

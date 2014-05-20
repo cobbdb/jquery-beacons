@@ -63,16 +63,18 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
     grunt.loadTasks('tasks');
 
-    grunt.registerTask('build', [
-        'jshint',
-        'uglify'
-    ]);
     grunt.registerTask('default', [
-        'build',
+        'jshint',
+        'uglify',
         'jasmine'
     ]);
     grunt.registerTask('dev-test', [
         'connect',
         'watch'
+    ]);
+    grunt.registerTask('sl-test', [
+        'connect',
+        'jasmine:dist',
+        'saucelabs-jasmine'
     ]);
 };
