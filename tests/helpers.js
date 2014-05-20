@@ -22,7 +22,7 @@ var newBeacon = function (id, top, on, once) {
 beforeEach(function () {
     newBeacon('TST01', 10);
     newBeacon('TST02', 200);
-    newBeacon('TST03', 500);
+    newBeacon('TST03', 1000);
 });
 afterEach(function () {
     $.beacons('destroy');
