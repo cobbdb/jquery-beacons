@@ -9,7 +9,7 @@ module.exports = function (grunt) {
                 ],
                 build: process.env.TRAVIS_JOB_ID,
                 concurrency: 3,
-                testname: ':near-viewport',
+                testname: 'jquery-beacons',
                 browsers: browsers
             }
         }
