@@ -59,22 +59,18 @@ module.exports = function (grunt) {
         watch: {}
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    // Load in all the external tasks.
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    grunt.loadTasks('tasks');
 
     grunt.registerTask('build', [
         'jshint',
         'uglify'
     ]);
-
     grunt.registerTask('default', [
         'build',
         'jasmine'
     ]);
-
     grunt.registerTask('dev-test', [
         'connect',
         'watch'
