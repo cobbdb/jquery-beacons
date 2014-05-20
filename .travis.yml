@@ -13,5 +13,5 @@ script:
 - grunt sl-test
 env:
   global:
-  - secure: WUPWe1/mx18ogVP3aTx3jjNG78w72CbmhsstYeZPmG0K/S9dFTrVzZGqIcu/H46XEAqULd9Wt+qCmji0iry1vjG60SrkIcOSvcbNemcW4hgny7gb2K3nMc/1ibcammH/HWgDsH2T9DT7JbWYEpip7OAfZYNsxCQ3KVaJquIewCE=
-  - secure: dQ+Y2cbwSPLoivschzea1BxnkP5zqkW+m2l9WJwkATQ2njUk58CBSb4xjZb7gjYiROquXFatqIEBM7jH12dgVkvGWjDkX4ifBAk4x/1yztSJv/xAE3yyOkOuRCAUpdi/xQzX/ROl2TudBEK+nGjfUYzK8FD/dDNmKG62pNnSmWI=
+  - secure: hQKsms1evZbWAq5W1ns0mu2zh6BPb0/eoK0CFDOhvZkqfHKw4ENX+8RvRyMeaJHn7+hrIQk7xfILEa/IcWiwth02s1twVYWJuw0FdqwKse9i9hcc2ua76OBbXxHqflkQbpXZ36Lhymh6pCRM0pqRKi9Xh8unPUkaCv6Ww1O20bA=
+  - secure: P4sAtAgajESsKpXjukJ3ZaUGlh7IfDw9Gfry1vru2uHJLKMw09+h0519GdmwSq/JSkow9h8HYCpfz0wGmvrtSCeMvsRaJLyAcbFtpJOFestFTKoV4KZd0CjZ7mqCefVS+Vet9n5FudDD477HZQqCLBW+BqBYir9n+GaGMCxzjJU=
