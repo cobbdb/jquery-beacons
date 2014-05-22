@@ -8,7 +8,7 @@ A jQuery plugin to react when elements scroll into view.
 
 **Note:** This plugin depends on jquery-near-viewport which is listed as a bower dependency.
 
-[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/dcobb.svg)](https://saucelabs.com/u/dcobb)
+[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/cobbdb.svg)](https://saucelabs.com/u/cobbdb)
 
 -------------
 ## Creating a new beacon

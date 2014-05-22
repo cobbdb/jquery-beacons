@@ -14,7 +14,6 @@ describe("$.fn.beacon", function () {
     });
     describe('constructor', function () {
         beforeEach(function () {
-            newBeacon('MY02', 10, false);
             $.beacons('destroy');
         });
         it('requires a handler', function () {

@@ -82,7 +82,7 @@ describe("$.beacons", function () {
             expect(scrollTest).toBe(true);
         });
         it('retains beacon/activate event', function () {
-            expect(switchboard.TST01).toBe(true);
+            expect(switchboard.TST01).toBe(false);
             expect(switchboard.TST03).toBe(false);
             $.beacons('disable');
             $('.beacon').trigger('beacon/activate');
