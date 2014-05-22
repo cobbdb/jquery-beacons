@@ -43,7 +43,9 @@ module.exports = function (grunt) {
                     resolve('jquery-near-viewport')
                 ],
                 outfile: 'tests/_SpecRunner.html',
-                keepRunner: true
+                keepRunner: true,
+                display: 'short',
+                summary: true
             }
         },
         watch: {

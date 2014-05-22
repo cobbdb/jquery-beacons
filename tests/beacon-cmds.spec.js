@@ -15,6 +15,7 @@ describe("$.fn.beacon", function () {
     describe('constructor', function () {
         beforeEach(function () {
             $.beacons('destroy');
+            expect($('.beacon, .beacon-on').length).toEqual(0);
         });
         it('requires a handler', function () {
             expect(function () {
@@ -22,90 +23,69 @@ describe("$.fn.beacon", function () {
             }).toThrowError();
         });
         it('adds beacon classes', function () {
-            expect($('#MY02').is('.beacon')).toBe(false);
-            expect($('#MY02').is('.beacon-on')).toBe(false);
-            $('#MY02').beacon({
-                handler: function () {}
-            });
-            expect($('#MY02').is('.beacon')).toBe(true);
-            expect($('#MY02').is('.beacon-on')).toBe(true);
+            newBeacon('MY01', 5);
+            expect($('#MY01').is('.beacon')).toBe(true);
+            expect($('#MY01').is('.beacon-on')).toBe(true);
         });
         it('binds beacon/activate event', function () {
-            $('#MY02').trigger('beacon/activate');
-            expect(switchboard.MY02).toBe(false);
-            $('#MY02').beacon({
-                handler: function () {
-                    switchboard.MY02 = true;
-                }
-            });
-            expect(switchboard.MY02).toBe(true);
+            newBeacon('TST01', 2000);
+            expect(handlerFor.TST01).not.toHaveBeenCalled();
+            $('#TST01').trigger('beacon/activate');
+            expect(handlerFor.TST01).toHaveBeenCalled();
         });
         it('activates the heartbeat', function () {
             var set = $._data(window, 'events');
             expect(set).toBeUndefined();
-            $('#MY02').beacon({
-                handler: function () {}
-            });
+            newBeacon('MY02', 5);
             set = $._data(window, 'events');
             expect(set).toBeDefined();
             expect(set.scroll).toBeDefined();
             expect(set.scroll.length).toEqual(1);
         });
         it('can be created disabled', function () {
-            expect($('#MY02').is('.beacon')).toBe(false);
-            expect($('#MY02').is('.beacon-on')).toBe(false);
-            $('#MY02').beacon({
-                handler: function () {
-                    switchboard.MY02 = true;
-                },
-                enabled: false
-            });
-            expect($('#MY02').is('.beacon')).toBe(true);
-            expect($('#MY02').is('.beacon-on')).toBe(false);
-            expect(switchboard.MY02).toBe(false);
+            newBeacon('MY01', 5, false);
+            expect($('#MY01').is('.beacon')).toBe(true);
+            expect($('#MY01').is('.beacon-on')).toBe(false);
+            expect(handlerCalledFor.MY01).toBe(false);
         });
         it('can run once', function () {
-            $('#MY02').beacon({
-                handler: function () {
-                    switchboard.MY02 = true;
-                },
-                runOnce: true
-            });
+            newBeacon('MY02', 5, true, true);
             expect($('#MY02').is('.beacon')).toBe(false);
             expect($('#MY02').is('.beacon-on')).toBe(false);
-            expect(switchboard.MY02).toBe(true);
+            expect(handlerCalledFor.MY02).toBe(true);
+            expect($('.beacon').length).toEqual(0);
         });
     });
     describe('constructor - shortcut', function () {
         beforeEach(function () {
-            newBeacon('MY02', 10, false);
             $.beacons('destroy');
+            expect($('.beacon, .beacon-on').length).toEqual(0);
+            createDiv('MY01');
+            createDiv('MY02');
+            move('#MY02', 2000);
         });
         it('adds beacon classes', function () {
-            expect($('#MY02').is('.beacon')).toBe(false);
-            expect($('#MY02').is('.beacon-on')).toBe(false);
             $('#MY02').beacon(function () {});
             expect($('#MY02').is('.beacon')).toBe(true);
             expect($('#MY02').is('.beacon-on')).toBe(true);
         });
         it('binds beacon/activate event', function () {
-            switchboard.MY02 = false;
-            $('#MY02').trigger('beacon/activate');
-            expect(switchboard.MY02).toBe(false);
-            $('#MY02').beacon(function () {
-                switchboard.MY02 = true;
+            var callTest = false;
+            $('#MY01').trigger('beacon/activate');
+            expect(callTest).toBe(false);
+            $('#MY01').beacon(function () {
+                callTest = true;
             });
-            expect(switchboard.MY02).toBe(true);
+            expect(callTest).toBe(true);
         });
-        it('activates the heartbeat', function () {
-            $.beacons('destroy');
-            var set = $._data(window, 'events');
-            expect(set).toBeUndefined();
-            $('#MY02').beacon(function () {});
-            set = $._data(window, 'events');
-            expect(set).toBeDefined();
-            expect(set.scroll).toBeDefined();
-            expect(set.scroll.length).toEqual(1);
+        it('binds to the scroll event', function () {
+            var callCount = 0;
+            $('#MY01').beacon(function () {
+                callCount += 1;
+            });
+            var startingCount = callCount;
+            $(window).trigger('scroll');
+            expect(callCount).toBeGreaterThan(startingCount);
         });
     });
     describe('destroy option', function () {
@@ -119,10 +99,10 @@ describe("$.fn.beacon", function () {
         });
         it('unbinds beacon/activate event', function () {
             newBeacon('MY01', 10, false);
-            expect(switchboard.MY01).toBe(false);
+            expect(handlerCalledFor.MY01).toBe(false);
             $('#MY01').beacon('destroy');
             $('.beacon').trigger('beacon/activate');
-            expect(switchboard.MY01).toBe(false);
+            expect(handlerCalledFor.MY01).toBe(false);
         });
     });
     describe('disable option', function () {
@@ -133,11 +113,11 @@ describe("$.fn.beacon", function () {
             expect($('.beacon').length).toEqual(3);
         });
         it('retains the beacon/activate event', function () {
-            expect(switchboard.TST01).toBe(true);
-            expect(switchboard.TST03).toBe(false);
+            expect(handlerCalledFor.TST01).toBe(true);
+            expect(handlerCalledFor.TST03).toBe(false);
             $('#TST03').beacon('disable');
             $('.beacon').trigger('beacon/activate');
-            expect(switchboard.TST03).toBe(true);
+            expect(handlerCalledFor.TST03).toBe(true);
         });
     });
     describe('enable option', function () {

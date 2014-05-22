@@ -2,7 +2,6 @@
  * Spec for global beacon commands: $.beacons()
  */
 describe("$.beacons", function () {
-    // Run the tests.
     it('can chain commands', function () {
         spyOn($, 'beacons').and.callThrough();
         expect(function () {
@@ -13,42 +12,25 @@ describe("$.beacons", function () {
     describe('destroy option', function () {
         it('destroys all beacons', function () {
             expect($('.beacon').length).toEqual(3);
-            spyOn($.fn, 'beacon').and.callThrough();
-            $.beacons('destroy');
-            expect($.fn.beacon).toHaveBeenCalledWith('destroy');
-            expect($('.beacon').length).toEqual(0);
-        });
-        it('releases the scroll event', function () {
-            var set = $._data(window, 'events');
-            expect(set).toBeDefined();
-            expect(set.scroll).toBeDefined();
-            expect(set.scroll.length).toEqual(1);
             $.beacons('destroy');
             expect($('.beacon').length).toEqual(0);
-            set = $._data(window, 'events');
-            expect(set).toBeUndefined();
         });
         it('releases only the beacon scroll event', function () {
             var scrollTest = false;
             $(window).on('scroll', function () {
                 scrollTest = true;
             });
-            var set = $._data(window, 'events');
-            expect(set).toBeDefined();
-            expect(set.scroll).toBeDefined();
-            expect(set.scroll.length).toEqual(2);
             $.beacons('destroy');
-            set = $._data(window, 'events');
-            expect(set.scroll.length).toEqual(1);
             $(window).trigger('scroll');
             expect(scrollTest).toBe(true);
+            expect(handlerFor.TST03).not.toHaveBeenCalled();
         });
         it('unbinds the beacon/activate event', function () {
-            expect(switchboard.TST01).toBe(true);
-            expect(switchboard.TST03).toBe(false);
+            expect(handlerCalledFor.TST01).toBe(true);
+            expect(handlerCalledFor.TST03).toBe(false);
             $.beacons('destroy');
             $('.beacon').trigger('beacon/activate');
-            expect(switchboard.TST03).toBe(false);
+            expect(handlerCalledFor.TST03).toBe(false);
         });
     });
     describe('disable option', function () {
@@ -56,6 +38,7 @@ describe("$.beacons", function () {
             expect($('.beacon-on').length).toEqual(3);
             $.beacons('disable');
             expect($('.beacon-on').length).toEqual(0);
+            expect($('.beacon').length).toEqual(3);
         });
         it('releases scroll event', function () {
             var set = $._data(window, 'events');
@@ -82,11 +65,12 @@ describe("$.beacons", function () {
             expect(scrollTest).toBe(true);
         });
         it('retains beacon/activate event', function () {
-            expect(switchboard.TST01).toBe(false);
-            expect(switchboard.TST03).toBe(false);
+            // Called already since TST01 is visible.
+            expect(handlerCalledFor.TST01).toBe(true);
+            expect(handlerCalledFor.TST03).toBe(false);
             $.beacons('disable');
             $('.beacon').trigger('beacon/activate');
-            expect(switchboard.TST03).toBe(true);
+            expect(handlerCalledFor.TST03).toBe(true);
         });
     });
     describe('enable option', function () {
@@ -120,9 +104,9 @@ describe("$.beacons", function () {
         it('binds beacon/activate event', function () {
             $.beacons('destroy');
             newBeacon('MY01', 10, false);
-            expect(switchboard.MY01).toBe(false);
+            expect(handlerCalledFor.MY01).toBe(false);
             $('.beacon').trigger('beacon/activate');
-            expect(switchboard.MY01).toBe(true);
+            expect(handlerCalledFor.MY01).toBe(true);
         });
     });
     describe('settings option', function () {
