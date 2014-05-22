@@ -40,15 +40,6 @@ describe("$.beacons", function () {
             expect($('.beacon-on').length).toEqual(0);
             expect($('.beacon').length).toEqual(3);
         });
-        it('releases scroll event', function () {
-            var set = $._data(window, 'events');
-            expect(set).toBeDefined();
-            expect(set.scroll).toBeDefined();
-            expect(set.scroll.length).toEqual(1);
-            $.beacons('disable');
-            set = $._data(window, 'events');
-            expect(set).toBeUndefined();
-        });
         it('releases only the beacon scroll event', function () {
             var scrollTest = false;
             $(window).on('scroll', function () {
@@ -91,15 +82,6 @@ describe("$.beacons", function () {
             $.beacons('enable');
             set = $('.beacon-on');
             expect(set.length).toEqual(3);
-        });
-        it('binds scroll event', function () {
-            var set = $._data(window, 'events');
-            expect(set).toBeUndefined();
-            $.beacons('enable');
-            set = $._data(window, 'events');
-            expect(set).toBeDefined();
-            expect(set.scroll).toBeDefined();
-            expect(set.scroll.length).toEqual(1);
         });
         it('binds beacon/activate event', function () {
             $.beacons('destroy');

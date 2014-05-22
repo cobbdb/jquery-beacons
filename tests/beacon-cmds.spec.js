@@ -33,15 +33,6 @@ describe("$.fn.beacon", function () {
             $('#TST01').trigger('beacon/activate');
             expect(handlerFor.TST01).toHaveBeenCalled();
         });
-        it('activates the heartbeat', function () {
-            var set = $._data(window, 'events');
-            expect(set).toBeUndefined();
-            newBeacon('MY02', 5);
-            set = $._data(window, 'events');
-            expect(set).toBeDefined();
-            expect(set.scroll).toBeDefined();
-            expect(set.scroll.length).toEqual(1);
-        });
         it('can be created disabled', function () {
             newBeacon('MY01', 5, false);
             expect($('#MY01').is('.beacon')).toBe(true);
