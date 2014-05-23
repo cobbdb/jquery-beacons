@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/cobbdb/jquery-beacons.svg)](https://travis-ci.org/cobbdb/jquery-beacons) [![Bower version](https://badge.fury.io/bo/jquery-beacons.svg)](http://badge.fury.io/bo/jquery-beacons) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-A jQuery plugin to react when elements scroll into view.
+A jQuery plugin to react when elements are in view.
 
     $ bower install jquery-beacons
 
