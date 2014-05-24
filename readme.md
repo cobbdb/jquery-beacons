@@ -8,7 +8,7 @@ A jQuery plugin to react when elements are in view.
 
 **Note:** This plugin depends on jquery-near-viewport which is listed as a bower dependency.
 
-[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/cobbdb.svg)](https://saucelabs.com/u/cobbdb)
+[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/jquery-beacons.svg)](https://saucelabs.com/u/jquery-beacons)
 
 -------------
 ## Creating a new beacon
