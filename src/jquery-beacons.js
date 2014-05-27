@@ -55,6 +55,10 @@
         } else if (action === 'destroy') {
             this.removeClass('beacon beacon-on');
             this.off('beacon/activate');
+            // Stop the heartbeat if no more beacons are left.
+            if (!$('.beacon').length) {
+                active = false;
+            }
         } else if (typeof action === 'object') {
             if (!action.handler) {
                 throw Error('Beacon Creation Error: All beacons require a handler.');
