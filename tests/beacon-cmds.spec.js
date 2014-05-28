@@ -69,15 +69,6 @@ describe("$.fn.beacon", function () {
             });
             expect(callTest).toBe(true);
         });
-        it('binds to the scroll event', function () {
-            var callCount = 0;
-            $('#MY01').beacon(function () {
-                callCount += 1;
-            });
-            var startingCount = callCount;
-            $(window).trigger('scroll');
-            expect(callCount).toBeGreaterThan(startingCount);
-        });
     });
     describe('destroy option', function () {
         it('removes beacon classes', function () {

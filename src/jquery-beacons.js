@@ -22,15 +22,13 @@
         // Do nothing if already active.
         if (!active) {
             active = true;
-            $(context).on('scroll.beacon', function () {
-                if (!hash && active) {
-                    activateBeacons();
-                    // Throttle the heartbeat for performance.
-                    hash = window.setTimeout(function () {
-                        hash = false;
-                    }, throttle);
+            // Pulse on an interval to look for new beacons.
+            hash = window.setInterval(function () {
+                activateBeacons();
+                if (!active) {
+                    window.clearInterval(hash);
                 }
-            });
+            }, throttle);
         }
     };
     var activateBeacons = function () {
@@ -87,14 +85,12 @@
         if (action === 'destroy') {
             active = false;
             $('.beacon').beacon('destroy');
-            $(context).off('scroll.beacon');
         } else if (action === 'enable') {
             $('.beacon').addClass('beacon-on');
             run();
         } else if (action === 'disable') {
             $('.beacon').removeClass('beacon-on');
             active = false;
-            $(context).off('scroll.beacon');
         } else if (action === 'settings') {
             // Fetch current settings.
             return {

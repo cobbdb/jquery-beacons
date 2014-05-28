@@ -15,16 +15,6 @@ describe("$.beacons", function () {
             $.beacons('destroy');
             expect($('.beacon').length).toEqual(0);
         });
-        it('releases only the beacon scroll event', function () {
-            var scrollTest = false;
-            $(window).on('scroll', function () {
-                scrollTest = true;
-            });
-            $.beacons('destroy');
-            $(window).trigger('scroll');
-            expect(scrollTest).toBe(true);
-            expect(handlerFor.TST03).not.toHaveBeenCalled();
-        });
         it('unbinds the beacon/activate event', function () {
             expect(handlerCalledFor.TST01).toBe(true);
             expect(handlerCalledFor.TST03).toBe(false);
@@ -39,21 +29,6 @@ describe("$.beacons", function () {
             $.beacons('disable');
             expect($('.beacon-on').length).toEqual(0);
             expect($('.beacon').length).toEqual(3);
-        });
-        it('releases only the beacon scroll event', function () {
-            var scrollTest = false;
-            $(window).on('scroll', function () {
-                scrollTest = true;
-            });
-            var set = $._data(window, 'events');
-            expect(set).toBeDefined();
-            expect(set.scroll).toBeDefined();
-            expect(set.scroll.length).toEqual(2);
-            $.beacons('disable');
-            set = $._data(window, 'events');
-            expect(set.scroll.length).toEqual(1);
-            $(window).trigger('scroll');
-            expect(scrollTest).toBe(true);
         });
         it('retains beacon/activate event', function () {
             // Called already since TST01 is visible.
