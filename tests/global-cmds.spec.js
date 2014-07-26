@@ -1,10 +1,7 @@
 /**
  * Spec for global beacon commands: $.beacons()
  */
-describe('fake', function () {
-it('fake', function () {});
-});
-/*describe("$.beacons", function () {
+describe("$.beacons", function () {
     it('can chain commands', function () {
         spyOn($, 'beacons').and.callThrough();
         expect(function () {
@@ -105,4 +102,3 @@ it('fake', function () {});
         });
     });
 });
-*/
