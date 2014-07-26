@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "jquery": "1.x",
-    "jasmine-jsreporter-real": "c3c23df"
+    "jasmine-jsreporter-real": "c3c23df5f0"
   }
 }
