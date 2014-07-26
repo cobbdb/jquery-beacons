@@ -7,7 +7,10 @@ var move = function (sel, top) {
     });
 };
 var createDiv = function (id) {
-    $('body').append('<div id="' + id + '" class="test">test div</div>');
+    $('<div>', {
+        id: id,
+        class: 'testdiv'
+    }).text('test div').appendTo('body');
 };
 var newBeacon = function (id, top, on, once) {
     var sel = '#' + id;
@@ -27,7 +30,7 @@ var newBeacon = function (id, top, on, once) {
 
 beforeEach(function () {
     // Partially on-screen.
-    newBeacon('TST01', -1);
+    newBeacon('TST01', -2);
     // Completely on-screen.
     newBeacon('TST02', 5);
     // Completely off-screen.
@@ -35,7 +38,8 @@ beforeEach(function () {
 });
 afterEach(function () {
     $.beacons('destroy');
-    $('.test').remove();
+    $('.testdiv').remove();
     $(window).off('scroll');
     handlerCalledFor = {};
+    handlerFor = {};
 });
