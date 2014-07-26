@@ -47,7 +47,7 @@ describe("$.fn.beacon", function () {
             expect($('.beacon').length).toEqual(0);
         });
     });
-    describe('constructor - shortcut', function () {
+    xdescribe('constructor - shortcut', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
@@ -70,7 +70,7 @@ describe("$.fn.beacon", function () {
             expect(callTest).toBe(true);
         });
     });
-    xdescribe('destroy option', function () {
+    describe('destroy option', function () {
         it('removes beacon classes', function () {
             expect($('.beacon.beacon-on').length).toEqual(3);
             $('#TST01').beacon('destroy');
