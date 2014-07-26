@@ -9,7 +9,7 @@ var move = function (sel, top) {
 var createDiv = function (id) {
     $('<div>', {
         id: id,
-        class: 'testdiv'
+        'class': 'testdiv'
     }).text('test div').appendTo('body');
 };
 var newBeacon = function (id, top, on, once) {
