@@ -1,7 +1,7 @@
 /**
  * Spec for global beacon commands: $.beacons()
  */
-describe("$.fn.beacon", function () {
+xdescribe("$.fn.beacon", function () {
     // Run the tests.
     it('can chain commands', function () {
         spyOn($.fn, 'beacon').and.callThrough();
