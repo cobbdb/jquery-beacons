@@ -12,7 +12,7 @@ describe("$.fn.beacon", function () {
         }).not.toThrowError();
         expect($.fn.beacon.calls.count()).toEqual(2);
     });
-    xdescribe('constructor', function () {
+    describe('constructor', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
