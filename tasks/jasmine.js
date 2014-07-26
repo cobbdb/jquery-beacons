@@ -12,8 +12,8 @@ module.exports = function (grunt) {
                 specs: 'tests/*.spec.js',
                 helpers: [
                     'bower_components/jasmine-jsreporter-real/jasmine-jsreporter.js',
-                    'tests/saucelabs.helper.js',
-                    'tests/helpers.js'
+                    'tests/helpers/saucelabs.helper.js',
+                    'tests/helpers/test.helper.js'
                 ],
                 vendor: [
                     resolve('jquery'),
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                 ],
                 outfile: 'tests/_SpecRunner.html',
                 keepRunner: true,
-                display: 'full',
+                display: 'short',
                 summary: true
             }
         }
