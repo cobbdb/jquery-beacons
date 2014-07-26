@@ -1,7 +1,7 @@
 /**
  * Spec for global beacon commands: $.beacons()
  */
-xdescribe("$.fn.beacon", function () {
+describe("$.fn.beacon", function () {
     // Run the tests.
     it('can chain commands', function () {
         spyOn($.fn, 'beacon').and.callThrough();
@@ -12,7 +12,7 @@ xdescribe("$.fn.beacon", function () {
         }).not.toThrowError();
         expect($.fn.beacon.calls.count()).toEqual(2);
     });
-    describe('constructor', function () {
+    xdescribe('constructor', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
@@ -47,7 +47,7 @@ xdescribe("$.fn.beacon", function () {
             expect($('.beacon').length).toEqual(0);
         });
     });
-    describe('constructor - shortcut', function () {
+    xdescribe('constructor - shortcut', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
@@ -70,7 +70,7 @@ xdescribe("$.fn.beacon", function () {
             expect(callTest).toBe(true);
         });
     });
-    describe('destroy option', function () {
+    xdescribe('destroy option', function () {
         it('removes beacon classes', function () {
             expect($('.beacon.beacon-on').length).toEqual(3);
             $('#TST01').beacon('destroy');
@@ -87,7 +87,7 @@ xdescribe("$.fn.beacon", function () {
             expect(handlerCalledFor.MY01).toBe(false);
         });
     });
-    describe('disable option', function () {
+    xdescribe('disable option', function () {
         it('removes only beacon-on class', function () {
             expect($('.beacon.beacon-on').length).toEqual(3);
             $('#TST03').beacon('disable');
@@ -102,7 +102,7 @@ xdescribe("$.fn.beacon", function () {
             expect(handlerCalledFor.TST03).toBe(true);
         });
     });
-    describe('enable option', function () {
+    xdescribe('enable option', function () {
         it('adds beacon-on class', function () {
             $.beacons('disable');
             expect($('.beacon-on').length).toEqual(0);
