@@ -70,7 +70,7 @@ describe("$.fn.beacon", function () {
             expect(callTest).toBe(true);
         });
     });
-    xdescribe('destroy option', function () {
+    describe('destroy option', function () {
         it('removes beacon classes', function () {
             expect($('.beacon.beacon-on').length).toEqual(3);
             $('#TST01').beacon('destroy');
