@@ -12,7 +12,7 @@ describe("$.fn.beacon", function () {
         }).not.toThrowError();
         expect($.fn.beacon.calls.count()).toEqual(2);
     });
-    xdescribe('constructor', function () {
+    describe('constructor', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
@@ -47,7 +47,7 @@ describe("$.fn.beacon", function () {
             expect($('.beacon').length).toEqual(0);
         });
     });
-    xdescribe('constructor - shortcut', function () {
+    describe('constructor - shortcut', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
@@ -102,7 +102,7 @@ describe("$.fn.beacon", function () {
             expect(handlerCalledFor.TST03).toBe(true);
         });
     });
-    describe('enable option', function () {
+    xdescribe('enable option', function () {
         it('adds beacon-on class', function () {
             $.beacons('disable');
             expect($('.beacon-on').length).toEqual(0);
