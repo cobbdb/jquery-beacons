@@ -14,12 +14,13 @@ module.exports = function (grunt) {
         'jasmine:dist'
     ]);
     grunt.registerTask('dev-test', 'Run SpecRunner.html locally.', [
+        'jasmine:dist',
         'connect',
         'watch'
     ]);
     grunt.registerTask('sl-test', 'SauceLabs test suite.', [
-        'connect',
         'jasmine:dist',
+        'connect',
         'saucelabs-jasmine'
     ]);
 };
