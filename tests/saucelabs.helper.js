@@ -1,3 +1,3 @@
 var jasmineEnv = jasmine.getEnv();
-var reporter = new jasmine.JSReporter2();
+var reporter = new jasmine.JSReporter();
 jasmineEnv.addReporter(reporter);
