@@ -12,7 +12,7 @@ describe("$.fn.beacon", function () {
         }).not.toThrowError();
         expect($.fn.beacon.calls.count()).toEqual(2);
     });
-    xdescribe('constructor', function () {
+    describe('constructor', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
@@ -47,7 +47,7 @@ describe("$.fn.beacon", function () {
             expect($('.beacon').length).toEqual(0);
         });
     });
-    describe('constructor - shortcut', function () {
+    xdescribe('constructor - shortcut', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
