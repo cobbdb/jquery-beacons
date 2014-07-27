@@ -15,7 +15,8 @@ describe("$.fn.beacon", function () {
     describe('constructor', function () {
         beforeEach(function () {
             $.beacons('destroy');
-            expect($('.beacon, .beacon-on').length).toEqual(0);
+            $('.testdiv').remove();
+            expect($('.testdiv, .beacon, .beacon-on').length).toEqual(0);
         });
         it('requires a handler', function () {
             expect(function () {
@@ -50,7 +51,8 @@ describe("$.fn.beacon", function () {
     describe('constructor - shortcut', function () {
         beforeEach(function () {
             $.beacons('destroy');
-            expect($('.beacon, .beacon-on').length).toEqual(0);
+            $('.testdiv').remove();
+            expect($('.testdiv, .beacon, .beacon-on').length).toEqual(0);
             createDiv('MY01');
             createDiv('MY02');
             move('#MY02', 2000);
