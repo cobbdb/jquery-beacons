@@ -75,9 +75,8 @@ describe("$.beacons", function () {
             });
         });*/
         it('can fetch all current settings', function () {
-            //var defaults = $.beacons('settings');
-            //expect(defaults).toBeDefined();
-            expect(true).toBe(true);
+            var defaults = $.beacons('settings');
+            expect(defaults.throttle).toEqual(80);
         });
         /*xit('can set new configurations', function () {
             var defaults = $.beacons('settings');
