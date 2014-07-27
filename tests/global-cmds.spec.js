@@ -89,14 +89,14 @@ describe("$.beacons", function () {
             expect(newConf.range).toEqual(oldConf.range);
         });
     });
-        it('can set new configurations', function () {
+        /*it('can set new configurations', function () {
             /*$.beacons({
                 context: {},
                 throttle: 183,
                 range: 52
             });*/
             //var config = $.beacons('settings');
-            var config = {
+            /*var config = {
                 context: {},
                 throttle: 183,
                 range: 52
@@ -104,5 +104,5 @@ describe("$.beacons", function () {
             expect(config.context).toEqual({});
             expect(config.throttle).toEqual(183);
             expect(config.range).toEqual(52);
-        });
+        });*/
 });
