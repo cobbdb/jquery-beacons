@@ -66,7 +66,7 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.MY01).toBe(true);
         });
     });
-    xdescribe('settings option', function () {
+    describe('settings option', function () {
         afterEach(function () {
             $.beacons({
                 context: window,
