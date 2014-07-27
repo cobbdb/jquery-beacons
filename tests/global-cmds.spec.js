@@ -23,7 +23,7 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.TST03).toBe(false);
         });
     });
-    xdescribe('disable option', function () {
+    describe('disable option', function () {
         it('removes beacon-on class from all beacons', function () {
             expect($('.beacon-on').length).toEqual(3);
             $.beacons('disable');
@@ -39,7 +39,7 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.TST03).toBe(true);
         });
     });
-    xdescribe('enable option', function () {
+    describe('enable option', function () {
         beforeEach(function () {
             $.beacons('disable');
         });
@@ -66,7 +66,7 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.MY01).toBe(true);
         });
     });
-    xdescribe('settings option', function () {
+    describe('settings option', function () {
         afterEach(function () {
             $.beacons({
                 context: window,
@@ -79,6 +79,7 @@ describe("$.beacons", function () {
             expect(defaults).toBeDefined();
         });
         it('can set new configurations', function () {
+            var defaults = $.beacons('settings');
             var test = {};
             $.beacons({
                 context: test,
@@ -89,6 +90,7 @@ describe("$.beacons", function () {
             expect(config.context).toEqual(test);
             expect(config.throttle).toEqual(183);
             expect(config.range).toEqual(52);
+            $.beacons(defaults);
         });
         it('can set a few new settings', function () {
             var oldConf = $.beacons('settings');
@@ -99,6 +101,7 @@ describe("$.beacons", function () {
             expect(newConf.context).toEqual(oldConf.context);
             expect(newConf.throttle).toEqual(98);
             expect(newConf.range).toEqual(oldConf.range);
+            $.beacons(oldConf);
         });
     });
 });
