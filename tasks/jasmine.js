@@ -9,7 +9,10 @@ module.exports = function (grunt) {
                 src: 'src/**/*.js'
             },
             options: {
-                specs: 'tests/*.spec.js',
+                specs: [
+                    'tests/global-cmds.spec.js',
+                    'tests/beacon-cmds.spec.js'
+                ],
                 helpers: [
                     'bower_components/jasmine-jsreporter-real/jasmine-jsreporter.js',
                     'tests/helpers/saucelabs.helper.js',

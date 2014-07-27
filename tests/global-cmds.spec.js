@@ -1,15 +1,15 @@
 /**
  * Spec for global beacon commands: $.beacons()
  */
-xdescribe("$.beacons", function () {
-    it('can chain commands', function () {
+describe("$.beacons", function () {
+    xit('can chain commands', function () {
         spyOn($, 'beacons').and.callThrough();
         expect(function () {
             $.beacons('enable').beacons('disable');
         }).not.toThrowError();
         expect($.beacons.calls.count()).toEqual(2);
     });
-    describe('destroy option', function () {
+    xdescribe('destroy option', function () {
         it('destroys all beacons', function () {
             expect($('.beacon').length).toEqual(3);
             $.beacons('destroy');
@@ -23,7 +23,7 @@ xdescribe("$.beacons", function () {
             expect(handlerCalledFor.TST03).toBe(false);
         });
     });
-    describe('disable option', function () {
+    xdescribe('disable option', function () {
         it('removes beacon-on class from all beacons', function () {
             expect($('.beacon-on').length).toEqual(3);
             $.beacons('disable');
@@ -39,7 +39,7 @@ xdescribe("$.beacons", function () {
             expect(handlerCalledFor.TST03).toBe(true);
         });
     });
-    describe('enable option', function () {
+    xdescribe('enable option', function () {
         beforeEach(function () {
             $.beacons('disable');
         });
@@ -66,7 +66,7 @@ xdescribe("$.beacons", function () {
             expect(handlerCalledFor.MY01).toBe(true);
         });
     });
-    describe('settings option', function () {
+    xdescribe('settings option', function () {
         afterEach(function () {
             $.beacons({
                 context: window,
