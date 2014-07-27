@@ -9,7 +9,7 @@ describe("$.beacons", function () {
         }).not.toThrowError();
         expect($.beacons.calls.count()).toEqual(2);
     });
-    describe('destroy option', function () {
+    xdescribe('destroy option', function () {
         it('destroys all beacons', function () {
             expect($('.beacon').length).toEqual(3);
             $.beacons('destroy');
@@ -23,7 +23,7 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.TST03).toBe(false);
         });
     });
-    describe('disable option', function () {
+    xdescribe('disable option', function () {
         it('removes beacon-on class from all beacons', function () {
             expect($('.beacon-on').length).toEqual(3);
             $.beacons('disable');
@@ -39,7 +39,7 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.TST03).toBe(true);
         });
     });
-    describe('enable option', function () {
+    xdescribe('enable option', function () {
         beforeEach(function () {
             $.beacons('disable');
         });
@@ -66,14 +66,14 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.MY01).toBe(true);
         });
     });
-    describe('settings option', function () {
-        /*afterEach(function () {
+    xdescribe('settings option', function () {
+        afterEach(function () {
             $.beacons({
                 context: window,
                 throttle: 80,
                 range: 0
             });
-        });*/
+        });
         it('can fetch all current settings', function () {
             var defaults = $.beacons('settings');
             expect(defaults).toBeDefined();
