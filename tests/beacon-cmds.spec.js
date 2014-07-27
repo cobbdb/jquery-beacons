@@ -47,7 +47,7 @@ describe("$.fn.beacon", function () {
             expect($('.beacon').length).toEqual(0);
         });
     });
-    xdescribe('constructor - shortcut', function () {
+    describe('constructor - shortcut', function () {
         beforeEach(function () {
             $.beacons('destroy');
             expect($('.beacon, .beacon-on').length).toEqual(0);
