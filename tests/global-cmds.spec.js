@@ -78,16 +78,15 @@ describe("$.beacons", function () {
             var defaults = $.beacons('settings');
             expect(defaults.throttle).toEqual(80);
         });
-        /*xit('can set new configurations', function () {
+        it('can set new configurations', function () {
             var defaults = $.beacons('settings');
-            var test = {};
             $.beacons({
-                context: test,
+                context: {},
                 throttle: 183,
                 range: 52
             });
             var config = $.beacons('settings');
-            expect(config.context).toEqual(test);
+            expect(config.context).toEqual({});
             expect(config.throttle).toEqual(183);
             expect(config.range).toEqual(52);
         });*/
