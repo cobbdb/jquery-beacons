@@ -78,25 +78,6 @@ describe("$.beacons", function () {
             var defaults = $.beacons('settings');
             expect(defaults.throttle).toEqual(80);
         });
-        /*it('can set new configurations', function () {
-            /*$.beacons({
-                context: {},
-                throttle: 183,
-                range: 52
-            });*/
-            //var config = $.beacons('settings');
-            /*var config = {
-                context: {},
-                throttle: 183,
-                range: 52
-            };
-            expect(config.context).toEqual({});
-            expect(config.throttle).toEqual(183);
-            expect(config.range).toEqual(52);
-        });*/
-        it('fake test', function () {
-            expect(true).toBe(true);
-        });
         it('can set a few new settings', function () {
             var oldConf = $.beacons('settings');
             $.beacons({
@@ -108,4 +89,20 @@ describe("$.beacons", function () {
             expect(newConf.range).toEqual(oldConf.range);
         });
     });
+        it('can set new configurations', function () {
+            /*$.beacons({
+                context: {},
+                throttle: 183,
+                range: 52
+            });*/
+            //var config = $.beacons('settings');
+            var config = {
+                context: {},
+                throttle: 183,
+                range: 52
+            };
+            expect(config.context).toEqual({});
+            expect(config.throttle).toEqual(183);
+            expect(config.range).toEqual(52);
+        });
 });
