@@ -89,7 +89,7 @@ describe("$.fn.beacon", function () {
             expect(handlerCalledFor.MY01).toBe(false);
         });
     });
-    xdescribe('disable option', function () {
+    describe('disable option', function () {
         it('removes only beacon-on class', function () {
             expect($('.beacon.beacon-on').length).toEqual(3);
             $('#TST03').beacon('disable');
@@ -104,7 +104,7 @@ describe("$.fn.beacon", function () {
             expect(handlerCalledFor.TST03).toBe(true);
         });
     });
-    xdescribe('enable option', function () {
+    describe('enable option', function () {
         it('adds beacon-on class', function () {
             $.beacons('disable');
             expect($('.beacon-on').length).toEqual(0);
