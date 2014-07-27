@@ -68,11 +68,11 @@ describe("$.beacons", function () {
     });
     describe('settings option', function () {
         afterEach(function () {
-            $.beacons({
+            /*$.beacons({
                 context: window,
                 throttle: 80,
                 range: 0
-            });
+            });*/
         });
         it('can fetch all current settings', function () {
             var defaults = $.beacons('settings');
