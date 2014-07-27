@@ -66,14 +66,14 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.MY01).toBe(true);
         });
     });
-    xdescribe('settings option', function () {
-        afterEach(function () {
+    describe('settings option', function () {
+        /*afterEach(function () {
             $.beacons({
                 context: window,
                 throttle: 80,
                 range: 0
             });
-        });
+        });*/
         it('can fetch all current settings', function () {
             var defaults = $.beacons('settings');
             expect(defaults).toBeDefined();
