@@ -84,7 +84,12 @@ describe("$.beacons", function () {
                 throttle: 183,
                 range: 52
             });
-            var config = $.beacons('settings');
+            //var config = $.beacons('settings');
+            var config = {
+                context: {},
+                throttle: 183,
+                range: 52
+            };
             expect(config.context).toEqual({});
             expect(config.throttle).toEqual(183);
             expect(config.range).toEqual(52);
