@@ -2,7 +2,7 @@
  * Spec for global beacon commands: $.beacons()
  */
 describe("$.beacons", function () {
-    xit('can chain commands', function () {
+    it('can chain commands', function () {
         spyOn($, 'beacons').and.callThrough();
         expect(function () {
             $.beacons('enable').beacons('disable');
@@ -66,6 +66,22 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.MY01).toBe(true);
         });
     });
+    it('can set new configurations', function () {
+        /*$.beacons({
+            context: {},
+            throttle: 183,
+            range: 52
+        });*/
+        //var config = $.beacons('settings');
+        var conf = {
+            context: {},
+            throttle: 183,
+            range: 52
+        };
+        expect(conf.context).toEqual({});
+        expect(conf.throttle).toEqual(183);
+        expect(conf.range).toEqual(52);
+    });
     describe('settings option', function () {
         afterEach(function () {
             $.beacons({
@@ -89,20 +105,4 @@ describe("$.beacons", function () {
             expect(newConf.range).toEqual(oldConf.range);
         });
     });
-        /*it('can set new configurations', function () {
-            /*$.beacons({
-                context: {},
-                throttle: 183,
-                range: 52
-            });*/
-            //var config = $.beacons('settings');
-            /*var config = {
-                context: {},
-                throttle: 183,
-                range: 52
-            };
-            expect(config.context).toEqual({});
-            expect(config.throttle).toEqual(183);
-            expect(config.range).toEqual(52);
-        });*/
 });
