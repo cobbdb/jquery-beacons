@@ -9,7 +9,7 @@ describe("$.beacons", function () {
         }).not.toThrowError();
         expect($.beacons.calls.count()).toEqual(2);
     });
-    xdescribe('destroy option', function () {
+    describe('destroy option', function () {
         it('destroys all beacons', function () {
             expect($('.beacon').length).toEqual(3);
             $.beacons('destroy');
