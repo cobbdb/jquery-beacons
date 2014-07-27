@@ -3,7 +3,7 @@
  */
 describe("$.fn.beacon", function () {
     // Run the tests.
-    xit('can chain commands', function () {
+    it('can chain commands', function () {
         spyOn($.fn, 'beacon').and.callThrough();
         expect(function () {
             $('#TST01')

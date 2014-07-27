@@ -66,22 +66,6 @@ describe("$.beacons", function () {
             expect(handlerCalledFor.MY01).toBe(true);
         });
     });
-    it('can set new configurations', function () {
-        /*$.beacons({
-            context: {},
-            throttle: 183,
-            range: 52
-        });*/
-        //var config = $.beacons('settings');
-        var conf = {
-            context: {},
-            throttle: 183,
-            range: 52
-        };
-        expect(conf.context).toEqual({});
-        expect(conf.throttle).toEqual(183);
-        expect(conf.range).toEqual(52);
-    });
     describe('settings option', function () {
         afterEach(function () {
             $.beacons({
