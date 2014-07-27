@@ -78,8 +78,7 @@ describe("$.beacons", function () {
             var defaults = $.beacons('settings');
             expect(defaults.throttle).toEqual(80);
         });
-        //it('can set new configurations', function () {
-        it('this is a test name', function () {
+        /*it('can set new configurations', function () {
             /*$.beacons({
                 context: {},
                 throttle: 183,
@@ -93,7 +92,9 @@ describe("$.beacons", function () {
             };
             expect(config.context).toEqual({});
             expect(config.throttle).toEqual(183);
-            expect(config.range).toEqual(52);*/
+            expect(config.range).toEqual(52);
+        });*/
+        it('fake test', function () {
             expect(true).toBe(true);
         });
         it('can set a few new settings', function () {
