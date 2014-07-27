@@ -79,11 +79,11 @@ describe("$.beacons", function () {
             expect(defaults.throttle).toEqual(80);
         });
         it('can set new configurations', function () {
-            $.beacons({
+            /*$.beacons({
                 context: {},
                 throttle: 183,
                 range: 52
-            });
+            });*/
             //var config = $.beacons('settings');
             var config = {
                 context: {},
