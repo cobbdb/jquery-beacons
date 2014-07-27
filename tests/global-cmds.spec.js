@@ -78,7 +78,7 @@ describe("$.beacons", function () {
             var defaults = $.beacons('settings');
             expect(defaults.throttle).toEqual(80);
         });
-        it('can set new configurations', function () {
+        /*it('can set new configurations', function () {
             var defaults = $.beacons('settings');
             $.beacons({
                 context: {},
@@ -90,7 +90,7 @@ describe("$.beacons", function () {
             expect(config.throttle).toEqual(183);
             expect(config.range).toEqual(52);
         });*/
-        /*xit('can set a few new settings', function () {
+        it('can set a few new settings', function () {
             var oldConf = $.beacons('settings');
             $.beacons({
                 throttle: 98
@@ -99,6 +99,6 @@ describe("$.beacons", function () {
             expect(newConf.context).toEqual(oldConf.context);
             expect(newConf.throttle).toEqual(98);
             expect(newConf.range).toEqual(oldConf.range);
-        });*/
+        });
     });
 });
