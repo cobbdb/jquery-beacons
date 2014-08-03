@@ -15,20 +15,30 @@ module.exports = function (grunt) {
                     browsers: browsers,
                     onTestComplete: function (result, callback) {
                         var user = process.env.SAUCE_USERNAME;
-        var pass = process.env.SAUCE_ACCESS_KEY;
-        request.put({
-            url: ['https://saucelabs.com/rest/v1', user, 'jobs', result.job_id].join('/'),
-            auth: { user: user, pass: pass },
-            json: { passed: !result.passed }
-        }, function (error, response, body) {
-          if (error) {
-            callback(error);
-          } else if (response.statusCode !== 200) {
-            callback(new Error('Unexpected response status'));
-          } else {
-            callback(null, !result.passed);
-          }
-        });
+                        var pass = process.env.SAUCE_ACCESS_KEY;
+                        request.put({
+                            url: [
+                                'https://saucelabs.com/rest/v1',
+                                user,
+                                'jobs',
+                                result.job_id
+                            ].join('/'),
+                            auth: {
+                                user: user,
+                                pass: pass
+                            },
+                            json: {
+                                passed: result.passed
+                            }
+                        }, function (error, response, body) {
+                            if (error) {
+                                callback(error);
+                            } else if (response.statusCode !== 200) {
+                                callback(new Error('Unexpected response status'));
+                            } else {
+                                callback(null, result.passed);
+                            }
+                        });
                     }
                 }
             }
