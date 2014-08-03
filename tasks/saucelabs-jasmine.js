@@ -1,4 +1,4 @@
-var http = require('http');
+var request = require('request');
 module.exports = function (grunt) {
     grunt.config.merge({
         'saucelabs-jasmine': {
@@ -14,32 +14,21 @@ module.exports = function (grunt) {
                     testname: 'jquery-beacons',
                     browsers: browsers,
                     onTestComplete: function (result, callback) {
-                        var req = http.request({
-                            host: 'saucelabs.com',
-                            method: 'POST',
-                            path: [
-                                '/rest/v1',
-                                process.env.SAUCE_USERNAME,
-                                'jobs',
-                                result.job_id
-                            ].join('/'),
-                            auth: {
-                                user: process.env.SAUCE_USERNAME,
-                                pass: process.env.SAUCE_ACCESS_KEY
-                            }
-                        });
-                        req.on('response', function (error, response, body) {
-                            if (error) {
-                                callback(error);
-                            } else if (response.statusCode !== 200) {
-                                callback(Error('Unexpected response status'));
-                            } else {
-                                callback(null, result.passed);
-                            }
-                        });
-                        req.end(JSON.stringify({
-                            passed: result.passed
-                        }));
+                        var user = process.env.SAUCE_USERNAME;
+        var pass = process.env.SAUCE_ACCESS_KEY;
+        request.put({
+            url: ['https://saucelabs.com/rest/v1', user, 'jobs', result.job_id].join('/'),
+            auth: { user: user, pass: pass },
+            json: { passed: !result.passed }
+        }, function (error, response, body) {
+          if (error) {
+            callback(error);
+          } else if (response.statusCode !== 200) {
+            callback(new Error('Unexpected response status'));
+          } else {
+            callback(null, !result.passed);
+          }
+        });
                     }
                 }
             }
