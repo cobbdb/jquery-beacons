@@ -1,4 +1,4 @@
-var request = require('request');
+var http = require('http');
 module.exports = function (grunt) {
     grunt.config.merge({
         'saucelabs-jasmine': {
@@ -14,23 +14,21 @@ module.exports = function (grunt) {
                     testname: 'jquery-beacons',
                     browsers: browsers,
                     onTestComplete: function (result, callback) {
-                        var user = process.env.SAUCE_USERNAME;
-                        var pass = process.env.SAUCE_ACCESS_KEY;
-                        request.put({
-                            url: [
-                                'https://saucelabs.com/rest/v1',
-                                user,
+                        var req = http.request({
+                            host: 'saucelabs.com',
+                            method: 'PUT',
+                            path: [
+                                '/rest/v1',
+                                process.env.SAUCE_USERNAME,
                                 'jobs',
                                 result.job_id
                             ].join('/'),
                             auth: {
-                                user: user,
-                                pass: pass
-                            },
-                            json: {
-                                passed: !result.passed
+                                user: process.env.SAUCE_USERNAME,
+                                pass: process.env.SAUCE_ACCESS_KEY
                             }
-                        }, function (error, response, body) {
+                        });
+                        req.on('response', function (error, response, body) {
                             if (error) {
                                 callback(error);
                             } else if (response.statusCode !== 200) {
@@ -39,6 +37,9 @@ module.exports = function (grunt) {
                                 callback(null, !result.passed);
                             }
                         });
+                        req.end(JSON.stringify({
+                            passed: !result.passed
+                        }));
                     }
                 }
             }
