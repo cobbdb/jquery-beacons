@@ -34,11 +34,11 @@ module.exports = function (grunt) {
                             } else if (response.statusCode !== 200) {
                                 callback(Error('Unexpected response status'));
                             } else {
-                                callback(null, !result.passed);
+                                callback(null, result.passed);
                             }
                         });
                         req.end(JSON.stringify({
-                            passed: !result.passed
+                            passed: result.passed
                         }));
                     }
                 }
