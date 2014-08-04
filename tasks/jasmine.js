@@ -11,15 +11,15 @@ module.exports = function (grunt) {
             options: {
                 polyfills: [
                     'bower_components/json2/json2.js',
-                    resolve('jasmine-polyfills'),
-                    resolve('polyfill-queryselector')
+                    resolve('polyfill-queryselector'),
+                    resolve('jasmine-polyfills')
                 ],
                 specs: [
                     'tests/global-cmds.spec.js',
                     'tests/beacon-cmds.spec.js'
                 ],
                 helpers: [
-                    'bower_components/jasmine-jsreporter-real/jasmine-jsreporter.js',
+                    resolve('jasmine-jsreporter-real'),
                     'tests/helpers/saucelabs.helper.js',
                     'tests/helpers/test.helper.js'
                 ],
