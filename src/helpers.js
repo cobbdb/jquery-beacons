@@ -14,7 +14,15 @@ var run = function () {
         }, throttle);
     }
 };
+
 var activateBeacons = function () {
-    var set = $('.beacon.beacon-on:near-viewport(' + range + ')');
-    set.trigger('beacon/activate');
+    //var set = $('.beacon.beacon-on:near-viewport(' + range + ')');
+    var i, len = beacons.length, el;
+    for (i = 0; i < len; i += 1) {
+        el = beacons[i];
+        if (nearViewport(el, range)) {
+            el.trigger('beacon/activate'); //<------ come back to this
+        }
+    }
+    //set.trigger('beacon/activate');
 };

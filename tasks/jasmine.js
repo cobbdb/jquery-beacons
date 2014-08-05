@@ -6,7 +6,10 @@ module.exports = function (grunt) {
                 src: 'dist/**/*.js'
             },
             src: {
-                src: 'src/**/*.js'
+                src: [
+                    'bower_components/jquery-near-viewport/dist/near-viewport.js',
+                    'src/**/*.js'
+                ]
             },
             options: {
                 polyfills: [
@@ -24,8 +27,7 @@ module.exports = function (grunt) {
                     'tests/helpers/test.helper.js'
                 ],
                 vendor: [
-                    resolve('jquery'),
-                    resolve('jquery-near-viewport')
+                    resolve('jquery')
                 ],
                 outfile: 'tests/_SpecRunner.html',
                 keepRunner: true,

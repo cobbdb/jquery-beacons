@@ -2,8 +2,7 @@
  * Commands that apply to all beacons.
  */
 $.beacons = function (action) {
-    var i, len;
-    len = beacons.length;
+    var i, len = beacons.length;
     if (action === 'destroy') {
         active = false;
         //$('.beacon').beacon('destroy');
