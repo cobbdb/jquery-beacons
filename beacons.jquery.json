@@ -1,7 +1,7 @@
 {
     "name": "beacons",
     "title": "Beacons",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "A jQuery plugin to react when elements scroll into view.",
     "keywords": [
         "visible",
