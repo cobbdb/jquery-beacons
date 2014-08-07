@@ -12,11 +12,12 @@ function Beacon(el, opts) {
         }
     };
     el.jb_handler = function () {
-        opts.handler();
+        var $el = jQuery(el);
+        opts.handler.call($el, el);
         if (opts.runOnce) {
             el.jb_destroy();
         }
-        jQuery(el).trigger('beacon/activate');
+        $el.trigger('beacon/activate');
     };
     if (opts.enabled) {
         el.jb_active = true;

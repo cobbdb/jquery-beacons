@@ -56,6 +56,24 @@ describe("$.fn.beacon", function () {
             done();
         }, 100);
     });
+    it('provides element to handler', function (done) {
+        expect($help.handlerCalledFor.TST03).toBe(false);
+        $help.move('#TST03', -1);
+        setTimeout(function () {
+            expect($help.handlerCalledFor.TST03).toBe(true);
+            expect($help.handlerParamFor.TST03).toEqual($('#TST03')[0]);
+            done();
+        }, 100);
+    });
+    it('binds jQ obj as this for handler', function (done) {
+        expect($help.handlerCalledFor.TST03).toBe(false);
+        $help.move('#TST03', -1);
+        setTimeout(function () {
+            expect($help.handlerCalledFor.TST03).toBe(true);
+            expect($help.handlerThisFor.TST03.attr('id')).toEqual('TST03');
+            done();
+        }, 100);
+    });
     describe('activate option', function () {
         it('trips active beacons', function () {
             expect($help.handlerCalledFor.TST03).toBe(false);
@@ -64,6 +82,16 @@ describe("$.fn.beacon", function () {
             // Smoke test TST02.
             expect($help.handlerCalledFor.TST02).toBe(true);
         });
+    });
+    it('trips beacon/activate event when activated', function () {
+        var fired = false;
+        expect($help.handlerCalledFor.TST03).toBe(false);
+        $('#TST03').on('beacon/activate', function () {
+            fired = true;
+        });
+        $('#TST03').beacon('activate');
+        expect($help.handlerCalledFor.TST03).toBe(true);
+        expect(fired).toBe(true);
     });
     describe('destroy option', function () {
         it('unbinds handler', function () {

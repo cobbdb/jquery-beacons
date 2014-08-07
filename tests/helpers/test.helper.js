@@ -1,6 +1,8 @@
 var $help = {
     handlerCalledFor: {},
     handlerFor: {},
+    handlerParamFor: {},
+    handlerThisFor: {},
     move: function (sel, top) {
         return $(sel).css({
             top: top + 'px'
@@ -21,8 +23,12 @@ var $help = {
         $help.createDiv(id);
         $help.move(sel, top);
         $help.handlerCalledFor[id] = false;
-        $help.handlerFor[id] = function () {
+        $help.handlerParamFor[id] = null;
+        $help.handlerThisFor[id] = null;
+        $help.handlerFor[id] = function (param) {
             $help.handlerCalledFor[id] = true;
+            $help.handlerParamFor[id] = param;
+            $help.handlerThisFor[id] = this;
         };
         spyOn($help.handlerFor, id).and.callThrough();
         $(sel).beacon({

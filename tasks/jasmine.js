@@ -31,8 +31,8 @@ module.exports = function (grunt) {
                 ],
                 outfile: 'tests/_SpecRunner.html',
                 keepRunner: true,
-                display: 'short',
-                summary: true
+                display: 'full',
+                summary: false
             }
         }
     });

@@ -17,7 +17,18 @@ Just supply a callback function to run when the beacon is triggered.
         alert('A widget is on screen!');
     });
 
-## Bind side-effects dynamically
+#### Convenience variables for your handlers
+Provided to the beacon's handler is both the DOM object as well
+as the jQuery object.
+
+    $('.widget').beacon(function (el) {
+        // 'el' is the DOM object.
+        var pos = el.style.position;
+        // 'this' is the jQuery object.
+        var color = this.css('background-color');
+    });
+
+#### Bind side-effects dynamically
 When a beacon activates, it triggers the `beacon/activate` event so you can keep your
 code modular.
 
