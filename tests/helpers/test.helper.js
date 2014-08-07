@@ -1,45 +1,55 @@
-var handlerCalledFor = {};
-var handlerFor = {};
-var move = function (sel, top) {
-    $(sel).css({
-        position: 'absolute',
-        top: top + 'px'
-    });
-};
-var createDiv = function (id) {
-    $('<div>', {
-        id: id,
-        'class': 'testdiv'
-    }).text('test div').appendTo('body');
-};
-var newBeacon = function (id, top, on, once) {
-    var sel = '#' + id;
-    createDiv(id);
-    move(sel, top);
-    handlerCalledFor[id] = false;
-    handlerFor[id] = function () {
-        handlerCalledFor[id] = true;
-    };
-    spyOn(handlerFor, id).and.callThrough();
-    $(sel).beacon({
-        handler: handlerFor[id],
-        enabled: on,
-        runOnce: once
-    });
+var $help = {
+    handlerCalledFor: {},
+    handlerFor: {},
+    move: function (sel, top) {
+        return $(sel).css({
+            top: top + 'px'
+        });
+    },
+    createDiv: function (id) {
+        return $('<div>', {
+            id: id,
+            'class': 'testdiv',
+            text: 'test div',
+            css: {
+                position: 'absolute'
+            }
+        }).appendTo('body');
+    },
+    newBeacon: function (id, top, on, once) {
+        var sel = '#' + id;
+        $help.createDiv(id);
+        $help.move(sel, top);
+        $help.handlerCalledFor[id] = false;
+        $help.handlerFor[id] = function () {
+            $help.handlerCalledFor[id] = true;
+        };
+        spyOn($help.handlerFor, id).and.callThrough();
+        $(sel).beacon({
+            handler: $help.handlerFor[id],
+            enabled: on,
+            runOnce: once
+        });
+    }
 };
 
 beforeEach(function () {
+    expect($('.testdiv').length).toEqual(0);
+    expect($.beacons('fetch').length).toEqual(0);
     // Partially on-screen.
-    newBeacon('TST01', -2);
+    $help.newBeacon('TST01', -2);
     // Completely on-screen.
-    newBeacon('TST02', 5);
+    $help.newBeacon('TST02', 5);
     // Completely off-screen.
-    newBeacon('TST03', 2000);
+    $help.newBeacon('TST03', 2000);
+    expect($('.testdiv').length).toEqual(3);
+    expect($.beacons('fetch').length).toEqual(3);
 });
 afterEach(function () {
     $.beacons('destroy');
     $('.testdiv').remove();
-    $(window).off('scroll');
-    handlerCalledFor = {};
-    handlerFor = {};
+    $help.handlerCalledFor = {};
+    $help.handlerFor = {};
+    expect($('.testdiv').length).toEqual(0);
+    expect($.beacons('fetch').length).toEqual(0);
 });

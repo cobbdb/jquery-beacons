@@ -1,6 +1,3 @@
-/**
- * Spec for global beacon commands: $.beacons()
- */
 describe("$.fn.beacon", function () {
     // Run the tests.
     it('can chain commands', function () {
@@ -14,108 +11,112 @@ describe("$.fn.beacon", function () {
     });
     describe('constructor', function () {
         beforeEach(function () {
+            // Remove any existing beacons.
             $.beacons('destroy');
             $('.testdiv').remove();
-            expect($('.testdiv, .beacon, .beacon-on').length).toEqual(0);
+            expect($.beacons('fetch').length).toEqual(0);
         });
-        it('requires a handler', function () {
-            expect(function () {
-                $('#MY02').beacon({});
-            }).toThrowError();
+        it('is enabled by default', function (done) {
+            $help.newBeacon('TST01', 0);
+            expect($help.handlerCalledFor.TST01).toBe(true);
+            setTimeout(function () {
+                var callCount = $help.handlerFor.TST01.calls.count();
+                expect(callCount).toBeGreaterThan(1);
+                done();
+            }, 100);
         });
-        it('adds beacon classes', function () {
-            newBeacon('MY01', 5);
-            expect($('#MY01').is('.beacon')).toBe(true);
-            expect($('#MY01').is('.beacon-on')).toBe(true);
+        it('can be created disabled', function (done) {
+            $help.newBeacon('MY01', 5, false);
+            expect($help.handlerCalledFor.MY01).toBe(false);
+            setTimeout(function () {
+                expect($help.handlerFor.MY01).not.toHaveBeenCalled();
+                done();
+            }, 100);
         });
-        it('binds beacon/activate event', function () {
-            newBeacon('TST01', 2000);
-            expect(handlerFor.TST01).not.toHaveBeenCalled();
-            $('#TST01').trigger('beacon/activate');
-            expect(handlerFor.TST01).toHaveBeenCalled();
-        });
-        it('can be created disabled', function () {
-            newBeacon('MY01', 5, false);
-            expect($('#MY01').is('.beacon')).toBe(true);
-            expect($('#MY01').is('.beacon-on')).toBe(false);
-            expect(handlerCalledFor.MY01).toBe(false);
-        });
-        it('can run once', function () {
-            newBeacon('MY02', 5, true, true);
-            expect($('#MY02').is('.beacon')).toBe(false);
-            expect($('#MY02').is('.beacon-on')).toBe(false);
-            expect(handlerCalledFor.MY02).toBe(true);
-            expect($('.beacon').length).toEqual(0);
+        it('can run once', function (done) {
+            $help.newBeacon('TST01', 0, true, true);
+            expect($help.handlerCalledFor.TST01).toBe(true);
+            setTimeout(function () {
+                var callCount = $help.handlerFor.TST01.calls.count();
+                expect(callCount).toEqual(1);
+                done();
+            }, 100);
         });
     });
     describe('constructor - shortcut', function () {
         beforeEach(function () {
             $.beacons('destroy');
             $('.testdiv').remove();
-            expect($('.testdiv, .beacon, .beacon-on').length).toEqual(0);
-            createDiv('MY01');
-            createDiv('MY02');
-            move('#MY02', 2000);
+            expect($.beacons('fetch').length).toEqual(0);
         });
-        it('adds beacon classes', function () {
-            $('#MY02').beacon(function () {});
-            expect($('#MY02').is('.beacon')).toBe(true);
-            expect($('#MY02').is('.beacon-on')).toBe(true);
-        });
-        it('binds beacon/activate event', function () {
+        it('is enabled by default', function () {
             var callTest = false;
-            $('#MY01').trigger('beacon/activate');
-            expect(callTest).toBe(false);
+            $help.createDiv('MY01');
             $('#MY01').beacon(function () {
                 callTest = true;
             });
             expect(callTest).toBe(true);
         });
     });
-    describe('destroy option', function () {
-        it('removes beacon classes', function () {
-            expect($('.beacon.beacon-on').length).toEqual(3);
-            $('#TST01').beacon('destroy');
-            expect($('.beacon').length).toEqual(2);
-            expect($('.beacon-on').length).toEqual(2);
-            expect($('#TST01').is('.beacon')).toBe(false);
-            expect($('#TST01').is('.beacon-on')).toBe(false);
+    it('trips handler when moving into view', function () {
+        expect($help.handlerCalledFor.TST03).toBe(false);
+        $help.move('#TST03', -1);
+        expect($help.handlerCalledFor.TST03).toBe(true);
+    });
+    describe('activate option', function () {
+        it('trips active beacons', function () {
+            expect($help.handlerCalledFor.TST03).toBe(false);
+            $('#TST03').beacon('activate');
+            expect($help.handlerCalledFor.TST03).toBe(true);
+            // Smoke test TST02.
+            expect($help.handlerCalledFor.TST02).toBe(true);
         });
-        it('unbinds beacon/activate event', function () {
-            newBeacon('MY01', 10, false);
-            expect(handlerCalledFor.MY01).toBe(false);
+    });
+    describe('destroy option', function () {
+        it('unbinds handler', function () {
+            $help.newBeacon('MY01', 1, false);
+            expect($help.handlerCalledFor.MY01).toBe(false);
             $('#MY01').beacon('destroy');
-            $('.beacon').trigger('beacon/activate');
-            expect(handlerCalledFor.MY01).toBe(false);
+            $('#MY01').beacon('activate');
+            expect($help.handlerCalledFor.MY01).toBe(false);
+        });
+        it('removes only this beacon', function () {
+            $help.newBeacon('MY01', 2000);
+            $help.newBeacon('MY02', 2000);
+            expect($.beacons('fetch').length).toEqual(5);
+            expect($help.handlerCalledFor.MY01).toBe(false);
+            expect($help.handlerCalledFor.MY02).toBe(false);
+            $('#MY01').beacon('destroy');
+            $.beacons('activate');
+            expect($.beacons('fetch').length).toEqual(4);
+            expect($help.handlerCalledFor.MY01).toBe(false);
+            expect($help.handlerCalledFor.MY02).toBe(true);
         });
     });
     describe('disable option', function () {
-        it('removes only beacon-on class', function () {
-            expect($('.beacon.beacon-on').length).toEqual(3);
+        it('unbinds handler', function () {
+            expect($help.handlerCalledFor.TST03).toBe(false);
             $('#TST03').beacon('disable');
-            expect($('.beacon-on').length).toEqual(2);
-            expect($('.beacon').length).toEqual(3);
-        });
-        it('retains the beacon/activate event', function () {
-            expect(handlerCalledFor.TST01).toBe(true);
-            expect(handlerCalledFor.TST03).toBe(false);
-            $('#TST03').beacon('disable');
-            $('.beacon').trigger('beacon/activate');
-            expect(handlerCalledFor.TST03).toBe(true);
+            $help.move('#TST03', -1);
+            expect($help.handlerCalledFor.TST03).toBe(false);
         });
     });
     describe('enable option', function () {
-        it('adds beacon-on class', function () {
-            $.beacons('disable');
-            expect($('.beacon-on').length).toEqual(0);
-            $('#TST02').beacon('enable');
-            expect($('.beacon-on').length).toEqual(1);
+        it('binds handler for heartbeat', function () {
+            $help.newBeacon('MY01', 1, false);
+            expect($help.handlerCalledFor.MY01).toBe(false);
+            $('#MY01').beacon('enable');
+            expect($help.handlerCalledFor.MY01).toBe(true);
         });
-        it('only affects beacons', function () {
-            $.beacons('destroy');
-            expect($('.beacon-on').length).toEqual(0);
-            $('#TST01').beacon('enable');
-            expect($('.beacon-on').length).toEqual(0);
+        it('binds handler for manual activate', function () {
+            $help.newBeacon('MY01', 2000, false);
+            $('#MY01').beacon('activate');
+            expect($help.handlerCalledFor.MY01).toBe(false);
+            throw Error('count is ' + $('.testdiv').length);
+            $('#MY01').beacon('enable');
+            expect($help.handlerCalledFor.MY01).toBe(false);
+            $('#MY01').beacon('activate');
+            expect($help.handlerCalledFor.MY01).toBe(true);
         });
     });
 });

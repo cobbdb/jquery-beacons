@@ -4,8 +4,8 @@ module.exports = function (grunt) {
     grunt.loadTasks('tasks');
 
     grunt.registerTask('default', 'Build suite.', [
-        'jshint',
         'jasmine:src',
+        'jshint',
         'uglify',
         'jasmine:dist'
     ]);

@@ -2,28 +2,34 @@
  * Commands that apply to all beacons.
  */
 $.beacons = function (action) {
-    var i, len = beacons.length;
+    var el, i, len = beacons.length;
+
     if (action === 'destroy') {
         active = false;
-        //$('.beacon').beacon('destroy');
         for (i = 0; i < len; i += 1) {
-            beacons[i].beacon('destroy'); // <----- come back to this
+            beacons[i].jb_destroy();
         }
         beacons = [];
     } else if (action === 'enable') {
         for (i = 0; i < len; i += 1) {
-            beacons[i].enabled = true;
+            beacons[i].jb_active = true;
         }
-        //$('.beacon').addClass('beacon-on');
         run();
     } else if (action === 'disable') {
         for (i = 0; i < len; i += 1) {
-            beacons[i].enabled = false;
+            beacons[i].jb_active = false;
         }
-        //$('.beacon').removeClass('beacon-on');
         active = false;
+    } else if (action === 'fetch') {
+        return beacons;
+    } else if (action === 'activate') {
+        for (i = 0; i < len; i += 1) {
+            el = beacons[i];
+            if (el.jb_active) {
+                el.jb_handler();
+            }
+        }
     } else if (action === 'settings') {
-        // Fetch current settings.
         return {
             range: range,
             context: context,

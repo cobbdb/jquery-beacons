@@ -16,13 +16,11 @@ var run = function () {
 };
 
 var activateBeacons = function () {
-    //var set = $('.beacon.beacon-on:near-viewport(' + range + ')');
     var i, len = beacons.length, el;
     for (i = 0; i < len; i += 1) {
         el = beacons[i];
-        if (nearViewport(el, range)) {
-            el.trigger('beacon/activate'); //<------ come back to this
+        if (el.jb_active && nearViewport(el, range)) {
+            el.jb_handler();
         }
     }
-    //set.trigger('beacon/activate');
 };

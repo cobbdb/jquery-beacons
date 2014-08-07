@@ -10,3 +10,5 @@ var range = 0;
 var active = false;
 // Collection of HTML elements.
 var beacons = [];
+// Simple noop.
+var noop = function () {};
