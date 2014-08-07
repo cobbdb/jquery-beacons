@@ -1,11 +1,4 @@
 describe("$.beacons", function () {
-    it('can chain commands', function () {
-        spyOn($, 'beacons').and.callThrough();
-        expect(function () {
-            $.beacons('enable').beacons('disable');
-        }).not.toThrowError();
-        expect($.beacons.calls.count()).toEqual(2);
-    });
     describe('fetch option', function () {
         it('retrieves all beacons', function () {
             var list = $.beacons('fetch');
@@ -91,5 +84,12 @@ describe("$.beacons", function () {
             expect(newConf.throttle).toEqual(98);
             expect(newConf.range).toEqual(oldConf.range);
         });
+    });
+    it('can chain commands', function () {
+        spyOn($, 'beacons').and.callThrough();
+        expect(function () {
+            $.beacons('enable').beacons('disable');
+        }).not.toThrowError();
+        expect($.beacons.calls.count()).toEqual(2);
     });
 });

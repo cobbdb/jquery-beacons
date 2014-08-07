@@ -3,3 +3,4 @@ bower_components
 docs
 .grunt
 *.log
+bin

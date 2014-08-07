@@ -6,9 +6,6 @@ $.beacons = function (action) {
 
     if (action === 'destroy') {
         active = false;
-        for (i = 0; i < len; i += 1) {
-            beacons[i].jb_destroy();
-        }
         beacons = [];
     } else if (action === 'enable') {
         for (i = 0; i < len; i += 1) {

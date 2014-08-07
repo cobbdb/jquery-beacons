@@ -3,7 +3,7 @@ module.exports = function (grunt) {
         uglify: {
             build: {
                 src: [
-                    'bower_components/jquery-near-viewport/dist/near-viewport.js',
+                    'bower_components/jquery-near-viewport/dist/near-viewport.min.js',
                     'src/**/*.js'
                 ],
                 dest: 'dist/jquery-beacons.min.js'
