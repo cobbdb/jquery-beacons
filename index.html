@@ -1,46 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>Beacons by cobbdb</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Beacons by cobbdb</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+    <div class="wrapper">
+      <header>
         <h1>Beacons</h1>
-        <h2>the jQuery plugin for viewport reactions</h2>
-        <a href="https://github.com/cobbdb/jquery-beacons" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
+        <p>the jQuery plugin for viewport reactions</p>
+        <p class="view"><a href="https://github.com/cobbdb/jquery-beacons">View the Project on GitHub <small>cobbdb/jquery-beacons</small></a></p>
+        <ul>
+          <li><a href="https://github.com/cobbdb/jquery-beacons/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/cobbdb/jquery-beacons/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/cobbdb/jquery-beacons">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
 <a name="beacons" class="anchor" href="#beacons"><span class="octicon octicon-link"></span></a>beacons</h1>
 
-<p><a href="https://travis-ci.org/cobbdb/jquery-beacons"><img src="https://travis-ci.org/cobbdb/jquery-beacons.svg" alt="Build Status"></a> <a href="http://badge.fury.io/bo/jquery-beacons"><img src="https://badge.fury.io/bo/jquery-beacons.svg" alt="Bower version"></a> <a href="http://gruntjs.com/"><img src="https://cdn.gruntjs.com/builtwith.png" alt="Built with Grunt"></a></p>
+<p><a href="https://travis-ci.org/cobbdb/jquery-beacons"><img src="https://travis-ci.org/cobbdb/jquery-beacons.svg?branch=master" alt="Build Status"></a> <a href="http://badge.fury.io/bo/jquery-beacons"><img src="https://badge.fury.io/bo/jquery-beacons.svg" alt="Bower version"></a></p>
 
 <p>A jQuery plugin to react when elements are in view.</p>
 
 <pre><code>$ bower install jquery-beacons
 </code></pre>
 
-<p><strong>Note:</strong> This plugin depends on jquery-near-viewport which is listed as a bower dependency.</p>
-
-<p><a href="https://saucelabs.com/u/jquery-beacons"><img src="https://saucelabs.com/browser-matrix/jquery-beacons.svg" alt="Saucelabs Test Status"></a></p>
+<p><a href="https://saucelabs.com/u/jquery-beacons"><img src="https://saucelabs.com/browser-matrix/jquery-beacons.svg?branch=master" alt="Saucelabs Test Status"></a></p>
 
 <hr><h2>
 <a name="creating-a-new-beacon" class="anchor" href="#creating-a-new-beacon"><span class="octicon octicon-link"></span></a>Creating a new beacon</h2>
@@ -50,6 +47,17 @@ Just supply a callback function to run when the beacon is triggered.</p>
 
 <pre><code>$('.widget').beacon(function () {
     alert('A widget is on screen!');
+});
+</code></pre>
+
+<h2>
+<a name="bind-side-effects-dynamically" class="anchor" href="#bind-side-effects-dynamically"><span class="octicon octicon-link"></span></a>Bind side-effects dynamically</h2>
+
+<p>When a beacon activates, it triggers the <code>beacon/activate</code> event so you can keep your
+code modular.</p>
+
+<pre><code>$('.widget').on('beacon/activate', function () {
+    alert('My beacon activated!');
 });
 </code></pre>
 
@@ -70,7 +78,6 @@ Just supply a callback function to run when the beacon is triggered.</p>
 <a name="optionshandler" class="anchor" href="#optionshandler"><span class="octicon octicon-link"></span></a>options.handler</h4>
 
 <ul>
-<li>Required</li>
 <li>Type: <code>function</code>
 </li>
 </ul><p>The callback to be run when a beacon is activated.</p>
@@ -104,15 +111,22 @@ Just supply a callback function to run when the beacon is triggered.</p>
 </code></pre>
 
 <h4>
-<a name="enable--disable-" class="anchor" href="#enable--disable-"><span class="octicon octicon-link"></span></a>enable / disable <a name="con_enable"></a>
-</h4>
+<a name="activate" class="anchor" href="#activate"><span class="octicon octicon-link"></span></a>activate</h4>
 
-<p>Turn an individual beacon on or off.</p>
+<p>Trip a beacon regardless of if it's viewable or not. This does
+not affect disabled beacons.</p>
 
 <h4>
 <a name="destroy" class="anchor" href="#destroy"><span class="octicon octicon-link"></span></a>destroy</h4>
 
-<p>Remove the beacon, but retain the original element.</p>
+<p>Remove the beacon from the system, but retain the original element.</p>
+
+<h4>
+<a name="enable--disable-" class="anchor" href="#enable--disable-"><span class="octicon octicon-link"></span></a>enable / disable <a name="con_enable"></a>
+</h4>
+
+<p>Turn an individual beacon on or off, but does not destroy it. Disabled beacons cannot
+be tripped manually with <code>activate</code>.</p>
 
 <h2>
 <a name="global-controls" class="anchor" href="#global-controls"><span class="octicon octicon-link"></span></a>Global controls</h2>
@@ -126,9 +140,10 @@ $.beacons('enable');
 </code></pre>
 
 <h4>
-<a name="enable--disable" class="anchor" href="#enable--disable"><span class="octicon octicon-link"></span></a>enable / disable</h4>
+<a name="activate-1" class="anchor" href="#activate-1"><span class="octicon octicon-link"></span></a>activate</h4>
 
-<p>Turn all beacons on or off.</p>
+<p>Trip all beacons regardless of if they are viewable or not. This does not
+affect disabled beacons.</p>
 
 <h4>
 <a name="destroy-1" class="anchor" href="#destroy-1"><span class="octicon octicon-link"></span></a>destroy</h4>
@@ -136,9 +151,25 @@ $.beacons('enable');
 <p>Remove all beacons. This does <em>not</em> alter the original page element.</p>
 
 <h4>
+<a name="enable--disable" class="anchor" href="#enable--disable"><span class="octicon octicon-link"></span></a>enable / disable</h4>
+
+<p>Turn all beacons on or off.</p>
+
+<h4>
+<a name="fetch" class="anchor" href="#fetch"><span class="octicon octicon-link"></span></a>fetch</h4>
+
+<ul>
+<li>Returns: <code>array</code>
+</li>
+</ul><p>Return the array of all beacons in the system - including disabled beacons.</p>
+
+<h4>
 <a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>settings</h4>
 
-<p>Fetch the current system settings.</p>
+<ul>
+<li>Returns: <code>object</code>
+</li>
+</ul><p>Fetch the current system settings.</p>
 
 <h4>
 <a name="optionsrange" class="anchor" href="#optionsrange"><span class="octicon octicon-link"></span></a>options.range</h4>
@@ -160,7 +191,7 @@ For example, an offset of 100 will trigger beacons 100px above the viewport and 
 <li>Type: <code>object|selector</code>
 </li>
 </ul><p>The container in which the scrolling will happen.
-This is typically <code>window</code>, but can be to something else if you have a special case.</p>
+This is typically <code>window</code>, but can be set to something else if you have a special case.</p>
 
 <h4>
 <a name="optionsthrottle" class="anchor" href="#optionsthrottle"><span class="octicon octicon-link"></span></a>options.throttle</h4>
@@ -170,7 +201,7 @@ This is typically <code>window</code>, but can be to something else if you have 
 </li>
 <li>Type: <code>number</code>
 </li>
-</ul><p>Limit the rate at which beacons are inspected. This value is in milliseconds.</p>
+</ul><p>The rate at which beacons are inspected. This value is in milliseconds.</p>
 
 <hr><ul>
 <li>See: <a href="http://plugins.jquery.com/beacons/">http://plugins.jquery.com/beacons/</a>
@@ -179,26 +210,14 @@ This is typically <code>window</code>, but can be to something else if you have 
 </li>
 <li>License: MIT</li>
 </ul>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/cobbdb/jquery-beacons/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/cobbdb/jquery-beacons/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/cobbdb/jquery-beacons"></a> is maintained by <a href="https://github.com/cobbdb">cobbdb</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
-
-            <script type="text/javascript">
+    <footer>
+      <p>Project maintained by <a href="https://github.com/cobbdb">cobbdb</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
