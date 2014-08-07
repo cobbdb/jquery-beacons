@@ -6,9 +6,7 @@ A jQuery plugin to react when elements are in view.
 
     $ bower install jquery-beacons
 
-**Note:** This plugin depends on jquery-near-viewport which is listed as a bower dependency.
-
-[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/jquery-beacons.svg)](https://saucelabs.com/u/jquery-beacons)
+[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/jquery-beacons.svg?branch=master)](https://saucelabs.com/u/jquery-beacons)
 
 -------------
 ## Creating a new beacon
@@ -30,7 +28,6 @@ For more advanced use cases, there are options available to configure how beacon
     });
 
 #### options.handler
-* Required
 * Type: ```function```
 
 The callback to be run when a beacon is activated.
@@ -52,11 +49,16 @@ For more complicated scenarios, there are commands to control what your beacons 
 
     $('.widget').beacon('disable');
 
-#### enable / disable <a name="con_enable"></a>
-Turn an individual beacon on or off.
+#### activate
+Trip a beacon regardless of if it's viewable or not. This does
+not affect disabled beacons.
 
 #### destroy
-Remove the beacon, but retain the original element.
+Remove the beacon from the system, but retain the original element.
+
+#### enable / disable <a name="con_enable"></a>
+Turn an individual beacon on or off, but does not destroy it. Disabled beacons cannot
+be tripped manually with `activate`.
 
 ## Global controls
 Here are some options to control all your beacons at once.
@@ -66,13 +68,24 @@ Here are some options to control all your beacons at once.
     });
     $.beacons('enable');
 
-#### enable / disable
-Turn all beacons on or off.
+#### activate
+Trip all beacons regardless of if they are viewable or not. This does not
+affect disabled beacons.
 
 #### destroy
 Remove all beacons. This does *not* alter the original page element.
 
+#### enable / disable
+Turn all beacons on or off.
+
+#### fetch
+* Returns: ```array```
+
+Return the array of all beacons in the system - including disabled beacons.
+
 #### settings
+* Returns: ```object```
+
 Fetch the current system settings.
 
 #### options.range
@@ -87,13 +100,13 @@ For example, an offset of 100 will trigger beacons 100px above the viewport and 
 * Type: ```object|selector```
 
 The container in which the scrolling will happen.
-This is typically ```window```, but can be to something else if you have a special case.
+This is typically ```window```, but can be set to something else if you have a special case.
 
 #### options.throttle
 * Default: ```80```
 * Type: ```number```
 
-Limit the rate at which beacons are inspected. This value is in milliseconds.
+The rate at which beacons are inspected. This value is in milliseconds.
 
 ---------
 * See: http://plugins.jquery.com/beacons/
