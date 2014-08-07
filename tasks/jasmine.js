@@ -6,26 +6,28 @@ module.exports = function (grunt) {
                 src: 'dist/**/*.js'
             },
             src: {
-                src: 'src/**/*.js'
+                src: [
+                    'bower_components/jquery-near-viewport/dist/near-viewport.min.js',
+                    'src/**/*.js'
+                ]
             },
             options: {
                 polyfills: [
                     'bower_components/json2/json2.js',
-                    resolve('jasmine-polyfills'),
-                    resolve('polyfill-queryselector')
+                    resolve('polyfill-queryselector'),
+                    resolve('jasmine-polyfills')
                 ],
                 specs: [
                     'tests/global-cmds.spec.js',
                     'tests/beacon-cmds.spec.js'
                 ],
                 helpers: [
-                    'bower_components/jasmine-jsreporter-real/jasmine-jsreporter.js',
+                    resolve('jasmine-jsreporter-real'),
                     'tests/helpers/saucelabs.helper.js',
                     'tests/helpers/test.helper.js'
                 ],
                 vendor: [
-                    resolve('jquery'),
-                    resolve('jquery-near-viewport')
+                    resolve('jquery')
                 ],
                 outfile: 'tests/_SpecRunner.html',
                 keepRunner: true,

@@ -24,12 +24,13 @@
     "gruntfile.js"
   ],
   "dependencies": {
-    "jquery-near-viewport": "1.1.1"
+    "jquery-near-viewport": "1.1.2"
   },
   "devDependencies": {
     "jquery": "1.x",
     "jasmine-jsreporter-real": "*",
-    "jasmine-polyfills": "~1.0.0",
-    "polyfill-queryselector": "~1.0.0"
+    "json2": "*",
+    "polyfill-queryselector": "~1.0.0",
+    "jasmine-polyfills": "~1.0.0"
   }
 }
