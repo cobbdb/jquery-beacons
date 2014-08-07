@@ -17,6 +17,14 @@ Just supply a callback function to run when the beacon is triggered.
         alert('A widget is on screen!');
     });
 
+## Bind side-effects dynamically
+When a beacon activates, it triggers the `beacon/activate` event so you can keep your
+code modular.
+
+    $('.widget').on('beacon/activate', function () {
+        alert('My beacon activated!');
+    });
+
 ## Beacon options
 For more advanced use cases, there are options available to configure how beacons are triggered.
 

@@ -16,7 +16,7 @@ function Beacon(el, opts) {
         if (opts.runOnce) {
             el.jb_destroy();
         }
-        $(el).trigger('beacon/activate');
+        jQuery(el).trigger('beacon/activate');
     };
     if (opts.enabled) {
         el.jb_active = true;

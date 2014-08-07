@@ -1,7 +1,7 @@
 /**
  * Commands that apply to all beacons.
  */
-$.beacons = function (action) {
+jQuery.beacons = function (action) {
     var el, i, len = beacons.length;
 
     if (action === 'destroy') {
