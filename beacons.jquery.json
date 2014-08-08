@@ -1,7 +1,7 @@
 {
     "name": "beacons",
     "title": "Beacons",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "A jQuery plugin to react when elements scroll into view.",
     "keywords": [
         "visible",
@@ -25,7 +25,6 @@
     "bugs": "https://github.com/cobbdb/jquery-beacons/issues",
     "homepage": "https://github.com/cobbdb/jquery-beacons",
     "dependencies": {
-        "jquery": "1.x",
-        "jquery-near-viewport": "1.x"
+        "jquery": "*"
     }
 }
