@@ -14,6 +14,7 @@ module.exports = function (grunt) {
                     testname: 'jquery-beacons',
                     browsers: browsers,
                     onTestComplete: function (result, callback) {
+                        console.log(JSON.stringify(result));
                         var user = process.env.SAUCE_USERNAME;
                         var pass = process.env.SAUCE_ACCESS_KEY;
                         request.put({
