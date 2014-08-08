@@ -14,7 +14,6 @@ module.exports = function (grunt) {
                     testname: 'jquery-beacons',
                     browsers: browsers,
                     onTestComplete: function (result, callback) {
-                        console.log(JSON.stringify(result));
                         var user = process.env.SAUCE_USERNAME;
                         var pass = process.env.SAUCE_ACCESS_KEY;
                         request.put({
@@ -32,6 +31,7 @@ module.exports = function (grunt) {
                                 passed: result.passed
                             }
                         }, function (error, response, body) {
+                            console.log('Result: %s', JSON.stringify(result));
                             if (error) {
                                 callback(error);
                             } else if (response.statusCode !== 200) {
