@@ -107,6 +107,17 @@ code modular.</p>
 </ul><p>Remove the beacon automatically after it has been triggered.</p>
 
 <h4>
+<a name="optionsrange" class="anchor" href="#optionsrange"><span class="octicon octicon-link"></span></a>options.range</h4>
+
+<ul>
+<li>Default: <code>0</code>
+</li>
+<li>Type: <code>number</code>
+</li>
+</ul><p>Set a specific range for this beacon. If no range is provided,
+then it will use the <a href="#con_global_range">global range value</a>.</p>
+
+<h4>
 <a name="optionsenabled" class="anchor" href="#optionsenabled"><span class="octicon octicon-link"></span></a>options.enabled</h4>
 
 <ul>
@@ -186,12 +197,13 @@ affect disabled beacons.</p>
 </ul><p>Fetch the current system settings.</p>
 
 <h4>
-<a name="optionsrange" class="anchor" href="#optionsrange"><span class="octicon octicon-link"></span></a>options.range</h4>
+<a name="optionsrange-" class="anchor" href="#optionsrange-"><span class="octicon octicon-link"></span></a>options.range <a name="con_global_range"></a>
+</h4>
 
 <ul>
 <li>Default: <code>0</code>
 </li>
-<li>Type: <code>number|string</code>
+<li>Type: <code>number</code>
 </li>
 </ul><p>An offset in pixels to increase the range outside of the viewport.
 For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.</p>
