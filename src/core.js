@@ -19,7 +19,7 @@ var activateBeacons = function () {
     var i, len = beacons.length, el, elRange;
     for (i = 0; i < len; i += 1) {
         el = beacons[i];
-        elRange = el.jb_range || range;
+        elRange = (typeof el.jb_range === 'number') ? el.jb_range : range;
         if (el.jb_active && nearViewport(el, elRange)) {
             el.jb_handler();
         }
