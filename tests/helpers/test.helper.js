@@ -18,7 +18,7 @@ var $help = {
             }
         }).appendTo('body');
     },
-    newBeacon: function (id, top, on, once) {
+    newBeacon: function (id, top, on, once, range) {
         var sel = '#' + id;
         $help.createDiv(id);
         $help.move(sel, top);
@@ -34,7 +34,8 @@ var $help = {
         $(sel).beacon({
             handler: $help.handlerFor[id],
             enabled: on,
-            runOnce: once
+            runOnce: once,
+            range: range
         });
     }
 };

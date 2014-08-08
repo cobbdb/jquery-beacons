@@ -33,9 +33,9 @@ jQuery.beacons = function (action) {
             throttle: throttle
         };
     } else if (typeof action === 'object') {
-        range = action.range || range;
+        range = (typeof action.range === 'number') ? action.range : range;
         context = action.context || context;
-        throttle = action.throttle || throttle;
+        throttle = (typeof action.throttle === 'number') ? action.throttle : throttle;
     }
     return this;
 };

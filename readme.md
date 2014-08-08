@@ -57,6 +57,13 @@ The callback to be run when a beacon is activated.
 
 Remove the beacon automatically after it has been triggered.
 
+#### options.range
+* Default: ```0```
+* Type: ```number```
+
+Set a specific range for this beacon. If no range is provided,
+then it will use the [global range value](#con_global_range).
+
 #### options.enabled
 * Default: ```true```
 * Type: ```boolean```
@@ -107,9 +114,9 @@ Return the array of all beacons in the system - including disabled beacons.
 
 Fetch the current system settings.
 
-#### options.range
+#### options.range <a name="con_global_range"></a>
 * Default: ```0```
-* Type: ```number|string```
+* Type: ```number```
 
 An offset in pixels to increase the range outside of the viewport.
 For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.

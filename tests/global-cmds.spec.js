@@ -84,6 +84,25 @@ describe("$.beacons", function () {
             expect(newConf.throttle).toEqual(98);
             expect(newConf.range).toEqual(oldConf.range);
         });
+        it('applies global range as default', function (done) {
+            var winH = $(window).height();
+            var beaY = 3000;
+            var diff = beaY - winH;
+            $help.newBeacon('TST05', beaY, true, false, diff - 100);
+            $help.newBeacon('TST04', beaY, true, false, diff + 100);
+            expect($help.handlerCalledFor.TST05).toBe(false);
+            expect($help.handlerCalledFor.TST04).toBe(true);
+            expect($help.handlerCalledFor.TST03).toBe(false);
+            $.beacons({
+                range: 4000
+            });
+            setTimeout(function () {
+                expect($help.handlerCalledFor.TST05).toBe(false);
+                expect($help.handlerCalledFor.TST04).toBe(true);
+                expect($help.handlerCalledFor.TST03).toBe(true);
+                done();
+            }, 100);
+        });
     });
     it('can chain commands', function () {
         spyOn($, 'beacons').and.callThrough();

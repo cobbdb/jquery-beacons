@@ -1,6 +1,8 @@
 function Beacon(el, opts) {
     opts.handler = (typeof opts.handler === 'function') ? opts.handler : noop;
     opts.enabled = (typeof opts.enabled === 'undefined') ? true : opts.enabled;
+
+    el.jb_range = opts.range;
     el.jb_destroy = function () {
         var i, len = beacons.length;
         for (i = 0; i < len; i += 1) {

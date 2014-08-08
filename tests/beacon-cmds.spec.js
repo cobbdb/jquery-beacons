@@ -32,6 +32,12 @@ describe("$.fn.beacon", function () {
                 done();
             }, 100);
         });
+        it('can use a specific range value', function () {
+            $help.newBeacon('TST04', 1900, true, true);
+            expect($help.handlerCalledFor.TST04).toBe(false);
+            $help.newBeacon('TST05', 1900, true, true, 2000);
+            expect($help.handlerCalledFor.TST05).toBe(true);
+        });
     });
     describe('constructor - shortcut', function () {
         beforeEach(function () {
