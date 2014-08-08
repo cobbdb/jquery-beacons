@@ -7,7 +7,8 @@ module.exports = function (grunt) {
                     username: process.env.SAUCE_USERNAME,
                     key: process.env.SAUCE_ACCESS_KEY,
                     urls: [
-                        'http://127.0.0.1:9999/tests/_SpecRunner.html'
+                        'http://127.0.0.1:9999/tests/_SpecRunner-global.html',
+                        'http://127.0.0.1:9999/tests/_SpecRunner-single.html'
                     ],
                     build: process.env.TRAVIS_JOB_ID,
                     concurrency: 3,
@@ -31,7 +32,6 @@ module.exports = function (grunt) {
                                 passed: result.passed
                             }
                         }, function (error, response, body) {
-                            console.log('Result: %s', JSON.stringify(result));
                             if (error) {
                                 callback(error);
                             } else if (response.statusCode !== 200) {
@@ -39,6 +39,7 @@ module.exports = function (grunt) {
                             } else {
                                 callback(null, result.passed);
                             }
+                            console.log('Result: %s', JSON.stringify(result));
                         });
                     }
                 }
