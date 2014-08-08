@@ -12,11 +12,6 @@ module.exports = function (grunt) {
                 ]
             },
             options: {
-                polyfills: [
-                    'bower_components/json2/json2.js',
-                    resolve('polyfill-queryselector'),
-                    resolve('jasmine-polyfills')
-                ],
                 specs: [
                     'tests/global-cmds.spec.js',
                     'tests/beacon-cmds.spec.js'

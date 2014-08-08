@@ -25,11 +25,8 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "jquery-near-viewport": "1.1.2",
+    "jquery-near-viewport": "~1.1.2",
     "jquery": "1.x",
-    "jasmine-jsreporter-real": "*",
-    "json2": "*",
-    "polyfill-queryselector": "~1.0.0",
-    "jasmine-polyfills": "~1.0.0"
+    "jasmine-jsreporter-real": "*"
   }
 }
