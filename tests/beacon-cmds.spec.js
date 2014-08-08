@@ -122,8 +122,8 @@ describe("$.fn.beacon", function () {
             expect($help.handlerCalledFor.TST03).toBe(false);
         });
     });
-    describe('enable option', function (done) {
-        it('binds handler for heartbeat', function () {
+    describe('enable option', function () {
+        it('binds handler for heartbeat', function (done) {
             $help.newBeacon('MY01', 1, false);
             expect($help.handlerCalledFor.MY01).toBe(false);
             $('#MY01').beacon('enable');
