@@ -50,8 +50,22 @@ Just supply a callback function to run when the beacon is triggered.</p>
 });
 </code></pre>
 
-<h2>
-<a name="bind-side-effects-dynamically" class="anchor" href="#bind-side-effects-dynamically"><span class="octicon octicon-link"></span></a>Bind side-effects dynamically</h2>
+<h4>
+<a name="convenience-variables-for-your-handlers" class="anchor" href="#convenience-variables-for-your-handlers"><span class="octicon octicon-link"></span></a>Convenience variables for your handlers</h4>
+
+<p>Provided to the beacon's handler is both the DOM object as well
+as the jQuery object.</p>
+
+<pre><code>$('.widget').beacon(function (el) {
+    // 'el' is the DOM object.
+    var pos = el.style.position;
+    // 'this' is the jQuery object.
+    var color = this.css('background-color');
+});
+</code></pre>
+
+<h4>
+<a name="bind-side-effects-dynamically" class="anchor" href="#bind-side-effects-dynamically"><span class="octicon octicon-link"></span></a>Bind side-effects dynamically</h4>
 
 <p>When a beacon activates, it triggers the <code>beacon/activate</code> event so you can keep your
 code modular.</p>
