@@ -35,11 +35,15 @@ module.exports = function (grunt) {
                             if (error) {
                                 callback(error);
                             } else if (response.statusCode !== 200) {
-                                callback(new Error('Unexpected response status'));
+                                callback(Error('Unexpected response status: ' + response.statusCode));
                             } else {
-                                callback(null, result.passed);
+                                if (result.passed) {
+                                    callback(null, true);
+                                } else {
+                                    console.log('Failed with result = %s', JSON.stringify(result));
+                                    callback(null, false);
+                                }
                             }
-                            console.log('Result: %s', JSON.stringify(result));
                         });
                     }
                 }
