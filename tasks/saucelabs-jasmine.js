@@ -28,7 +28,7 @@ module.exports = function (grunt) {
                                 pass: pass
                             },
                             json: {
-                                passed: !result.passed
+                                passed: result.passed
                             }
                         }, function (error, response, body) {
                             if (error) {
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                             } else if (response.statusCode !== 200) {
                                 callback(new Error('Unexpected response status'));
                             } else {
-                                callback(null, !result.passed);
+                                callback(null, result.passed);
                             }
                         });
                     }
