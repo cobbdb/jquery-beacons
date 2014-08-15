@@ -13,39 +13,7 @@ module.exports = function (grunt) {
                     build: process.env.TRAVIS_JOB_ID,
                     concurrency: 3,
                     testname: 'jquery-beacons',
-                    browsers: browsers,
-                    onTestComplete: function (result, callback) {
-                        var user = process.env.SAUCE_USERNAME;
-                        var pass = process.env.SAUCE_ACCESS_KEY;
-                        request.put({
-                            url: [
-                                'https://saucelabs.com/rest/v1',
-                                user,
-                                'jobs',
-                                result.job_id
-                            ].join('/'),
-                            auth: {
-                                user: user,
-                                pass: pass
-                            },
-                            json: {
-                                passed: result.passed
-                            }
-                        }, function (error, response, body) {
-                            if (error) {
-                                callback(error);
-                            } else if (response.statusCode !== 200) {
-                                callback(Error('Unexpected response status: ' + response.statusCode));
-                            } else {
-                                if (result.passed) {
-                                    callback(null, true);
-                                } else {
-                                    console.log('Failed with result = %s', JSON.stringify(result));
-                                    callback(null, false);
-                                }
-                            }
-                        });
-                    }
+                    browsers: browsers
                 }
             }
         }
