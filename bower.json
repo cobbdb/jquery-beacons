@@ -5,7 +5,7 @@
     "cobbdb <cobbdb@gmail.com>"
   ],
   "description": "A jQuery plugin to react when elements scroll into view.",
-  "main": "src/jquery-beacons.js",
+  "main": "dist/jquery-beacons.min.js",
   "keywords": [
     "jquery",
     "plugin",
