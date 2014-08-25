@@ -29,12 +29,10 @@ jQuery.beacons = function (action) {
     } else if (action === 'settings') {
         return {
             range: range,
-            context: context,
             throttle: throttle
         };
     } else if (typeof action === 'object') {
         range = (typeof action.range === 'number') ? action.range : range;
-        context = action.context || context;
         throttle = (typeof action.throttle === 'number') ? action.throttle : throttle;
     }
     return this;

@@ -20,8 +20,17 @@ var activateBeacons = function () {
     for (i = 0; i < len; i += 1) {
         el = beacons[i];
         elRange = (typeof el.jb_range === 'number') ? el.jb_range : range;
-        if (el.jb_active && nearViewport(el, elRange)) {
-            el.jb_handler();
+        if (el.jb_active) {
+            if (nearViewport(el, elRange)) {
+                el.jb_handler();
+                if (!el.jb_wasOnscreen) {
+                    el.jb_wasOnscreen = true;
+                    el.jb_onscreen();
+                }
+            } else if (el.jb_wasOnscreen) {
+                el.jb_wasOnscreen = false;
+                el.jb_offscreen();
+            }
         }
     }
 };

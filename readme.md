@@ -29,24 +29,37 @@ as the jQuery object.
     });
 
 #### Bind side-effects dynamically
-When a beacon activates, it triggers the `beacon/activate` event so you can keep your
+When a beacon activates, it triggers several jQuery events so you can keep your
 code modular.
 
-    $('.widget').on('beacon/activate', function () {
-        alert('My beacon activated!');
-    });
+    $('#my-widget').
+        on('beacon/activate', function () {
+            alert('The widget is visible!');
+        }).
+        on('beacon/scroll/onscreen', function () {
+            alert('The widget has come into view!');
+        }).
+        on('beacon/scroll/offscreen', function () {
+            alert('The widget has scrolled out of view!');
+        });
 
 ## Beacon options
 For more advanced use cases, there are options available to configure how beacons are triggered.
 
     $('.widget').beacon({
         handler: function () {
-            alert('A widget has appeared!');
+            alert('A widget is visible!');
         },
-        runOnce: true
+        runOnce: true,
+        scroll: {
+            offscreen: function () {
+                alert('The widget is gone now!');
+            }
+        }
     });
 
 #### options.handler
+* Default: ```noop```
 * Type: ```function```
 
 The callback to be run when a beacon is activated.
@@ -55,7 +68,24 @@ The callback to be run when a beacon is activated.
 * Default: ```false```
 * Type: ```boolean```
 
-Remove the beacon automatically after it has been triggered.
+Remove the beacon automatically after it has been triggered by the handler.
+
+#### options.scroll.onscreen
+* Default: ```noop```
+* Type: ```function```
+
+Callback for when the beacon scrolls on screen. This is triggered only once
+when the beacon becomes visible, but can trigger multiple times - once for
+each time the beacon becomes visible. The `runOnce` option does not apply
+to the scroll callbacks. Does not trigger if beacon is disabled.
+
+#### options.scroll.offscreen
+* Default: ```noop```
+* Type: ```function```
+
+Companion for the `onscreen` callback. This behaves according to the same
+rules as `onscreen` except applies to when the beacon scroll off the viewport
+instead.
 
 #### options.range
 * Default: ```0```
@@ -120,13 +150,6 @@ Fetch the current system settings.
 
 An offset in pixels to increase the range outside of the viewport.
 For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.
-
-#### options.context
-* Default: ```window```
-* Type: ```object|selector```
-
-The container in which the scrolling will happen.
-This is typically ```window```, but can be set to something else if you have a special case.
 
 #### options.throttle
 * Default: ```80```

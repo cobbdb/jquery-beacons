@@ -5,15 +5,22 @@ module.exports = function (grunt) {
             'dist-global': {
                 src: 'dist/**/*.js',
                 options: {
-                    specs: 'tests/global-cmds.spec.js',
+                    specs: 'tests/global/*.spec.js',
                     outfile: 'tests/_SpecRunner-global.html'
                 }
             },
             'dist-single': {
                 src: 'dist/**/*.js',
                 options: {
-                    specs: 'tests/beacon-cmds.spec.js',
+                    specs: 'tests/single/*.spec.js',
                     outfile: 'tests/_SpecRunner-single.html'
+                }
+            },
+            'dist-other': {
+                src: 'dist/**/*.js',
+                options: {
+                    specs: 'tests/other/*.spec.js',
+                    outfile: 'tests/_SpecRunner-other.html'
                 }
             },
             src: {
@@ -23,10 +30,9 @@ module.exports = function (grunt) {
                 ],
                 options: {
                     specs: [
-                        'tests/global-cmds.spec.js',
-                        'tests/beacon-cmds.spec.js'
+                        'tests/**/*.spec.js'
                     ],
-                    keepRunner: false,
+                    outfile: 'tests/_SpecRunner-dev.html',
                     display: 'full',
                     summary: false
                 }
@@ -35,7 +41,8 @@ module.exports = function (grunt) {
                 helpers: [
                     resolve('jasmine-jsreporter-real'),
                     'tests/helpers/saucelabs.helper.js',
-                    'tests/helpers/test.helper.js'
+                    'tests/helpers/test-utils.helper.js',
+                    'tests/helpers/setup-teardown.helper.js'
                 ],
                 vendor: [
                     resolve('jquery')

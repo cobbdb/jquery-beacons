@@ -12,7 +12,12 @@ module.exports = function (grunt) {
                 trailing: true
             },
             default: {
-                src: 'src/*.js'
+                src: [
+                    'src/**/*.js',
+                    'tests/**/*.js',
+                    'tasks/**/*.js',
+                    'gruntfile.js'
+                ]
             }
         }
     });
