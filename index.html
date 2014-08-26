@@ -67,12 +67,19 @@ as the jQuery object.</p>
 <h4>
 <a name="bind-side-effects-dynamically" class="anchor" href="#bind-side-effects-dynamically"><span class="octicon octicon-link"></span></a>Bind side-effects dynamically</h4>
 
-<p>When a beacon activates, it triggers the <code>beacon/activate</code> event so you can keep your
+<p>When a beacon activates, it triggers several jQuery events so you can keep your
 code modular.</p>
 
-<pre><code>$('.widget').on('beacon/activate', function () {
-    alert('My beacon activated!');
-});
+<pre><code>$('#my-widget').
+    on('beacon/activate', function () {
+        alert('The widget is visible!');
+    }).
+    on('beacon/scroll/onscreen', function () {
+        alert('The widget has come into view!');
+    }).
+    on('beacon/scroll/offscreen', function () {
+        alert('The widget has scrolled out of view!');
+    });
 </code></pre>
 
 <h2>
@@ -82,9 +89,14 @@ code modular.</p>
 
 <pre><code>$('.widget').beacon({
     handler: function () {
-        alert('A widget has appeared!');
+        alert('A widget is visible!');
     },
-    runOnce: true
+    runOnce: true,
+    scroll: {
+        offscreen: function () {
+            alert('The widget is gone now!');
+        }
+    }
 });
 </code></pre>
 
@@ -92,6 +104,8 @@ code modular.</p>
 <a name="optionshandler" class="anchor" href="#optionshandler"><span class="octicon octicon-link"></span></a>options.handler</h4>
 
 <ul>
+<li>Default: <code>noop</code>
+</li>
 <li>Type: <code>function</code>
 </li>
 </ul><p>The callback to be run when a beacon is activated.</p>
@@ -104,7 +118,32 @@ code modular.</p>
 </li>
 <li>Type: <code>boolean</code>
 </li>
-</ul><p>Remove the beacon automatically after it has been triggered.</p>
+</ul><p>Remove the beacon automatically after it has been triggered by the handler.</p>
+
+<h4>
+<a name="optionsscrollonscreen" class="anchor" href="#optionsscrollonscreen"><span class="octicon octicon-link"></span></a>options.scroll.onscreen</h4>
+
+<ul>
+<li>Default: <code>noop</code>
+</li>
+<li>Type: <code>function</code>
+</li>
+</ul><p>Callback for when the beacon scrolls on screen. This is triggered only once
+when the beacon becomes visible, but can trigger multiple times - once for
+each time the beacon becomes visible. The <code>runOnce</code> option does not apply
+to the scroll callbacks. Does not trigger if beacon is disabled.</p>
+
+<h4>
+<a name="optionsscrolloffscreen" class="anchor" href="#optionsscrolloffscreen"><span class="octicon octicon-link"></span></a>options.scroll.offscreen</h4>
+
+<ul>
+<li>Default: <code>noop</code>
+</li>
+<li>Type: <code>function</code>
+</li>
+</ul><p>Companion for the <code>onscreen</code> callback. This behaves according to the same
+rules as <code>onscreen</code> except applies to when the beacon scrolls off the viewport
+instead.</p>
 
 <h4>
 <a name="optionsrange" class="anchor" href="#optionsrange"><span class="octicon octicon-link"></span></a>options.range</h4>
@@ -207,17 +246,6 @@ affect disabled beacons.</p>
 </li>
 </ul><p>An offset in pixels to increase the range outside of the viewport.
 For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.</p>
-
-<h4>
-<a name="optionscontext" class="anchor" href="#optionscontext"><span class="octicon octicon-link"></span></a>options.context</h4>
-
-<ul>
-<li>Default: <code>window</code>
-</li>
-<li>Type: <code>object|selector</code>
-</li>
-</ul><p>The container in which the scrolling will happen.
-This is typically <code>window</code>, but can be set to something else if you have a special case.</p>
 
 <h4>
 <a name="optionsthrottle" class="anchor" href="#optionsthrottle"><span class="octicon octicon-link"></span></a>options.throttle</h4>
