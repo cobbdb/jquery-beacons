@@ -84,7 +84,7 @@ to the scroll callbacks. Does not trigger if beacon is disabled.
 * Type: ```function```
 
 Companion for the `onscreen` callback. This behaves according to the same
-rules as `onscreen` except applies to when the beacon scroll off the viewport
+rules as `onscreen` except applies to when the beacon scrolls off the viewport
 instead.
 
 #### options.range
