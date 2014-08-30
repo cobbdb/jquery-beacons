@@ -3,12 +3,12 @@ module.exports = function (grunt) {
         'saucelabs-jasmine': {
             all: {
                 options: {
+                    testname: 'all',
                     urls: [
                         'http://127.0.0.1:9999/tests/_SpecRunner-global.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-single.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
-                    ],
-                    testname: 'all',
+                    ]
                 }
             },
             single: {
