@@ -3,22 +3,44 @@ module.exports = function (grunt) {
         'saucelabs-jasmine': {
             all: {
                 options: {
-                    username: process.env.SAUCE_USERNAME,
-                    key: process.env.SAUCE_ACCESS_KEY,
-                    /**
-                     * Split into separate files so that 3rd party test
-                     * data does not exceed 64MB per SL's spec.
-                     */
                     urls: [
                         'http://127.0.0.1:9999/tests/_SpecRunner-global.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-single.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
                     ],
-                    build: process.env.TRAVIS_JOB_ID,
-                    concurrency: 3,
-                    testname: 'jquery-beacons',
-                    browsers: browsers
+                    testname: 'all',
                 }
+            },
+            single: {
+                options: {
+                    testname: 'single',
+                    urls: [
+                        'http://127.0.0.1:9999/tests/_SpecRunner-single.html'
+                    ]
+                }
+            },
+            global: {
+                options: {
+                    testname: 'global',
+                    urls: [
+                        'http://127.0.0.1:9999/tests/_SpecRunner-global.html'
+                    ]
+                }
+            },
+            other: {
+                options: {
+                    testname: 'other',
+                    urls: [
+                        'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
+                    ]
+                }
+            },
+            options: {
+                username: process.env.SAUCE_USERNAME,
+                key: process.env.SAUCE_ACCESS_KEY,
+                build: process.env.TRAVIS_JOB_ID,
+                concurrency: 3,
+                browsers: browsers
             }
         }
     });

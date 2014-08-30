@@ -21,6 +21,6 @@ module.exports = function (grunt) {
     grunt.registerTask('sl-test', 'SauceLabs test suite.', [
         'queue:test-dist',
         'connect',
-        'saucelabs-jasmine'
+        'saucelabs-jasmine:' + process.env.TESTENV
     ]);
 };
