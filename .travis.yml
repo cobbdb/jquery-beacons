@@ -11,9 +11,10 @@ install:
 script:
     - grunt sl-test
 env:
-    - global:
+    global:
         - secure: d6Tb4X9FimnatqZSsVmE3qh0IE4f3nWHwK7iENpcAmcIRJVGmvAYtwsKvU2nzjgIsWnK3mGofzgwatB4+1wkj737qv1+H7te8rKUpzedxifRWD+htSOQD9tl1ESvdB++jayR0GZ4KG9sHpWxNgaTGfHYd7a/0r86mbwZZDxSD3s=
         - secure: YInqV6zFXU7ubH+zBzmrQOC6u2j8Cr5FbFCoMC3djjVBiUo7J7hAdDbCLzF5ObYO+MtPE+Uioe7vKIYPe+CCk2DrRbnr1HSD+zlPEUzjCLEgKxlZJzM0fZqO4dTwaPzXYSpSi/0uPJ+nhnfzFJFP7Y5wnU+w5bdcY2SRBotbXTE=
-    - TESTENV: single
-    - TESTENV: global
-    - TESTENV: other
+    matrix:
+        - TESTENV: single
+        - TESTENV: global
+        - TESTENV: other
