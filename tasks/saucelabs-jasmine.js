@@ -8,40 +8,8 @@ module.exports = function (grunt) {
                         'http://127.0.0.1:9999/tests/_SpecRunner-global.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-single.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
-                    ]
-                }
-            },
-            single: {
-                options: {
-                    testname: 'single',
-                    urls: [
-                        'http://127.0.0.1:9999/tests/_SpecRunner-single.html'
                     ],
-                    tunnelArgs: [
-                        '-i', 'single'
-                    ]
-                }
-            },
-            global: {
-                options: {
-                    testname: 'global',
-                    urls: [
-                        'http://127.0.0.1:9999/tests/_SpecRunner-global.html'
-                    ],
-                    tunnelArgs: [
-                        '-i', 'global'
-                    ]
-                }
-            },
-            other: {
-                options: {
-                    testname: 'other',
-                    urls: [
-                        'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
-                    ],
-                    tunnelArgs: [
-                        '-i', 'other'
-                    ]
+                    throttled: 3
                 }
             },
             options: {
