@@ -5,10 +5,9 @@ module.exports = function (grunt) {
                 options: {
                     testname: 'jquery-beacons',
                     urls: [
-                        /*'http://127.0.0.1:9999/tests/_SpecRunner-global.html',
+                        'http://127.0.0.1:9999/tests/_SpecRunner-global.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-single.html',
-                        'http://127.0.0.1:9999/tests/_SpecRunner-other.html'*/
-                        'http://127.0.0.1:9999/tests/_SpecRunner-dev.html'
+                        'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
                     ],
                     throttled: 4
                 }
