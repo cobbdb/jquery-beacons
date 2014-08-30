@@ -16,6 +16,9 @@ module.exports = function (grunt) {
                     testname: 'single',
                     urls: [
                         'http://127.0.0.1:9999/tests/_SpecRunner-single.html'
+                    ],
+                    tunnelArgs: [
+                        '-i', 'single'
                     ]
                 }
             },
@@ -24,6 +27,9 @@ module.exports = function (grunt) {
                     testname: 'global',
                     urls: [
                         'http://127.0.0.1:9999/tests/_SpecRunner-global.html'
+                    ],
+                    tunnelArgs: [
+                        '-i', 'global'
                     ]
                 }
             },
@@ -32,6 +38,9 @@ module.exports = function (grunt) {
                     testname: 'other',
                     urls: [
                         'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
+                    ],
+                    tunnelArgs: [
+                        '-i', 'other'
                     ]
                 }
             },
