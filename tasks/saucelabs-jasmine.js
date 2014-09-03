@@ -9,7 +9,7 @@ module.exports = function (grunt) {
                         'http://127.0.0.1:9999/tests/_SpecRunner-single.html',
                         'http://127.0.0.1:9999/tests/_SpecRunner-other.html'
                     ],
-                    throttled: 4
+                    throttled: 6
                 }
             },
             options: {
