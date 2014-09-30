@@ -26,12 +26,12 @@
     "bower-path": "^1.0.1",
     "grunt": "^0.4.5",
     "grunt-contrib-connect": "^0.8.0",
-    "grunt-contrib-jasmine": "^0.7.0",
+    "grunt-contrib-jasmine": "^0.8.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-queue": "^1.0.1",
-    "grunt-saucelabs": "^8.3.1",
+    "grunt-saucelabs": "^8.3.2",
     "matchdep": "^0.3.0"
   }
 }
