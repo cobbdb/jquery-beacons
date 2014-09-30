@@ -23,10 +23,11 @@
     "*.json",
     "gruntfile.js"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "x"
+  },
   "devDependencies": {
     "jquery-near-viewport": "~1.2.0",
-    "jquery": "1.x",
     "jasmine-jsreporter-real": "*"
   }
 }
