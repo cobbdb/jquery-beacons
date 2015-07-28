@@ -26,81 +26,107 @@ module.exports = function (grunt) {
 var browsers = [{
     browserName: 'firefox',
     platform: 'Linux',
-    version: '28'
+    version: '39.0'
 }, {
     browserName: 'firefox',
-    platform: 'Windows 8',
-    version: '29'
+    platform: 'Windows 10',
+    version: '39.0'
+}, {
+    browserName: 'firefox',
+    platform: 'Windows 8.1',
+    version: '39.0'
+}, {
+    browserName: 'chrome',
+    platform: 'Windows 10',
+    version: '43.0'
+}, {
+    browserName: 'chrome',
+    platform: 'Windows 8.1',
+    version: '43.0'
 }, {
     browserName: 'chrome',
     platform: 'Windows 7',
-    version: '34'
-}, {
-    browserName: 'chrome',
-    platform: 'Windows XP',
-    version: '33'
-}, {
-    browserName: 'internet explorer',
-    platform: 'Windows XP',
-    version: '8'
+    version: '43.0'
 }, {
     browserName: 'internet explorer',
     platform: 'Windows 7',
-    version: '9'
+    version: '8.0'
 }, {
     browserName: 'internet explorer',
     platform: 'Windows 7',
-    version: '10'
+    version: '10.0'
 }, {
     browserName: 'internet explorer',
     platform: 'Windows 8',
-    version: '10'
+    version: '10.0'
 }, {
     browserName: 'internet explorer',
     platform: 'Windows 8.1',
-    version: '11'
+    version: '11.0'
 }, {
-    browserName: 'safari',
-    platform: 'OS X 10.6',
-    version: '5'
+    browserName: 'internet explorer',
+    platform: 'Windows 10',
+    version: '11.0'
 }, {
     browserName: 'safari',
     platform: 'OS X 10.8',
-    version: '6'
+    version: '6.0'
 }, {
     browserName: 'safari',
     platform: 'OS X 10.9',
-    version: '7'
+    version: '7.0'
+}, {
+    browserName: 'safari',
+    platform: 'OS X 10.10',
+    version: '8.0'
 }, {
     browserName: 'opera',
     platform: 'Linux',
-    version: '12'
+    version: '12.15'
 }, {
     browserName: 'opera',
     platform: 'Windows 7',
-    version: '12'
+    version: '12.12'
 }, {
     browserName: 'iphone',
-    platform: 'OS X 10.9',
+    platform: 'OS X 10.10',
+    version: '8.2',
+    deviceName: 'iPhone Simulator',
+    'device-orientation': 'portrait'
+}, {
+    browserName: 'iphone',
+    platform: 'OS X 10.10',
+    version: '8.1',
+    deviceName: 'iPhone Simulator',
+    'device-orientation': 'landscape'
+}, {
+    browserName: 'iphone',
+    platform: 'OS X 10.10',
     version: '7.1',
-    deviceName: 'iPhone',
-    'device-orientation': 'portrait'
+    deviceName: 'iPad Simulator',
+    'device-orientation': 'landscape'
 }, {
-    browserName: 'ipad',
-    platform: 'OS X 10.9',
+    browserName: 'iphone',
+    platform: 'OS X 10.10',
     version: '7.0',
-    deviceName: 'iPad',
+    deviceName: 'iPad Simulator',
     'device-orientation': 'portrait'
 }, {
-    browserName: 'ipad',
-    platform: 'OS X 10.8',
-    version: '6.1',
-    deviceName: 'iPad',
+    browserName: 'android',
+    platform: 'Linux',
+    version: '5.1',
+    deviceName: 'Android Emulator',
+    'device-orientation': 'portrait'
+}, {
+    browserName: 'android',
+    platform: 'Linux',
+    version: '5.0',
+    deviceName: 'Android Emulator',
     'device-orientation': 'landscape'
 }, {
     browserName: 'android',
     platform: 'Linux',
-    version: '4.3',
-    deviceName: 'Android',
+    version: '4.4',
+    deviceName: 'Android Emulator',
     'device-orientation': 'portrait'
 }];
