@@ -88,16 +88,16 @@ describe("$.beacons", function () {
             var diff = beaY - winH;
             $jb.newBeacon('TST05', beaY, true, false, diff - 100);
             $jb.newBeacon('TST04', beaY, true, false, diff + 100);
-            expect($jb.div.TST05.handler.called).toBe(false);
-            expect($jb.div.TST04.handler.called).toBe(true);
-            expect($jb.div.TST03.handler.called).toBe(false);
+            expect($jb.div.TST05.handler.called).toBe(false, 'A - TST05');
+            expect($jb.div.TST04.handler.called).toBe(true, 'A - TST04');
+            expect($jb.div.TST03.handler.called).toBe(false, 'A - TST03');
             jQuery.beacons({
                 range: 4000
             });
             setTimeout(function () {
-                expect($jb.div.TST05.handler.called).toBe(false);
-                expect($jb.div.TST04.handler.called).toBe(true);
-                expect($jb.div.TST03.handler.called).toBe(true);
+                expect($jb.div.TST05.handler.called).toBe(false, 'B - TST05');
+                expect($jb.div.TST04.handler.called).toBe(true, 'B - TST04');
+                expect($jb.div.TST03.handler.called).toBe(true, 'B - TST03');
                 done();
             }, 100);
         });

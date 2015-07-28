@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "jquery": "1.x",
-    "jasmine-jsreporter-real": "latest"
+    "jasmine-jsreporter-real": "latest",
+    "jquery-near-viewport": "1.2.6"
   }
 }
