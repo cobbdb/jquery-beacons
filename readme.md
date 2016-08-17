@@ -1,6 +1,6 @@
 [![Beacons](http://i.imgur.com/bCS34uV.png)](https://cobbdb.github.io/jquery-beacons)
 
-[![Build Status](https://travis-ci.org/cobbdb/jquery-beacons.svg?branch=master)](https://travis-ci.org/cobbdb/jquery-beacons) [![Bower version](https://badge.fury.io/bo/jquery-beacons.svg)](http://badge.fury.io/bo/jquery-beacons)
+[![Build Status](https://travis-ci.org/cobbdb/jquery-beacons.svg?branch=1.4.2)](https://travis-ci.org/cobbdb/jquery-beacons) [![Bower version](https://badge.fury.io/bo/jquery-beacons.svg)](http://badge.fury.io/bo/jquery-beacons)
 
 A jQuery plugin to react when elements are in view.
 
