@@ -10,15 +10,21 @@ module.exports = function (grunt) {
         'jasmine:src',
         'jshint',
         'uglify',
-        'queue:test-dist'
+        'jasmine:dist-global',
+        'jasmine:dist-single',
+        'jasmine:dist-other'
     ]);
     grunt.registerTask('dev-test', 'Run SpecRunner.html locally.', [
-        'queue:test-dist',
+        'jasmine:dist-global',
+        'jasmine:dist-single',
+        'jasmine:dist-other',
         'connect',
         'watch'
     ]);
     grunt.registerTask('sl-test', 'SauceLabs test suite.', [
-        'queue:test-dist',
+        'jasmine:dist-global',
+        'jasmine:dist-single',
+        'jasmine:dist-other',
         'connect',
         'saucelabs-jasmine:all'
     ]);

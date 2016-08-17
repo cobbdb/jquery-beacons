@@ -31,7 +31,6 @@
     "grunt-contrib-jshint": "1.0.0",
     "grunt-contrib-uglify": "2.0.0",
     "grunt-contrib-watch": "1.0.0",
-    "grunt-queue": "1.0.1",
     "grunt-saucelabs": "9.0.0",
     "matchdep": "1.0.1"
   },
