@@ -24,16 +24,16 @@
   "homepage": "https://github.com/cobbdb/jquery-beacons",
   "devDependencies": {
     "bower-path": "1.0.1",
-    "grunt": "0.4.5",
-    "grunt-browserify": "3.8.0",
-    "grunt-contrib-connect": "0.10.1",
-    "grunt-contrib-jasmine": "0.9.0",
-    "grunt-contrib-jshint": "0.11.2",
-    "grunt-contrib-uglify": "0.9.1",
-    "grunt-contrib-watch": "0.6.1",
+    "grunt": "1.0.1",
+    "grunt-browserify": "5.0.0",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-jasmine": "1.0.3",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-uglify": "2.0.0",
+    "grunt-contrib-watch": "1.0.0",
     "grunt-queue": "1.0.1",
-    "grunt-saucelabs": "8.6.1",
-    "matchdep": "0.3.0"
+    "grunt-saucelabs": "9.0.0",
+    "matchdep": "1.0.1"
   },
   "dependencies": {
     "jquery-near-viewport": "1.2.2"

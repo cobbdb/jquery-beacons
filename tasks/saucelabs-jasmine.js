@@ -24,109 +24,76 @@ module.exports = function (grunt) {
 };
 
 var browsers = [{
-    browserName: 'firefox',
-    platform: 'Linux',
-    version: '39.0'
-}, {
-    browserName: 'firefox',
-    platform: 'Windows 10',
-    version: '39.0'
-}, {
-    browserName: 'firefox',
-    platform: 'Windows 8.1',
-    version: '39.0'
-}, {
-    browserName: 'chrome',
-    platform: 'Windows 10',
-    version: '43.0'
-}, {
-    browserName: 'chrome',
-    platform: 'Windows 8.1',
-    version: '43.0'
-}, {
-    browserName: 'chrome',
     platform: 'Windows 7',
-    version: '43.0'
+    browserName: 'chrome',
+    version: '51.0'
 }, {
-    browserName: 'internet explorer',
     platform: 'Windows 7',
-    version: '8.0'
+    browserName: 'firefox',
+    version: '47.0'
 }, {
-    browserName: 'internet explorer',
     platform: 'Windows 7',
-    version: '10.0'
-}, {
     browserName: 'internet explorer',
-    platform: 'Windows 8',
-    version: '10.0'
-}, {
-    browserName: 'internet explorer',
-    platform: 'Windows 8.1',
     version: '11.0'
 }, {
-    browserName: 'internet explorer',
-    platform: 'Windows 10',
-    version: '11.0'
-}, {
-    browserName: 'safari',
-    platform: 'OS X 10.8',
-    version: '6.0'
-}, {
-    browserName: 'safari',
-    platform: 'OS X 10.9',
-    version: '7.0'
-}, {
-    browserName: 'safari',
-    platform: 'OS X 10.10',
-    version: '8.0'
-}, {
-    browserName: 'opera',
-    platform: 'Linux',
-    version: '12.15'
-}, {
-    browserName: 'opera',
     platform: 'Windows 7',
+    browserName: 'opera',
     version: '12.12'
 }, {
-    browserName: 'iphone',
+    platform: 'Windows 10',
+    browserName: 'chrome',
+    version: '51.0'
+}, {
+    platform: 'Windows 10',
+    browserName: 'MicrosoftEdge',
+    version: '13.10586'
+}, {
     platform: 'OS X 10.10',
-    version: '8.2',
+    browserName: 'safari',
+    version: '8.0'
+}, {
+    platform: 'OS X 10.11',
+    browserName: 'chrome',
+    version: '51.0'
+}, {
+    platform: 'OS X 10.11',
+    browserName: 'safari',
+    version: '9.0'
+}, {
     deviceName: 'iPhone Simulator',
-    'device-orientation': 'portrait'
+    deviceOrientation: 'portrait',
+    platformName: 'iOS',
+    browserName: 'Safari',
+    platformVersion: '9.3',
+    appiumVersion: '1.5.3'
 }, {
-    browserName: 'iphone',
-    platform: 'OS X 10.10',
-    version: '8.1',
     deviceName: 'iPhone Simulator',
-    'device-orientation': 'landscape'
+    deviceOrientation: 'portrait',
+    platformName: 'iOS',
+    browserName: 'Safari',
+    platformVersion: '8.4',
+    appiumVersion: '1.5.3'
 }, {
-    browserName: 'iphone',
-    platform: 'OS X 10.10',
-    version: '7.1',
     deviceName: 'iPad Simulator',
-    'device-orientation': 'landscape'
+    deviceOrientation: 'landscape',
+    platformName: 'iOS',
+    browserName: 'Safari',
+    platformVersion: '9.3',
+    appiumVersion: '1.5.3'
 }, {
-    browserName: 'iphone',
-    platform: 'OS X 10.10',
-    version: '7.0',
-    deviceName: 'iPad Simulator',
-    'device-orientation': 'portrait'
-}, {
-    browserName: 'android',
-    platform: 'Linux',
-    version: '5.1',
     deviceName: 'Android Emulator',
-    'device-orientation': 'portrait'
+    deviceType: 'phone',
+    deviceOrientation: 'portrait',
+    platformName: 'Android',
+    browserName: 'Browser',
+    platformVersion: '5.1',
+    appiumVersion: '1.5.3'
 }, {
-    browserName: 'android',
-    platform: 'Linux',
-    version: '5.0',
     deviceName: 'Android Emulator',
-    'device-orientation': 'landscape'
-}, {
-    browserName: 'android',
-    platform: 'Linux',
-    version: '4.4',
-    deviceName: 'Android Emulator',
-    'device-orientation': 'portrait'
+    deviceType: 'tablet',
+    deviceOrientation: 'landscape',
+    platformName: 'Android',
+    browserName: 'Browser',
+    platformVersion: '5.1',
+    appiumVersion: '1.5.3'
 }];
