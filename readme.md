@@ -6,7 +6,7 @@ A jQuery plugin to react when elements are in view.
 
     $ bower install jquery-beacons
 
-[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/jquery-beacons.svg?branch=master)](https://saucelabs.com/u/jquery-beacons)
+[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/jquery-beacons.svg?branch=1.4.2)](https://saucelabs.com/u/jquery-beacons)
 
 -------------
 ## Creating a new beacon
