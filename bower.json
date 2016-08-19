@@ -1,10 +1,11 @@
 {
   "name": "jquery-beacons",
+  "main": "dist/jquery-beacons.js",
   "homepage": "https://github.com/cobbdb/jquery-beacons",
   "authors": [
-    "cobbdb <cobbdb@gmail.com>"
+    "Dan Cobb <cobbdb@gmail.com>"
   ],
-  "description": "A jQuery plugin to react when elements scroll into view.",
+  "description": "React when elements scroll into view.",
   "keywords": [
     "jquery",
     "plugin",
@@ -16,14 +17,12 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
     "test",
     "tests",
     "*.json",
     "gruntfile.js"
   ],
-  "dependencies": {},
-  "devDependencies": {
-    "jasmine-jsreporter-real": "latest"
+  "dependencies": {
+    "jquery": "*"
   }
 }
