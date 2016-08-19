@@ -5,7 +5,6 @@
     "cobbdb <cobbdb@gmail.com>"
   ],
   "description": "A jQuery plugin to react when elements scroll into view.",
-  "main": "dist/jquery-beacons.min.js",
   "keywords": [
     "jquery",
     "plugin",
@@ -23,12 +22,8 @@
     "*.json",
     "gruntfile.js"
   ],
-  "dependencies": {
-    "jquery": "x"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "jquery": "*",
-    "jasmine-jsreporter-real": "latest",
-    "jquery-near-viewport": "1.x"
+    "jasmine-jsreporter-real": "latest"
   }
 }
