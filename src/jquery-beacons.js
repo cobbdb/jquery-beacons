@@ -3,7 +3,6 @@ var jquery = require('jquery'),
 
 jquery.fn.beacon = function (action) {
     this.each(function (i, el) {
-        var beacon;
         if (action === 'enable') {
             el.$b_enable();
         } else if (action === 'disable') {

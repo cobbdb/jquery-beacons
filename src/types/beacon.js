@@ -1,6 +1,3 @@
-var nearViewport = require('jquery-near-viewport'),
-    smoothScroll = require('../util/smooth-scroll.js');
-
 /**
  * @constructor
  * @type {Beacon}
@@ -10,6 +7,10 @@ var nearViewport = require('jquery-near-viewport'),
  * @param {function(Beacon)} [onexit]
  * @param {number} [opts.range] Defaults to 0.
  */
+
+var nearViewport = require('jquery-near-viewport'),
+    smoothScroll = require('../util/smooth-scroll.js');
+
 module.exports = function (opts) {
     var exit = opts.onexit || function () {},
         enter = opts.onenter || function () {},
