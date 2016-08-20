@@ -18,3 +18,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added install option as typical global jQuery plugin.
 - Removed all jQuery `beacon/*` events.
 - Removed global settings. Each beacon must now be configured individually.
+- Removed all TravisCI tasks and badges.

@@ -6,12 +6,10 @@ module.exports = function (grunt) {
                     'dist/jquery-beacons.js': 'src/jquery-beacons.js'
                 },
                 options: {
-                    alias: './src/jquery.alias.js:jquery'
+                    alias: {
+                        'jquery': './src/jquery.alias.js'
+                    }
                 }
-            },
-            specs: {
-                dest: 'bin/tests',
-                src: 'tests/*.spec.js'
             }
         }
     });

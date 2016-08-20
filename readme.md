@@ -1,7 +1,6 @@
 [![Beacons](https://i.imgur.com/bCS34uV.png)](//cobbdb.github.io/jquery-beacons)
 
 [![License](https://img.shields.io/npm/l/jquery-beacons.svg)](//npmjs.com/package/jquery-beacons)
-[![Build Status](https://travis-ci.org/cobbdb/jquery-beacons.svg?branch=2.0.0)](//travis-ci.org/cobbdb/jquery-beacons)
 [![Bower version](https://badge.fury.io/bo/jquery-beacons.svg)](//badge.fury.io/bo/jquery-beacons)
 [![NPM version](https://badge.fury.io/js/jquery-beacons.svg)](//badge.fury.io/js/jquery-beacons)
 [![Dependencies](https://img.shields.io/david/dev/cobbdb/jquery-beacons.svg)](./package.json)
