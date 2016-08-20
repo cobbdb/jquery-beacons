@@ -47,7 +47,7 @@ module.exports = function (opts) {
         active = inView;
 
         // Check if this beacon is exhausted.
-        if ((exhaustedEnter) && (exhaustedExit)) {
+        if (exhaustedEnter && exhaustedExit) {
             el.$b_destroy();
         }
     };
