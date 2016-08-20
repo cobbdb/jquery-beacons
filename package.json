@@ -32,7 +32,9 @@
     "matchdep": "1.0.1"
   },
   "dependencies": {
-    "jquery": "^3.1.0",
     "jquery-near-viewport": "^1.2.2"
+  },
+  "peerDependencies": {
+    "jquery": "*"
   }
 }

@@ -13,3 +13,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Removed continuous triggering with `handler`.
 - Changed beacon settings to `onenter` and `onexit`.
 - Removed throttle options. Unneeded with RAF.
+- Removed Saucelabs-related tests and tasks.

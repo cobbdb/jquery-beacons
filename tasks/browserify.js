@@ -6,7 +6,7 @@ module.exports = function (grunt) {
                     'dist/jquery-beacons.js': 'src/jquery-beacons.js'
                 },
                 options: {
-                    alias: 'src/alias/jquery.alias.js'
+                    alias: './src/jquery.alias.js:jquery'
                 }
             }
         }
