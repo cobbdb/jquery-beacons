@@ -1,34 +1,27 @@
-var resolve = require('bower-path');
 module.exports = function (grunt) {
     grunt.config.merge({
         jasmine: {
-            src: {
+            module: {
                 src: [
-                    'bower_components/jquery-near-viewport/dist/near-viewport.min.js',
-                    'src/**/*.js'
+                    'bin/tests/*.js'
+                ]
+            },
+            bundle: {
+                specs: [
+                    'tests/bundle/*.spec.js'
+                ],
+                src: [
+                    'dist/jquery-beacons.min.js'
                 ],
                 options: {
-                    specs: [
-                        'tests/**/*.spec.js'
-                    ],
-                    outfile: 'tests/_SpecRunner-dev.html',
-                    display: 'full',
-                    summary: false
+                    vendor: [
+                        'node_modules/jquery/dist/jquery.min.js'
+                    ]
                 }
             },
             options: {
-                helpers: [
-                    resolve('jasmine-jsreporter-real'),
-                    'tests/helpers/saucelabs.helper.js',
-                    'tests/helpers/test-utils.helper.js',
-                    'tests/helpers/setup-teardown.helper.js'
-                ],
-                vendor: [
-                    resolve('jquery')
-                ],
-                keepRunner: false,
-                display: 'short',
-                summary: true
+                display: 'full',
+                summary: false
             }
         }
     });

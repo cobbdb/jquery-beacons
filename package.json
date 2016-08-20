@@ -4,7 +4,7 @@
   "description": "React when elements scroll into view.",
   "main": "src/jquery-beacons.js",
   "scripts": {
-    "test": "grunt jasmine"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",

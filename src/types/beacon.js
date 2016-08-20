@@ -1,11 +1,15 @@
 /**
+ * # Beacon
  * @constructor
  * @type {Beacon}
  * @param {Object} opts
  * @param {HTMLElement} opts.el
- * @param {function(Beacon)} [onenter]
- * @param {function(Beacon)} [onexit]
- * @param {number} [opts.range] Defaults to 0.
+ * @param {function(Beacon)} [onenter] Event when beacon enters the viewport.
+ * @param {boolean} [opts.enteronce=false] True to trip onenter event only once.
+ * @param {function(Beacon)} [onexit] Event when beacon leaves the viewport.
+ * @param {boolean} [opts.exitonce=false] True to trip onexit event only once.
+ * @param {number} [opts.range=0] Pixels from top and bottom of viewport
+ * to trigger this beacon.
  */
 
 var nearViewport = require('jquery-near-viewport'),
@@ -17,18 +21,33 @@ module.exports = function (opts) {
         el = opts.el,
         range = opts.range || 0,
         active = false,
-        enabled = true;
+        enabled = true,
+        enteronce = opts.enteronce,
+        entered = false,
+        exitonce = opts.exitonce,
+        exited = false;
 
     el.$b_activate = function () {
         var inView = nearViewport(el, range);
         if (enabled) {
             if (inView && !active) {
-                enter(el);
+                if (enteronce && !entered) {
+                    entered = true;
+                    enter(el);
+                }
             } else if (!inView && active) {
-                exit(el);
+                if (exitonce && !exited) {
+                    exited = true;
+                    exit(el);
+                }
             }
         }
         active = inView;
+
+        // Check if this beacon is exhausted.
+        if ((enteronce && entered) && (exitonce && exited)) {
+            el.$b_destroy();
+        }
     };
     el.$b_destroy = function () {
         // Permanently destroy the activate() method.

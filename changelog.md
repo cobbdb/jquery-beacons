@@ -14,3 +14,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Changed beacon settings to `onenter` and `onexit`.
 - Removed throttle options. Unneeded with RAF.
 - Removed Saucelabs-related tests and tasks.
+- Added install option as CommonJS module.
+- Added install option as typical global jQuery plugin.
+- Removed all jQuery `beacon/*` events.
+- Removed global settings. Each beacon must now be configured individually.

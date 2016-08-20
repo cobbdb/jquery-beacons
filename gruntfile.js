@@ -2,13 +2,15 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
     grunt.loadTasks('tasks');
 
-    grunt.registerTask('test', 'Run tests against raw source', [
-        'jasmine'
+    grunt.registerTask('test', 'Minimal test suite.', [
+        'browserify:specs',
+        'jasmine:module'
     ]);
     grunt.registerTask('default', 'Full build suite.', [
-        'jasmine',
+        'test',
         'jshint',
-        'browserify',
-        'uglify'
+        'browserify:bundle',
+        'uglify',
+        'jasmine:bundle'
     ]);
 };
