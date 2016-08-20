@@ -10,6 +10,22 @@ React when elements are in view.
     $ bower i jquery-beacons
     $ npm i jquery-beacons
 
+## Loading the plugin
+#### Using Browserify
+```javascript
+var $ = require('jquery');
+require('jquery-beacons');
+$('.widget').beacon({..});
+```
+#### As a JS global
+```html
+<script src="path/to/jquery.js"></script>
+<script src="path/to/jquery-beacons.min.js"></script>
+<script>
+    $('.widget').beacon({..});
+</script>
+```
+
 ## Creating a new beacon
 Beacons are page elements you want to act on when they scroll into view.
 ```javascript
