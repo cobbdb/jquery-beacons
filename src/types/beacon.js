@@ -28,15 +28,17 @@ module.exports = function (opts) {
         exited = false;
 
     el.$b_activate = function () {
-        var inView = nearViewport(el, range);
+        var inView = nearViewport(el, range),
+            exhaustedEnter = enteronce && entered,
+            exhaustedExit = exitonce && exited;
         if (enabled) {
             if (inView && !active) {
-                if (enteronce && !entered) {
+                if (!exhaustedEnter) {
                     entered = true;
                     enter(el);
                 }
             } else if (!inView && active) {
-                if (exitonce && !exited) {
+                if (!exhaustedExit) {
                     exited = true;
                     exit(el);
                 }
@@ -45,7 +47,7 @@ module.exports = function (opts) {
         active = inView;
 
         // Check if this beacon is exhausted.
-        if ((enteronce && entered) && (exitonce && exited)) {
+        if ((exhaustedEnter) && (exhaustedExit)) {
             el.$b_destroy();
         }
     };
@@ -60,6 +62,8 @@ module.exports = function (opts) {
         enabled = true;
     };
 
-    smoothScroll(el.$b_activate);
+    smoothScroll(function () {
+        el.$b_activate();
+    });
     return el;
 };
