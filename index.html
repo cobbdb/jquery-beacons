@@ -6,8 +6,8 @@
     <title>Beacons by cobbdb</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -28,237 +28,95 @@
         </ul>
       </header>
       <section>
-        <p><a href="https://cobbdb.github.io/jquery-beacons"><img src="http://i.imgur.com/bCS34uV.png" alt="Beacons"></a></p>
+        <p><a href="//cobbdb.github.io/jquery-beacons"><img src="https://i.imgur.com/bCS34uV.png" alt="Beacons"></a></p>
 
-<p><a href="https://travis-ci.org/cobbdb/jquery-beacons"><img src="https://travis-ci.org/cobbdb/jquery-beacons.svg?branch=master" alt="Build Status"></a> <a href="http://badge.fury.io/bo/jquery-beacons"><img src="https://badge.fury.io/bo/jquery-beacons.svg" alt="Bower version"></a></p>
+<p><a href="//npmjs.com/package/jquery-beacons"><img src="https://img.shields.io/npm/l/jquery-beacons.svg" alt="License"></a>
+<a href="//badge.fury.io/bo/jquery-beacons"><img src="https://badge.fury.io/bo/jquery-beacons.svg" alt="Bower version"></a>
+<a href="//badge.fury.io/js/jquery-beacons"><img src="https://badge.fury.io/js/jquery-beacons.svg" alt="NPM version"></a>
+<a href="./package.json"><img src="https://img.shields.io/david/dev/cobbdb/jquery-beacons.svg" alt="Dependencies"></a></p>
 
-<p>A jQuery plugin to react when elements are in view.</p>
+<p>React when elements are in view.</p>
 
-<pre><code>$ bower install jquery-beacons
-</code></pre>
-
-<p><a href="https://saucelabs.com/u/jquery-beacons"><img src="https://saucelabs.com/browser-matrix/jquery-beacons.svg?branch=master" alt="Saucelabs Test Status"></a></p>
-
-<hr><h2>
-<a name="creating-a-new-beacon" class="anchor" href="#creating-a-new-beacon"><span class="octicon octicon-link"></span></a>Creating a new beacon</h2>
-
-<p>Beacons are page elements you want to act on when they scroll into view.
-Just supply a callback function to run when the beacon is triggered.</p>
-
-<pre><code>$('.widget').beacon(function () {
-    alert('A widget is on screen!');
-});
-</code></pre>
-
-<h4>
-<a name="convenience-variables-for-your-handlers" class="anchor" href="#convenience-variables-for-your-handlers"><span class="octicon octicon-link"></span></a>Convenience variables for your handlers</h4>
-
-<p>Provided to the beacon's handler is both the DOM object as well
-as the jQuery object.</p>
-
-<pre><code>$('.widget').beacon(function (el) {
-    // 'el' is the DOM object.
-    var pos = el.style.position;
-    // 'this' is the jQuery object.
-    var color = this.css('background-color');
-});
-</code></pre>
-
-<h4>
-<a name="bind-side-effects-dynamically" class="anchor" href="#bind-side-effects-dynamically"><span class="octicon octicon-link"></span></a>Bind side-effects dynamically</h4>
-
-<p>When a beacon activates, it triggers several jQuery events so you can keep your
-code modular.</p>
-
-<pre><code>$('#my-widget').
-    on('beacon/activate', function () {
-        alert('The widget is visible!');
-    }).
-    on('beacon/scroll/onscreen', function () {
-        alert('The widget has come into view!');
-    }).
-    on('beacon/scroll/offscreen', function () {
-        alert('The widget has scrolled out of view!');
-    });
+<pre><code>$ bower i jquery-beacons
+$ npm i jquery-beacons
 </code></pre>
 
 <h2>
-<a name="beacon-options" class="anchor" href="#beacon-options"><span class="octicon octicon-link"></span></a>Beacon options</h2>
+<a id="loading-the-plugin" class="anchor" href="#loading-the-plugin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Loading the plugin</h2>
 
-<p>For more advanced use cases, there are options available to configure how beacons are triggered.</p>
+<h4>
+<a id="using-browserify" class="anchor" href="#using-browserify" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using Browserify</h4>
 
-<pre><code>$('.widget').beacon({
-    handler: function () {
-        alert('A widget is visible!');
-    },
-    runOnce: true,
-    scroll: {
-        offscreen: function () {
-            alert('The widget is gone now!');
-        }
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> $ <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>jquery<span class="pl-pds">'</span></span>);
+<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>jquery-beacons<span class="pl-pds">'</span></span>);
+<span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.widget<span class="pl-pds">'</span></span>).<span class="pl-en">beacon</span>({..});</pre></div>
+
+<h4>
+<a id="as-a-js-global" class="anchor" href="#as-a-js-global" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>As a JS global</h4>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>path/to/jquery.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>path/to/jquery-beacons.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+<span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.widget<span class="pl-pds">'</span></span>).<span class="pl-en">beacon</span>({..});</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<h2>
+<a id="creating-a-new-beacon" class="anchor" href="#creating-a-new-beacon" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating a new beacon</h2>
+
+<p>Beacons are page elements you want to act on when they scroll into view.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.widget<span class="pl-pds">'</span></span>).<span class="pl-en">beacon</span>({
+    <span class="pl-en">onenter</span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">el</span>) {
+        <span class="pl-en">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>Widget <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-smi">el</span>.<span class="pl-c1">id</span> <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">'</span> is on screen!<span class="pl-pds">'</span></span>);
     }
-});
-</code></pre>
-
-<h4>
-<a name="optionshandler" class="anchor" href="#optionshandler"><span class="octicon octicon-link"></span></a>options.handler</h4>
-
-<ul>
-<li>Default: <code>noop</code>
-</li>
-<li>Type: <code>function</code>
-</li>
-</ul><p>The callback to be run when a beacon is activated.</p>
-
-<h4>
-<a name="optionsrunonce" class="anchor" href="#optionsrunonce"><span class="octicon octicon-link"></span></a>options.runOnce</h4>
-
-<ul>
-<li>Default: <code>false</code>
-</li>
-<li>Type: <code>boolean</code>
-</li>
-</ul><p>Remove the beacon automatically after it has been triggered by the handler.</p>
-
-<h4>
-<a name="optionsscrollonscreen" class="anchor" href="#optionsscrollonscreen"><span class="octicon octicon-link"></span></a>options.scroll.onscreen</h4>
-
-<ul>
-<li>Default: <code>noop</code>
-</li>
-<li>Type: <code>function</code>
-</li>
-</ul><p>Callback for when the beacon scrolls on screen. This is triggered only once
-when the beacon becomes visible, but can trigger multiple times - once for
-each time the beacon becomes visible. The <code>runOnce</code> option does not apply
-to the scroll callbacks. Does not trigger if beacon is disabled.</p>
-
-<h4>
-<a name="optionsscrolloffscreen" class="anchor" href="#optionsscrolloffscreen"><span class="octicon octicon-link"></span></a>options.scroll.offscreen</h4>
-
-<ul>
-<li>Default: <code>noop</code>
-</li>
-<li>Type: <code>function</code>
-</li>
-</ul><p>Companion for the <code>onscreen</code> callback. This behaves according to the same
-rules as <code>onscreen</code> except applies to when the beacon scrolls off the viewport
-instead.</p>
-
-<h4>
-<a name="optionsrange" class="anchor" href="#optionsrange"><span class="octicon octicon-link"></span></a>options.range</h4>
-
-<ul>
-<li>Default: <code>0</code>
-</li>
-<li>Type: <code>number</code>
-</li>
-</ul><p>Set a specific range for this beacon. If no range is provided,
-then it will use the <a href="#con_global_range">global range value</a>.</p>
-
-<h4>
-<a name="optionsenabled" class="anchor" href="#optionsenabled"><span class="octicon octicon-link"></span></a>options.enabled</h4>
-
-<ul>
-<li>Default: <code>true</code>
-</li>
-<li>Type: <code>boolean</code>
-</li>
-</ul><p>Whether or not the beacon is active after its creation. See the section on <a href="#con_enable">enabling/disabling beacons</a> for more information.</p>
+});</pre></div>
 
 <h2>
-<a name="beacon-controls" class="anchor" href="#beacon-controls"><span class="octicon octicon-link"></span></a>Beacon controls</h2>
+<a id="beacon-options" class="anchor" href="#beacon-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Beacon options</h2>
 
-<p>For more complicated scenarios, there are commands to control what your beacons are doing.</p>
-
-<pre><code>$('.widget').beacon('disable');
-</code></pre>
-
-<h4>
-<a name="activate" class="anchor" href="#activate"><span class="octicon octicon-link"></span></a>activate</h4>
-
-<p>Trip a beacon regardless of if it's viewable or not. This does
-not affect disabled beacons.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>.widget<span class="pl-pds">'</span></span>).<span class="pl-en">beacon</span>({
+    enteronce<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-en">onenter</span><span class="pl-k">:</span> <span class="pl-k">function</span> () {
+        <span class="pl-en">alert</span>(<span class="pl-s"><span class="pl-pds">'</span>A widget is visible!<span class="pl-pds">'</span></span>);
+    }
+});</pre></div>
 
 <h4>
-<a name="destroy" class="anchor" href="#destroy"><span class="octicon octicon-link"></span></a>destroy</h4>
+<a id="functionhtmlelement-onenter" class="anchor" href="#functionhtmlelement-onenter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>{function(HTMLElement)}</em> [onenter]</h4>
 
-<p>Remove the beacon from the system, but retain the original element.</p>
+<p>Event when beacon enters the viewport.</p>
 
 <h4>
-<a name="enable--disable-" class="anchor" href="#enable--disable-"><span class="octicon octicon-link"></span></a>enable / disable <a name="con_enable"></a>
-</h4>
+<a id="boolean-optsenteroncefalse" class="anchor" href="#boolean-optsenteroncefalse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>{boolean}</em> [opts.enteronce=false]</h4>
 
-<p>Turn an individual beacon on or off, but does not destroy it. Disabled beacons cannot
-be tripped manually with <code>activate</code>.</p>
+<p>True to trip onenter event only once.</p>
+
+<h4>
+<a id="functionhtmlelement-onexit" class="anchor" href="#functionhtmlelement-onexit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>{function(HTMLElement)}</em> [onexit]</h4>
+
+<p>Event when beacon leaves the viewport.</p>
+
+<h4>
+<a id="boolean-optsexitoncefalse" class="anchor" href="#boolean-optsexitoncefalse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>{boolean}</em> [opts.exitonce=false]</h4>
+
+<p>True to trip onexit event only once.</p>
+
+<h4>
+<a id="number-optsrange0" class="anchor" href="#number-optsrange0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>{number}</em> [opts.range=0]</h4>
+
+<p>Pixels from top and bottom of viewport to trigger this beacon.</p>
 
 <h2>
-<a name="global-controls" class="anchor" href="#global-controls"><span class="octicon octicon-link"></span></a>Global controls</h2>
+<a id="beacon-actions" class="anchor" href="#beacon-actions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Beacon actions</h2>
 
-<p>Here are some options to control all your beacons at once.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(.<span class="pl-smi">widget</span>).<span class="pl-en">beacon</span>(<span class="pl-s"><span class="pl-pds">'</span>enable<span class="pl-pds">'</span></span>);
+<span class="pl-en">$</span>(.<span class="pl-smi">widget</span>).<span class="pl-en">beacon</span>(<span class="pl-s"><span class="pl-pds">'</span>disable<span class="pl-pds">'</span></span>);
+<span class="pl-en">$</span>(.<span class="pl-smi">widget</span>).<span class="pl-en">beacon</span>(<span class="pl-s"><span class="pl-pds">'</span>destroy<span class="pl-pds">'</span></span>);</pre></div>
 
-<pre><code>$.beacons({
-    range: 150
-});
-$.beacons('enable');
-</code></pre>
-
-<h4>
-<a name="activate-1" class="anchor" href="#activate-1"><span class="octicon octicon-link"></span></a>activate</h4>
-
-<p>Trip all beacons regardless of if they are viewable or not. This does not
-affect disabled beacons.</p>
-
-<h4>
-<a name="destroy-1" class="anchor" href="#destroy-1"><span class="octicon octicon-link"></span></a>destroy</h4>
-
-<p>Remove all beacons. This does <em>not</em> alter the original page element.</p>
-
-<h4>
-<a name="enable--disable" class="anchor" href="#enable--disable"><span class="octicon octicon-link"></span></a>enable / disable</h4>
-
-<p>Turn all beacons on or off.</p>
-
-<h4>
-<a name="fetch" class="anchor" href="#fetch"><span class="octicon octicon-link"></span></a>fetch</h4>
+<hr>
 
 <ul>
-<li>Returns: <code>array</code>
-</li>
-</ul><p>Return the array of all beacons in the system - including disabled beacons.</p>
-
-<h4>
-<a name="settings" class="anchor" href="#settings"><span class="octicon octicon-link"></span></a>settings</h4>
-
-<ul>
-<li>Returns: <code>object</code>
-</li>
-</ul><p>Fetch the current system settings.</p>
-
-<h4>
-<a name="optionsrange-" class="anchor" href="#optionsrange-"><span class="octicon octicon-link"></span></a>options.range <a name="con_global_range"></a>
-</h4>
-
-<ul>
-<li>Default: <code>0</code>
-</li>
-<li>Type: <code>number</code>
-</li>
-</ul><p>An offset in pixels to increase the range outside of the viewport.
-For example, an offset of 100 will trigger beacons 100px above the viewport and 100px below the viewport.</p>
-
-<h4>
-<a name="optionsthrottle" class="anchor" href="#optionsthrottle"><span class="octicon octicon-link"></span></a>options.throttle</h4>
-
-<ul>
-<li>Default: <code>80</code>
-</li>
-<li>Type: <code>number</code>
-</li>
-</ul><p>The rate at which beacons are inspected. This value is in milliseconds.</p>
-
-<hr><ul>
-<li>See: <a href="http://plugins.jquery.com/beacons/">http://plugins.jquery.com/beacons/</a>
+<li>See: <a href="http://plugins.jquery.com/beacons">http://plugins.jquery.com/beacons</a>
 </li>
 <li>See: <a href="http://github.com/cobbdb/jquery-beacons">http://github.com/cobbdb/jquery-beacons</a>
 </li>
