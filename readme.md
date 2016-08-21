@@ -49,16 +49,16 @@ $('.widget').beacon({
 #### *{function(HTMLElement)}* [onenter]
 Event when beacon enters the viewport.
 
-#### *{boolean}* [opts.enteronce=false]
+#### *{boolean}* [enteronce=false]
 True to trip onenter event only once.
 
 #### *{function(HTMLElement)}* [onexit]
 Event when beacon leaves the viewport.
 
-#### *{boolean}* [opts.exitonce=false]
+#### *{boolean}* [exitonce=false]
 True to trip onexit event only once.
 
-#### *{number}* [opts.range=0]
+#### *{number}* [range=0]
 Pixels from top and bottom of viewport to trigger this beacon.
 
 ## Beacon actions
